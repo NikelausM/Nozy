@@ -1,0 +1,4 @@
+name,customerid,customerusername,city,province,postalcode,street,streetnumber,apartmentnumber
+Rafael,4,johndoe,Calgary,AB,T2P5TY,1st St SW,40,45
+Mike,5,janedoe,Edmonton,AB,T2P7TY,2nd St SW,50,10
+Peter,6,joesmith,Calgary,AB,T2P8TY,3rd St SW,60,55
