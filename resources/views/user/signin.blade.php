@@ -1,0 +1,32 @@
+<div class="modal-header">
+	<h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+</div>
+@if(count($errors)>0)
+	<div class="alert alert-danger">
+		@foreach($errors->all() as $error)
+			<p><font color = "red">{{$error}}</font></p>
+		@endforeach
+	</div>
+@endif
+<form action={{'user/signin'}} method="post">
+  <div class="modal-body form-group">
+	  <div class="row">
+		<div class="col">
+			<label for="inputEmail">Email</label>
+			<input type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
+		</div>
+	  </div>
+	  <div class="row"> 
+		<div class="col">
+			<label for="inputPassword">Password</label>
+			<input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+		</div>
+	  </div>
+	  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Log In</button>
+	  {{csrf_field()}}
+  </div>
+</form>
+

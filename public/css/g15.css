@@ -1,0 +1,46 @@
+            html, body {
+				color: #000;
+                background-color: #fff;
+                font-family: 'Raleway', sans-serif;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .masthead {
+                height: 100vh;
+                min-height: 500px;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                color: #000;
+                font-family: 'Oswald', sans-serif;
+                }
+
+            .masthead h1 {
+                text-align: left;
+                font-size: 50px;
+            }
+
+            .masthead a {
+                background-color: red;
+                font-size: 25px;
+                width: 100px;
+                border: 5px;
+            }
+
+            .masthead a:hover {
+                background-color:#9b1200;
+            }
+
+
+            .navbar-brand {
+                width:120px;
+            }
+
+            .navbar img {
+                width:100%;
+            }
+
+            .nav-item{
+                margin-left: 30px;
+            }
