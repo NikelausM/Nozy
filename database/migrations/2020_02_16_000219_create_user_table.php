@@ -14,11 +14,17 @@ class CreateUserTable extends Migration
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->string('email', 250)->primarykey()->unique();
+            $table->string('name', 250)->primarykey()->unique()->index();
+            $table->text('email');
             $table->text('password');
             $table->text('age');
             #$table->timestamps();
         });
+        
+        // Add Foreign key
+		Schema::table('user', function (Blueprint $table) {
+			$table->foreign('name')->references('name')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+		});
     }
 
     /**

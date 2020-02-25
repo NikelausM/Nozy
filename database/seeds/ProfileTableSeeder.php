@@ -13,22 +13,33 @@ class ProfileTableSeeder extends Seeder
     {
         // Insert user data into user table
         DB::table('profile')->insert([
-            'email' => 'nicolas@gmail.com',
             'name' => 'Nicolas',
             'description' => 'Hello my name is Nicolas',
         ]);
         
         DB::table('profile')->insert([
-            'email' => 'naweed@gmail.com',
             'name' => 'Naweed',
             'description' => 'Hello my name is Naweed',
         ]);
         
         DB::table('profile')->insert([
-            'email' => 'afrah@gmail.com',
             'name' => 'Afrah',
             'description' => 'Hello my name is Afrah',
         ]);
         
+        DB::table('profile')->insert([
+            'name' => 'Gaming',
+            'description' => 'This community is dedicated to all gaming related discussion',
+        ]);
+        
+        DB::table('profile')->insert([
+            'name' => 'UniversityOfCalgary',
+            'description' => 'This community is dedicated to all University of Calgary related discussion',
+        ]);
+        
+        DB::table('profile')->insert([
+            'name' => 'Sports',
+            'description' => 'This community is dedicated to all sports related discussion',
+        ]);
     }
 }

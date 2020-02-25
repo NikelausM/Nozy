@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Profile;
+
 class ProfileController extends Controller
 {
     /**
@@ -21,20 +23,30 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new profile instance
+     * 
+     * @param Request $request
+     * @return Reponse
+     * 
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+	*/
     public function store(Request $request)
     {
-        //
+		$this->validate($request, [
+            'name' => 'required|min:3|unique:profile',
+            'description' => 'required|min:3'
+        ]);
+        
+        $profile = new Profile;
+        $profile->name = $request->name;
+        $profile->description = $request->description;
+        $profile->save();
     }
 
     /**
@@ -45,7 +57,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +68,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+		
     }
 
     /**
