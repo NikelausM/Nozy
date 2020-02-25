@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Support\Facades\Redirect;
 
-class UserController extends Controller
+use App\User;
+
+class UserController extends ProfileController
 {
 	    /**
      * Display a listing of the resource.
@@ -25,72 +27,69 @@ class UserController extends Controller
         return view('viewUsers', ['allUsers' => $user]);
     }
     * */
-
 	
-	public function postSignup(Request $request) {
+	public function store(Request $request) {
+		
+		# Call parent store function (basically a model constructor)
+		parent::store($request);
+		
+		# Validate form
 		$this->validate($request, [
-			'email' => 'email|required|unique:user',
-			'password' => 'required|min:5',
+			'name' => 'required|min:3|unique:user',
+			'email' => 'email|required',
+			'password' => 'required|min:3',
 			'age' => 'required',
 		]);
 		
-		$email = $request->input('email');
-		$password = $request->input('password');
-		$age = $request->input('age');
-
-		\App\User::create([
-           'email' -> $email,
-           'password' -> $password,
-           'age' -> $age,
-        ]);
-
-		return redirect()->back();
+		# Create new user
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->age = $request->age;
+        $user->save();
+        
+		return redirect()->route('user.getUserView', ['user' => $user]);
+		
 	}
 
 	public function postSignin(Request $request) {	
 		
 		// Validate input of form
         $this->validate($request, [
-            'email' => 'required',
+            'name' => 'required',
             'password' => 'required|min:3'
         ]);
 
 		// Extract data from form
-		$email = $request->input('email');
+		$name = $request->input('name');
 		$password = $request->input('password');
 		
 		// Store data in global variable
-		$user = \App\User::where('email', $email)->first();
+		$user = \App\User::where('name', $name)->first();
 		
 		// Incorrect password
 		if($password != $user->password){
-			#return view('/');
-			#$out = new Symfony\Component\Console\Output\ConsoleOutput();
-			#$out->writeln("<info> my message error</info>");
 			Log::info('my special error');
 			return back();
 		}
 		
-		// Get profile info
-		$profile = \App\Profile::where('email', $email)->first();
-		
 		// Login to user's account
-		if(!is_null($profile)) {
+		if(!is_null($user)) {
 			// put user email into global variable
-			$request->session()->put('user', $user);
-			return redirect()->route('user.getUserView', ['name' => $profile->name]);
+			#$request->session()->put('user', $user);
+			#return redirect()->route('user.getUserView', ['name' => $user->name]);
+			return redirect()->route('user.getUserView', ['user' => $user]);
 		}
 		// Admin Login
 		else {
 			return redirect('/');
 		}
-		
-    }	
+    }
     
-    public function getUserView($name) {
-		$user = Session::get('user');
-		return view('user.user', ['name' => $name, 'user' => $user]);
+	public function getUserView(\App\User $user) {
+		
+		return view('user.user', ['user' => $user]);
 	}
-	
 
 }

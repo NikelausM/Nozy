@@ -15,8 +15,8 @@
   <div class="modal-body form-group">
 	  <div class="row">
 		<div class="col">
-			<label for="inputEmail">Email</label>
-			<input type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
+			<label for="inputName">Name</label>
+			<input type="name" class="form-control" name="name" id="name" placeholder="Enter Name">
 		</div>
 	  </div>
 	  <div class="row"> 
