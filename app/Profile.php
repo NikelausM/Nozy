@@ -23,4 +23,7 @@ class Profile extends Model
 		'name' => 'required|unique:profile',
     ];
     
+    public function getRouteKeyName() {
+			return 'name';
+	}
 }

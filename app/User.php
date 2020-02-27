@@ -20,8 +20,18 @@ class User extends Profile
     public $keyType = 'string';
     public $timestamps = false;
     
+    public function getRouteKeyName() {
+			return 'name';
+	}
+    
     # user extends profile
     public function profile() {
 		return $this->belongsTo('App\Profile', 'name', 'name');
 	}
+	
+	# user manages community
+    public function communities() {
+		return $this->hasMany('App\Community', 'name', 'managed_by');
+	}
+	
 }

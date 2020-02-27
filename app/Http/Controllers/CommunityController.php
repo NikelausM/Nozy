@@ -1,11 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 
 class CommunityController extends Controller
 {
+	
+	public function getCommunityView(\App\User $user, \App\Community $community) {
+		Log::info('I tried to get the community!');
+		return view('community.community', ['user' => $user, 'community' => $community]);
+	}
+	
     /**
      * Display a listing of the resource.
      *
