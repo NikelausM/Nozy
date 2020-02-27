@@ -14,17 +14,17 @@ class CommunityTableSeeder extends Seeder
         // Insert user data into user table
         DB::table('community')->insert([
             'name' => 'Gaming',
-            'managed_by' => '',
+            'managed_by' => 'Nicolas',
         ]);
         
         DB::table('community')->insert([
             'name' => 'UniversityOfCalgary',
-            'managed_by' => '',
+            'managed_by' => 'Nicolas',
         ]);
         
         DB::table('community')->insert([
             'name' => 'Sports',
-            'managed_by' => '',
+            'managed_by' => 'Afrah',
         ]);
     }
 }

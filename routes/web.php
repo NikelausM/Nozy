@@ -18,3 +18,5 @@ Route::post('user/signup', ['uses' => 'UserController@store', 'as' => 'user.sign
 Route::post('user/signin', ['uses' => 'UserController@postSignin', 'as' => 'user.signin']);
 
 Route::get('user/{user}', ['uses' => 'UserController@getUserView', 'as' => 'user.getUserView']);
+
+Route::get('user/{user}/community/{community}', ['uses' => 'CommunityController@getCommunityView', 'as' => 'community.getCommunityView']);

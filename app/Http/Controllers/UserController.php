@@ -76,6 +76,7 @@ class UserController extends ProfileController
 		
 		// Login to user's account
 		if(!is_null($user)) {
+			Log::info('I logged in!');
 			// put user email into global variable
 			#$request->session()->put('user', $user);
 			#return redirect()->route('user.getUserView', ['name' => $user->name]);
@@ -88,8 +89,9 @@ class UserController extends ProfileController
     }
     
 	public function getUserView(\App\User $user) {
-		
-		return view('user.user', ['user' => $user]);
+		Log::info('I went back to the main page!');
+		$communities = \App\Community::where('managed_by', $user->name)->get();
+		return view('user.user', ['user' => $user, 'communities' => $communities]);
 	}
 
 }
