@@ -45,6 +45,7 @@ class ProfileController extends Controller
         
         $profile = new Profile;
         $profile->name = $request->name;
+        $profile->password = $request->password;
         $profile->description = $request->description;
         $profile->save();
     }

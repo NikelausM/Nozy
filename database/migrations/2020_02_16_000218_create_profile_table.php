@@ -15,6 +15,7 @@ class CreateProfileTable extends Migration
     {
         Schema::create('profile', function (Blueprint $table) {
 			$table->string('name', 250)->primarykey()->unique()->index();
+			$table->text('password');
             $table->text('description');
             #$table->timestamps();
         });
