@@ -45,7 +45,6 @@ class UserController extends ProfileController
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
         $user->age = $request->age;
         $user->save();
         
@@ -69,7 +68,7 @@ class UserController extends ProfileController
 		$user = \App\User::where('name', $name)->first();
 		
 		// Incorrect password
-		if($password != $user->password){
+		if($password != $user->profile->password){
 			Log::info('my special error');
 			return back();
 		}
@@ -77,9 +76,6 @@ class UserController extends ProfileController
 		// Login to user's account
 		if(!is_null($user)) {
 			Log::info('I logged in!');
-			// put user email into global variable
-			#$request->session()->put('user', $user);
-			#return redirect()->route('user.getUserView', ['name' => $user->name]);
 			return redirect()->route('user.getUserView', ['user' => $user]);
 		}
 		// Admin Login

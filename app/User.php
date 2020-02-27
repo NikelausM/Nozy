@@ -11,7 +11,6 @@ class User extends Profile
 	protected $fillable = [
 			'name',
 			'email',
-			'password',
 			'age',
         ];
     
@@ -33,5 +32,6 @@ class User extends Profile
     public function communities() {
 		return $this->hasMany('App\Community', 'name', 'managed_by');
 	}
+
 	
 }
