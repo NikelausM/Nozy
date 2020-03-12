@@ -32,6 +32,4 @@ class User extends Profile
     public function communities() {
 		return $this->hasMany('App\Community', 'name', 'managed_by');
 	}
-
-	
 }

@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#signupModal" data-toggle="modal">Sign Up</a>
+            <a class="nav-link" href="#registerModal" data-toggle="modal">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#loginModal" data-toggle="modal">Log In</a>

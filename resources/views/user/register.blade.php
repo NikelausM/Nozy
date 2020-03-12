@@ -11,7 +11,7 @@
 		@endforeach
 	</div>
 @endif
-<form action={{'user/signup'}} method="post">
+<form action={{'user/register'}} method="post">
   <div class="modal-body form-group">
 	  <div class="row">
 		<div class="col">
@@ -43,7 +43,7 @@
 			<input class="form-control" name="age" id="age" placeholder="Enter Age">
 		</div>
 	  </div>
-	  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Sign Up</button>
+	  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Register</button>
 	  {{csrf_field()}}
   </div>
 </form>
