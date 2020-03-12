@@ -2,10 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Foundation\Auth\User as Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Profile extends Model
+class Profile extends Authenticatable
 {
+	
+	protected $guard = 'profile';
 	
 	protected $table = "profile";
 	
@@ -26,5 +30,9 @@ class Profile extends Model
     
     public function getRouteKeyName() {
 			return 'name';
+	}
+	
+	public function getAuthPassword() {
+		return bcrypt($this->password);
 	}
 }

@@ -11,7 +11,7 @@
 		@endforeach
 	</div>
 @endif
-<form action={{'user/signin'}} method="post">
+<form action={{'user/login'}} method="post">
   <div class="modal-body form-group">
 	  <div class="row">
 		<div class="col">

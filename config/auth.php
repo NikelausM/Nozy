@@ -12,12 +12,17 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
+	
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-
+	/*
+	'defaults' => [
+        'guard' => 'profile',
+        'passwords' => 'profile',
+    ],
+	*/
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -34,7 +39,7 @@ return [
     | Supported: "session", "token"
     |
     */
-
+	/*
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -46,6 +51,24 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+    ],
+    */
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+        
+		'profile' => [
+			'driver' => 'session',
+			'provider' => 'profile',
+		],
     ],
 
     /*
@@ -65,6 +88,7 @@ return [
     |
     */
 
+	/*
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
@@ -75,6 +99,22 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+    ],
+    */
+    
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\users::class,
+        ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'users',
+        ],
+        'profile' => [
+            'driver' => 'eloquent',
+            'model' => App\Profile::class,
+        ],
     ],
 
     /*
@@ -91,7 +131,7 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
-
+	/*
     'passwords' => [
         'users' => [
             'provider' => 'users',
@@ -99,5 +139,12 @@ return [
             'expire' => 60,
         ],
     ],
-
+	*/
+	'passwords' => [
+        'users' => [
+            'provider' => 'profile',
+            'table' => 'profile',
+            'expire' => 60,
+        ],
+    ],
 ];

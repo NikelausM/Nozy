@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-
+use Illuminate\Support\Facades\Log;
 class Authenticate extends Middleware
 {
     /**
@@ -15,7 +15,9 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('login');
+            //return route('login');
+            Log::info('In authenticate!');
+            return '/'; // If unauthorized route requested then redirect to home page
         }
     }
 }

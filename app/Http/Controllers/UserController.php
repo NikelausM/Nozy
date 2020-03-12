@@ -15,7 +15,17 @@ use App\User;
 
 class UserController extends ProfileController
 {
-	    /**
+	/*
+	 * only authenticated user with account guard 
+	 * can access this controller.
+	 */
+	public function __construct()
+	{
+		Log::info('UserController Constructor middleware being called!');
+		$this->middleware('auth:profile');
+	}
+	
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -27,8 +37,7 @@ class UserController extends ProfileController
         return view('viewUsers', ['allUsers' => $user]);
     }
     * */
-	
-	public function store(Request $request) {
+    public function store(Request $request) {
 		
 		# Call parent store function (basically a model constructor)
 		parent::store($request);
@@ -49,45 +58,25 @@ class UserController extends ProfileController
         $user->save();
         
 		return redirect()->route('user.getUserView', ['user' => $user]);
-		
 	}
-
-	public function postSignin(Request $request) {	
-		
-		// Validate input of form
-        $this->validate($request, [
-            'name' => 'required',
-            'password' => 'required|min:3'
-        ]);
-
-		// Extract data from form
-		$name = $request->input('name');
-		$password = $request->input('password');
-		
-		// Store data in global variable
-		$user = \App\User::where('name', $name)->first();
-		
-		// Incorrect password
-		if($password != $user->profile->password){
-			Log::info('my special error');
-			return back();
-		}
-		
-		// Login to user's account
-		if(!is_null($user)) {
-			Log::info('I logged in!');
-			return redirect()->route('user.getUserView', ['user' => $user]);
-		}
-		// Admin Login
-		else {
-			return redirect('/');
-		}
-    }
     
+    public function index(Request $request) {
+		Log::info('Trying to UserController.index!');
+		//if (Auth::guard('profile')->check()) {
+			Log::info('Trying to get user!');
+			$profile = Auth::guard('profile')->user(); // Get Authenticated profile
+			$user = \App\User::where('name', $profile->name)->first();
+			return redirect()->route('user.getUserView', ['user' => $user]);
+		//}
+	}
+	
 	public function getUserView(\App\User $user) {
-		Log::info('I went back to the main page!');
-		$communities = \App\Community::where('managed_by', $user->name)->get();
-		return view('user.user', ['user' => $user, 'communities' => $communities]);
+		Log::info('Trying to getUserView!');
+		//if (Auth::guard('profile')->check()) {
+			Log::info('I went back to the user page!');
+			$communities = \App\Community::where('managed_by', $user->name)->get();
+			return view('user.user', ['user' => $user, 'communities' => $communities]);
+		//}
 	}
 
 }

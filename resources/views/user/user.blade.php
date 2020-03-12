@@ -1,4 +1,4 @@
-@extends('layouts.welcome_signedin')
+@extends('layouts.welcome_loggedin')
 
 @section('content')
 <div class="masthead">
