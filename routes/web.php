@@ -13,15 +13,33 @@
 
 Route::get('/', [ 'uses' => 'IndexController@getIndex', 'as' => 'index']);
 
-Route::post('user/register', ['uses' => 'UserController@store', 'as' => 'user.register']);
-
-Route::post('user/login', ['uses' => 'UserLoginController@login', 'as' => 'user.login']);
-
-Route::get('user/logout', ['uses' => 'UserLoginController@logout', 'as' => 'user.logout']);
-
 Route::get('user/', ['uses' => 'UserController@index', 'as' => 'user.index']);
 
-Route::get('user/{user}', ['uses' => 'UserController@getUserView', 'as' => 'user.getUserView']);
-//->middleware('auth:profile');
-Route::get('user/{user}/community/{community}/', ['uses' => 'CommunityController@getCommunityView', 'as' => 'community.getCommunityView']);
+// Route group
+Route::post('user/register', ['uses' => 'UserController@store', 'as' => 'user.store']);
+Route::post('user/login', ['uses' => 'UserLoginController@login', 'as' => 'user.postLogin']);
 
+// Routes accessible to logged-in users
+Route::prefix('user')->middleware('auth:profile')->group(function () {
+	
+	Route::get('logout', ['uses' => 'UserLoginController@logout', 'as' => 'user.logout']);
+	
+	// Routes for specific user
+	Route::prefix('{user}')->group(function () {
+		
+		Route::get('/', ['uses' => 'UserController@show', 'as' => 'user.show']);
+		
+		Route::post('/', ['uses' => 'UserController@update', 'as' => 'user.update']);
+		
+		//Route::post('/', ['uses' => 'CommunityController@store', 'as' => 'community.storeUserCommunity');
+		
+		// Routes for specific community managed by user
+		Route::prefix('community/{community}')->group(function () {
+			
+			Route::get('/', ['uses' => 'CommunityController@showUserCommunity', 'as' => 'community.showUserCommunity']);	
+			
+			Route::post('/', ['uses' => 'CommunityController@updateUserCommunity', 'as' => 'community.updateUserCommunity']);
+		});
+		
+	});
+});

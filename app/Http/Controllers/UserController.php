@@ -22,7 +22,7 @@ class UserController extends ProfileController
 	public function __construct()
 	{
 		Log::info('UserController Constructor middleware being called!');
-		$this->middleware('auth:profile');
+		//$this->middleware('auth:profile')->except(['register']);
 	}
 	
 	/**
@@ -37,46 +37,97 @@ class UserController extends ProfileController
         return view('viewUsers', ['allUsers' => $user]);
     }
     * */
+    
+    // Get user of current authenticated profile
+    public function index() {
+		Log::info('Trying to UserController.index!');
+		//if (Auth::guard('profile')->check()) {
+			Log::info('Trying to get user!');
+			$profile = Auth::guard('profile')->user(); // Get Authenticated profile
+			$user = \App\User::where('profile_id', $profile->id)->first();
+			return redirect()->route('user.show', $user);
+		//}
+	}
+	
+	
+	// Get view of user
+	public function show($id) {
+		
+		// Retrieve user
+		$user = \App\User::where('id', $id)->first();
+		
+		Log::info('Trying to getUserView!');
+		//if (Auth::guard('profile')->check()) {
+			Log::info('I went back to the user page!');
+			$communities = \App\Community::where('manager_user_id', $user->id)->get();
+			return view('user.user', ['user' => $user]);
+		//}
+	}
+    
+    // Store a new user
     public function store(Request $request) {
 		
 		# Call parent store function (basically a model constructor)
-		parent::store($request);
+		Log::info('Calling Profile::store()!');
+		$profile = parent::store($request);
 		
 		# Validate form
+		Log::info('Validating user registration info!');
 		$this->validate($request, [
-			'name' => 'required|min:3|unique:user',
 			'email' => 'email|required',
 			'password' => 'required|min:3',
 			'age' => 'required',
 		]);
 		
 		# Create new user
+		Log::info('Creating new user!');
         $user = new User;
-        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->age = $request->age;
+        $user->profile_id = $profile->id;
+        $user->save();
+        
+        Log::info('Created user, trying to login!');
+        
+        $credentials = array('name' => $request->name, 'password' => $request->password);
+        
+        if (Auth::guard('profile')->attempt($credentials)) {
+			Log::info('Authentication passed!');
+			// Authentication passed
+			return redirect('user/');
+        } else {
+			Log::info('Authentication failed!');
+            Session::flash ('message', 'Invalid Credentials , Please try again.');
+            return redirect('/');
+        }
+        
+	}
+    
+    // Update user info
+    public function update(Request $request, $id) {
+
+		// Retrieve user
+		$user = \App\User::where('id', $id)->first();
+		
+		# Call parent update function (basically a model updater)
+		Log::info('Calling Profile::update()!');
+		parent::update($request, $user->profile->id);
+		
+		# Validate user update
+		Log::info('Validating user update info!');
+		$validatedData = $this->validate($request, [
+            'email' => 'required',
+            'age' => 'required',
+        ]);
+        
+        // Update other attributes
         $user->email = $request->email;
         $user->age = $request->age;
         $user->save();
         
-		return redirect()->route('user.getUserView', ['user' => $user]);
+        
+		return redirect()->route('user.show', ['user' => $user]);
 	}
-    
-    public function index(Request $request) {
-		Log::info('Trying to UserController.index!');
-		//if (Auth::guard('profile')->check()) {
-			Log::info('Trying to get user!');
-			$profile = Auth::guard('profile')->user(); // Get Authenticated profile
-			$user = \App\User::where('name', $profile->name)->first();
-			return redirect()->route('user.getUserView', ['user' => $user]);
-		//}
-	}
-	
-	public function getUserView(\App\User $user) {
-		Log::info('Trying to getUserView!');
-		//if (Auth::guard('profile')->check()) {
-			Log::info('I went back to the user page!');
-			$communities = \App\Community::where('managed_by', $user->name)->get();
-			return view('user.user', ['user' => $user, 'communities' => $communities]);
-		//}
-	}
+
 
 }

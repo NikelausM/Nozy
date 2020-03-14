@@ -14,15 +14,16 @@ class CreateUserTable extends Migration
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->string('name', 250)->primarykey()->unique()->index();
+			$table->increments('id');
             $table->text('email');
             $table->text('age');
+            $table->unsignedInteger('profile_id');
             #$table->timestamps();
         });
         
         // Add Foreign key
 		Schema::table('user', function (Blueprint $table) {
-			$table->foreign('name')->references('name')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreign('profile_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
 		});
     }
 

@@ -13,21 +13,21 @@ class UserTableSeeder extends Seeder
     {
         // Insert user data into user table
         DB::table('user')->insert([
-            'name' => 'Nicolas', 
             'email' => 'nicolas@gmail.com',
             'age' => 18,
+            'profile_id' => 1,
         ]);
         
         DB::table('user')->insert([
-            'name' => 'Naweed',
             'email' => 'naweed@gmail.com',
             'age' => 19,
+            'profile_id' => 2,
         ]);
         
         DB::table('user')->insert([
-            'name' => 'Afrah',
             'email' => 'afrah@gmail.com',
             'age' => 20,
+            'profile_id' => 3,
         ]);
            
     }

@@ -9,8 +9,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <!--<a class="nav-link" href="{{route('user.getUserView', [$user])}}">Profile</a>-->
+            <a class="nav-link" href="{{ url('user/') }}">Nozy Home</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('user/') }}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('user/') }}">Notifications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('user/logout') }}">Logout</a>
