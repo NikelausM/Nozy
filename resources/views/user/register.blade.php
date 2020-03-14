@@ -11,12 +11,18 @@
 		@endforeach
 	</div>
 @endif
-<form action={{'user/register'}} method="post">
+<form action={{route('user.store')}} method="post">
   <div class="modal-body form-group">
 	  <div class="row">
 		<div class="col">
 			<label for="name">Name</label>
 			<input class="form-control" name="name" id="name" placeholder="Enter Name">
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col">
+			<label for="inputPassword">Password</label>
+			<input class="form-control" name="password" id="password" placeholder="Enter password">
 		</div>
 	  </div>
 	  <div class="row">
@@ -29,12 +35,6 @@
 		<div class="col">
 			<label for="inputEmail">Email address</label>
 			<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-		</div>
-	  </div>
-	  <div class="row">
-		<div class="col">
-			<label for="inputPassword">Password</label>
-			<input class="form-control" name="password" id="password" placeholder="Enter password">
 		</div>
 	  </div>
 	  <div class="row">

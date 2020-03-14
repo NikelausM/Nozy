@@ -20,7 +20,7 @@ class UserLoginController extends BaseLoginController
 	
 	public function __construct() {
 		Log::info('userLoginController Constructor middleware being called!');
-		$this->middleware('guest:profile')->except(['login','logout']);
+		//$this->middleware('guest:profile')->except(['login','logout']);
 	}
 	
 	public function login(Request $request) {	
@@ -29,6 +29,7 @@ class UserLoginController extends BaseLoginController
 		$credentials = $request->only('name', 'password');
 		
 		Log::info('Trying to authenticate!');
+		Log::info('specifically:'.$request->name.' '.$request->password);
 		//Log::info('Trying to authenticate: '.$credentials->$name.' '.$credentials->$password);
 		//if (Auth::guard('profile')->attempt(['name' => $credentials->$name, 'password' => $credentials->password])) {
 		if (Auth::guard('profile')->attempt($credentials)) {
@@ -42,7 +43,7 @@ class UserLoginController extends BaseLoginController
         }
 	}
     
-    // Overwrite username() method because we want username column as primary key
+    // Overwrite username() method because we want to username
     // rather than default email id
     public function username() {
 		return 'username';
@@ -58,13 +59,6 @@ class UserLoginController extends BaseLoginController
 		Log::info('Trying to logout!');
 		$this->guard('profile')->logout();
 		$request->session()->invalidate();
-		//$request->session()->flush();
-		//return $this->loggedOut($request) ?: redirect('/');
-		//return redirect('/');
 		return redirect('/');
-		
-		//Session::flush();
-		//Auth::guard('profile')::logout();
-		//return redirect()->route('/');
 	}
 }

@@ -14,14 +14,19 @@ class CreateCommunityTable extends Migration
     public function up()
     {
         Schema::create('community', function (Blueprint $table) {
-            $table->string('name', 250)->primarykey()->unique()->index();
-            $table->string('managed_by', 250);    
+            $table->increments('id');
+            $table->unsignedInteger('profile_id');
+            $table->unsignedInteger('manager_user_id');
             #$table->timestamps();
         });
         
         // Add Foreign key
 		Schema::table('community', function (Blueprint $table) {
-			$table->foreign('name')->references('name')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreign('profile_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+		});
+		
+		Schema::table('community', function (Blueprint $table) {
+			$table->foreign('manager_user_id')->references('id')->on('user')->onUpdate('cascade')->onDelete('cascade');
 		});
     }
 

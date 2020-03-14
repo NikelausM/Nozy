@@ -37,7 +37,7 @@ class ProfileTableSeeder extends Seeder
         ]);
         
         DB::table('profile')->insert([
-            'name' => 'UniversityOfCalgary',
+            'name' => 'University Of Calgary',
             'password' => '123',
             'description' => 'This community is dedicated to all University of Calgary related discussion',
         ]);

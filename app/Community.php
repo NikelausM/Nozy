@@ -10,27 +10,28 @@ class Community extends Profile
 	protected $table = "community";
 	
 	protected $fillable = [
-           'name',
-           'managed_by',
+           'profile_id',
+           'manager_user_id',
         ];
-    protected $primaryKey = 'name';
-    public $incrementing = false;
-    public $keyType = 'string';
+    //protected $primaryKey = 'name';
+    //public $incrementing = false;
+    //public $keyType = 'string';
     public $timestamps = false;
     
+    /*
 	public function getRouteKeyName() {
 			return 'name';
 	}
+	*/
     
     # community extends profile
     public function profile() {
-		return $this->belongsTo('App\Profile', 'name', 'name');
+		return $this->belongsTo('App\Profile', 'profile_id', 'id');
 	}
 	
-	# community managed by user
-    public function communities() {
-		return $this->hasOne('App\User', 'managed_by', 'name');
+	# user managing community
+    public function user() {
+		return $this->belongsTo('App\User', 'manager_user_id', 'id');
 	}
 	
-
 }

@@ -14,11 +14,18 @@ class CreatePostTable extends Migration
     public function up()
     {
         Schema::create('post', function (Blueprint $table) {
-            $table->bigIncrements('id')->primarykey()->unique();
-            $table->bigInteger('rating');
+            $table->increments('id');
+            $table->string('title');
+            $table->integer('rating');
             $table->text('description');
+            $table->unsignedInteger('parent_id');
             #$table->timestamps();
         });
+        
+        // Add Foreign key
+		Schema::table('post', function (Blueprint $table) {
+			$table->foreign('parent_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+		});
     }
 
     /**
