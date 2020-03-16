@@ -40,7 +40,7 @@ Route::prefix('user')->middleware('auth:profile')->group(function () {
 			
 			Route::post('/', ['uses' => 'CommunityController@updateUserCommunity', 'as' => 'community.updateUserCommunity']);
 			
-			// Routes for specific community managed by user
+			// Routes for specific post managed by user
 			Route::prefix('post/{post}')->group(function () {
 				Route::get('/', ['uses' => 'PostController@showUserCommunityPost', 'as' => 'post.showUserCommunityPost']);	
 			
