@@ -45,7 +45,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+		Log::info('I tried to show the post!');
+		// Retrieve post
+		$community = \App\Community::where('id', $id)->first();
+		return view('community.community', ['community' => $community]);
     }
 
     /**
