@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Log;
+
 class PostController extends Controller
 {
     /**
@@ -45,10 +47,29 @@ class PostController extends Controller
      */
     public function show($id)
     {
-		Log::info('I tried to show the post!');
-		// Retrieve post
-		$community = \App\Community::where('id', $id)->first();
-		return view('community.community', ['community' => $community]);
+      Log::info('I tried to show the post!');
+  		// Retrieve post
+  		$post = \App\Post::where('id', $id)->first();
+      return view('post.post', ['post' => $post]);
+      /*
+      // Get Authenticated profile
+      $profile = Auth::guard('profile')->user();
+      $user = \App\User::where('profile_id', $profile->id)->first();
+
+  		Log::info('I tried to show the post!');
+  		// Retrieve post
+  		$post = \App\Post::where('id', $id)->first();
+  		$poster_profile = \App\Profile::where($post->parent_id);
+  		// Check if profile corresponds to User or Community
+  		$poster_user = \App\User::where('profile_id',$post_creator_profile->id);
+  		if(!is_null($poster_user)) {
+  			return view('post.post', ['user' => $user, 'poster' => $poster_user, 'post' => $post]);
+  		}
+  		else {
+  			$poster_community = \App\Community::where('profile_id',$profile->id);
+  			return view('post.post', ['user' => $user, 'poster' => $poster_community, 'post' => $post]);
+  		}
+      */
     }
 
     /**

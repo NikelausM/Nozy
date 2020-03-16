@@ -8,9 +8,9 @@
 			<div style="top: 20%;" class="col-12">
 				<h1 class="font-weight-bold">Welcome to {{$community->profile->name}}</h1>
 				<h2 class="font-weight-bold">Description: {{$community->profile->description}}</h2>
-				
+
 				@include('community.edit_community_profile_form')
-				
+
 				@foreach($community->profile->posts as $post)
 				<div class="row" style="padding: 10px">
 					<div class="col-sm-6 col-md-4">
@@ -19,7 +19,7 @@
 							<div class="caption">
 								<p><font color="black">{{ $post->description }}</font></p>
 								<div>
-									<form method="GET" action={{route('community.showUserCommunity', [$user, $community])}} accept-charset="UTF-8">
+									<form method="GET" action={{route('post.show', [$user, $community, $post])}} accept-charset="UTF-8">
 										<button type="submit" class="btn btn-primary">Go to post</button>
 										<!--{{ csrf_field() }}-->
 									</form>
