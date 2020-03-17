@@ -8,26 +8,13 @@
 			<div style="top: 20%;" class="col-12">
 				<h1 class="font-weight-bold">Welcome to {{$community->profile->name}}</h1>
 				<h2 class="font-weight-bold">Description: {{$community->profile->description}}</h2>
-				
+				@if(Auth::guard('profile')->user()->id == $community->profile->id)
 				@include('community.edit_community_profile_form')
-				
+				@endif
+
+				@include('layouts.makePost_button')
 				@foreach($community->profile->posts as $post)
-				<div class="row" style="padding: 10px">
-					<div class="col-sm-6 col-md-4">
-						<div class="thumbnail shadow">
-							<h3><font color="black">{{ $post->title }}</font></h3>
-							<div class="caption">
-								<p><font color="black">{{ $post->description }}</font></p>
-								<div>
-									<form method="GET" action={{route('community.showUserCommunity', [$user, $community])}} accept-charset="UTF-8">
-										<button type="submit" class="btn btn-primary">Go to post</button>
-										<!--{{ csrf_field() }}-->
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				@include('layouts.post_box')
 				@endforeach
 			</div>
 		</div>

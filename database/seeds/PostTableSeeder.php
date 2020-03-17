@@ -32,5 +32,12 @@ class PostTableSeeder extends Seeder
             'description' => 'I wonder what the administration is going to do about final exams.',
             'parent_id' => 5,
         ]);
+
+        DB::table('post')->insert([
+            'title '=> 'I am a gulab',
+            'rating' => 0,
+            'description' => 'I have just realized I have been a gulab my entire life.',
+            'parent_id' => 1,
+        ]);
     }
 }

@@ -1,0 +1,1 @@
+<!-- to be created --><?php /**PATH /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_box.blade.php ENDPATH**/ ?>
