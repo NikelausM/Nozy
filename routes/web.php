@@ -56,5 +56,4 @@ Route::prefix('user')->middleware('auth:profile')->group(function () {
 		});
 	});
 
-	});
 });
