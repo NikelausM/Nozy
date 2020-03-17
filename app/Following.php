@@ -19,9 +19,12 @@ class Following extends Model
     //public $keyType = 'string';
     public $timestamps = false;
 
-    # user extends profile
-    public function profile() {
-		return $this->belongsTo('App\Profile', 'follower_id', 'id');
-    return $this->belongsTo('App\Profile', 'followee_id', 'id');
-	}
+    # user get follower
+    public function follower() {
+			return $this->belongsTo('App\Profile', 'follower_id', 'id');
+		}
+
+		public function followee() {
+			return $this->belongsTo('App\Profile', 'followee_id', 'id');
+		}
 }

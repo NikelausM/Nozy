@@ -20,13 +20,17 @@ class Notification extends Model
     //public $keyType = 'string';
     public $timestamps = true;
 
+		# notification belongs to notifee
+		public function notifee() {
+		return $this->belongsTo('App\Profile', 'notifee_id', 'id');
+		}
 
-    # notification extends profile
+    # notification belongs to profile
     public function profile() {
 		return $this->belongsTo('App\Profile', 'profile_id', 'id');
-	}
+		}
 
-    # notification extends Post
+    # notification belongs to post
     public function post() {
       return $this->belongsTo("App\Post", "post_id", 'id');
     }
