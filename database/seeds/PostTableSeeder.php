@@ -18,14 +18,14 @@ class PostTableSeeder extends Seeder
             'description' => 'I think it\'s going to be amazing. I just hope that they make the lore as rich as the Dark Souls games.',
             'parent_id' => 4,
         ]);
-        
+
         DB::table('post')->insert([
             'title' => 'Halo Infinite Coming Out',
             'rating' => 0,
             'description' => 'I can\'t wait for the new Halo game to come out, but what do you guys think?',
             'parent_id' => 4,
         ]);
-        
+
         DB::table('post')->insert([
             'title' => 'Coronavirus Update',
             'rating' => 0,

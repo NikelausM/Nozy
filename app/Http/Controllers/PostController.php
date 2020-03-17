@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use Illuminate\Support\Facades\Log;
+
 
 class PostController extends Controller
 {
@@ -48,29 +49,48 @@ class PostController extends Controller
     public function show($id)
     {
       Log::info('I tried to show the post!');
-  		// Retrieve post
-  		$post = \App\Post::where('id', $id)->first();
-      return view('post.post', ['post' => $post]);
-      /*
+
       // Get Authenticated profile
       $profile = Auth::guard('profile')->user();
       $user = \App\User::where('profile_id', $profile->id)->first();
 
-  		Log::info('I tried to show the post!');
   		// Retrieve post
   		$post = \App\Post::where('id', $id)->first();
-  		$poster_profile = \App\Profile::where($post->parent_id);
+  		$post_profile = $post->profile;
+
   		// Check if profile corresponds to User or Community
-  		$poster_user = \App\User::where('profile_id',$post_creator_profile->id);
+  		$poster_user = \App\User::where('profile_id',$post_profile->id)->first();
   		if(!is_null($poster_user)) {
-  			return view('post.post', ['user' => $user, 'poster' => $poster_user, 'post' => $post]);
+  			return redirect()->route('post.showUserUserPost',['user' => $user, 'poster' => $poster_user, 'post' => $post]);
   		}
   		else {
-  			$poster_community = \App\Community::where('profile_id',$profile->id);
-  			return view('post.post', ['user' => $user, 'poster' => $poster_community, 'post' => $post]);
+  			$poster_community = \App\Community::where('profile_id',$post_profile->id)->first();
+  			return redirect()->route('post.showUserCommunityPost',['user' => $user, 'poster' => $poster_community, 'post' => $post]);
   		}
-      */
+
     }
+
+    /**
+     * Display the specified user post resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showUserUserPost(\App\User $user, \App\User $user_visited, \App\Post $post)
+    {
+      return view('post.post', ['user' => $user, 'user_visited' => $user_visited, 'post' => $post]);
+    }
+
+    /**
+     * Display the specified community post resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     public function showUserCommunityPost(\App\User $user, \App\Community $community_visited, \App\Post $post)
+     {
+       return view('post.post', ['user' => $user, '$community_visited' => $community_visited, 'post' => $post]);
+     }
 
     /**
      * Show the form for editing the specified resource.
