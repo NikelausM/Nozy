@@ -8,7 +8,7 @@
 @endif
 <!--show/hide form on button click-->
 <div class="details" style="display:none">
-	<form action={{route('community.updateUserCommunity', [$user, $community])}} method="post">
+	<form action={{route('community.updateUserCommunity', [\App\User::where('profile_id', Auth::guard('profile')->user()->id)->first(), $community])}} method="post">
 	  <div class="form-group">
 		  <label for="inputName">Name</label>
 				<input type="name" class="form-control" name="name" id="name" placeholder="{{$community->profile->name}}" value="{{$community->profile->name}}">
