@@ -5,7 +5,7 @@
 			<div class="caption">
 				<p><font color="black">{{ $post->description }}</font></p>
 				<div>
-					<form method="GET" action={{route('community.showUserCommunity', [$user, $community])}} accept-charset="UTF-8">
+					<form method="GET" action={{route('post.showUserCommunityPost', [\App\User::where('profile_id', Auth::guard('profile')->user()->id)->first(), $community, $post])}} accept-charset="UTF-8">
 						<button type="submit" class="btn btn-primary">Go to post</button>
 						<!--{{ csrf_field() }}-->
 					</form>
