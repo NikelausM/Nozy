@@ -13,6 +13,14 @@ class PostTableSeeder extends Seeder
     {
         // Insert user data into user table (need to use Model::create() so that data and time is inserted)
         \App\Post::create(array(
+            'title' => 'Working from home',
+            'rating' => 0,
+            'description' => 'It\s pretty interesting working from home rather than school.',
+            'posted_on_profile_id' => 1,
+            'posted_by_profile_id' => 1,
+        ));
+
+        \App\Post::create(array(
             'title' => 'Who\'s excited for Elden Ring?',
             'rating' => 0,
             'description' => 'I think it\'s going to be amazing. I just hope that they make the lore as rich as the Dark Souls games.',

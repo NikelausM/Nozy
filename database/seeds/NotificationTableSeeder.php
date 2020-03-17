@@ -11,7 +11,7 @@ class NotificationTableSeeder extends Seeder
      */
     public function run()
     {
-        // Insert user data into user table (need to use Model::create() so that data is inserted)
+        // Insert user data into user table (need to use Model::create() so that date and time is inserted)
 
     }
 }
