@@ -36,13 +36,13 @@ Route::prefix('user')->middleware('auth:profile')->group(function () {
 		// Routes for specific community managed by user
 		Route::prefix('community/{community}')->group(function () {
 
-			Route::get('/', ['uses' => 'CommunityController@showUserCommunity', 'as' => 'community.showUserCommunity']);
+			Route::get('/', ['uses' => 'CommunityController@show', 'as' => 'community.showUserCommunity']);
 
-			Route::post('/', ['uses' => 'CommunityController@updateUserCommunity', 'as' => 'community.updateUserCommunity']);
+			Route::post('/', ['uses' => 'CommunityController@update', 'as' => 'community.updateUserCommunity']);
 
 			// Routes for specific post of community managed by user
 			Route::prefix('post/{post}')->group(function () {
-				Route::get('/', ['uses' => 'PostController@show', 'as' => 'post.show']);
+				Route::get('/', ['uses' => 'PostController@show', 'as' => 'post.showUserCommunityPost']);
 
 				//Route::post('/', ['uses' => 'PostController@updateUserCommunityPost', 'as' => 'post.updateUserCommunityPost']);
 			});

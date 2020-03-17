@@ -8,7 +8,7 @@
 @endif
 <!--show/hide form on button click-->
 <div class="details" style="display:none">
-	<form action={{route('user.update', $user->id)}} method="post">
+	<form action={{route('user.update', $user)}} method="post">
 	  <div class="form-group">
 		  <label for="inputName">Name</label>
 				<input type="name" class="form-control" name="name" id="name" placeholder="{{$user->profile->name}}" value="{{$user->profile->name}}">
