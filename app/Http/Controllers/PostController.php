@@ -56,16 +56,16 @@ class PostController extends Controller
 
   		// Retrieve post
   		$post = \App\Post::where('id', $id)->first();
-  		$post_profile = $post->profile;
+  		$post_profile = $post->posted_on_profile;
 
   		// Check if profile corresponds to User or Community
-  		$poster_user = \App\User::where('profile_id',$post_profile->id)->first();
-  		if(!is_null($poster_user)) {
-  			return redirect()->route('post.showUserUserPost',['user' => $user, 'poster' => $poster_user, 'post' => $post]);
+  		$user_posted_on = \App\User::where('profile_id',$post_profile->id)->first();
+  		if(!is_null($user_posted_on)) {
+  			return redirect()->route('post.showUserUserPost',['user' => $user, 'user_visited' => $user_posted_on, 'post' => $post]);
   		}
   		else {
-  			$poster_community = \App\Community::where('profile_id',$post_profile->id)->first();
-  			return redirect()->route('post.showUserCommunityPost',['user' => $user, 'poster' => $poster_community, 'post' => $post]);
+  			$community_posted_on = \App\Community::where('profile_id',$post_profile->id)->first();
+  			return redirect()->route('post.showUserCommunityPost',['user' => $user, 'community' => $community_posted_on, 'post' => $post]);
   		}
 
     }
@@ -87,9 +87,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function showUserCommunityPost(\App\User $user, \App\Community $community_visited, \App\Post $post)
+     public function showUserCommunityPost(\App\User $user, \App\Community $community, \App\Post $post)
      {
-       return view('post.post', ['user' => $user, '$community_visited' => $community_visited, 'post' => $post]);
+       return view('post.post', ['user' => $user, '$community' => $community, 'post' => $post]);
      }
 
     /**

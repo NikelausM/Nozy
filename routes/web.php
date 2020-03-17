@@ -37,25 +37,21 @@ Route::prefix('user')->middleware('auth:profile')->group(function () {
 		//Route::post('/', ['uses' => 'CommunityController@store', 'as' => 'community.storeUserCommunity');
 
 		// Routes for specific community managed by user
-		Route::prefix('community/{community_visited}')->group(function () {
+		Route::prefix('community/{community}')->group(function () {
 
 			Route::get('/', ['uses' => 'CommunityController@show', 'as' => 'community.showUserCommunity']);
 
 			Route::post('/', ['uses' => 'CommunityController@update', 'as' => 'community.updateUserCommunity']);
 
-			// Routes for specific post of community
 			Route::prefix('post/{post}')->group(function () {
 				Route::get('/', ['uses' => 'PostController@showUserCommunityPost', 'as' => 'post.showUserCommunityPost']);
-
 			});
 		});
 
-		Route::prefix('user/{user_visited}')->group(function () {
+		Route::prefix('user/{user_visited}')->group(function () { // Can't reference 'user' twice so I gotta call it something else
 			// Routes for specific post of community
 			Route::prefix('post/{post}')->group(function () {
 				Route::get('/', ['uses' => 'PostController@showUserUserPost', 'as' => 'post.showUserUserPost']);
-
-
 			});
 		});
 	});
