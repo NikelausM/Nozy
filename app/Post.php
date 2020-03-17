@@ -13,11 +13,26 @@ class Post extends Model
 			'title',
 			'rating',
 			'description',
-			'parent_id',
+			'posted_on_profile_id',
+			'posted_by_profile_id',
         ];
 
-    # user extends profile
-    public function profile() {
-		return $this->belongsTo('App\Profile', 'parent_id', 'id');
+	/**
+	* The model's default values for attributes.
+	*
+	* @var array
+	*/
+	protected $attributes = [
+			'rating' => 0,
+        ];
+
+    # posted on profile
+    public function posted_on_profile() {
+		return $this->belongsTo('App\Profile', 'posted_on_profile_id', 'id');
 	}
+
+	# posted by profile
+	public function posted_by_profile() {
+	return $this->belongsTo('App\Profile', 'posted_by_profile_id', 'id');
+}
 }
