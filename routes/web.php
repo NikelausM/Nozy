@@ -40,13 +40,21 @@ Route::prefix('user')->middleware('auth:profile')->group(function () {
 
 			Route::post('/', ['uses' => 'CommunityController@update', 'as' => 'community.updateUserCommunity']);
 
-			// Routes for specific post of community managed by user
+			// Routes for specific post of community
 			Route::prefix('post/{post}')->group(function () {
 				Route::get('/', ['uses' => 'PostController@show', 'as' => 'post.showUserCommunityPost']);
 
 				//Route::post('/', ['uses' => 'PostController@updateUserCommunityPost', 'as' => 'post.updateUserCommunityPost']);
 			});
 		});
+
+		// Routes for specific post of user
+		Route::prefix('post/{post}')->group(function () {
+			Route::get('/', ['uses' => 'PostController@show', 'as' => 'post.showUserPost']);
+
+			//Route::post('/', ['uses' => 'PostController@updateUserCommunityPost', 'as' => 'post.updateUserCommunityPost']);
+		});
+	});
 
 	});
 });
