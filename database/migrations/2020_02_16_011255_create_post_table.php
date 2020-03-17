@@ -18,14 +18,20 @@ class CreatePostTable extends Migration
             $table->string('title');
             $table->integer('rating');
             $table->text('description');
-            $table->unsignedInteger('parent_id');
-            #$table->timestamps();
+            $table->unsignedInteger('posted_on_profile_id');
+            $table->unsignedInteger('posted_by_profile_id');
+            $table->timestamps();
         });
-        
+
         // Add Foreign key
 		Schema::table('post', function (Blueprint $table) {
-			$table->foreign('parent_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreign('posted_on_profile_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
 		});
+
+    // Add Foreign key
+  Schema::table('post', function (Blueprint $table) {
+    $table->foreign('posted_by_profile_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+  });
     }
 
     /**
