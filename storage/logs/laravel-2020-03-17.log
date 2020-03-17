@@ -69,3 +69,329 @@
 [2020-03-17 00:09:01] local.INFO: UserController Constructor middleware being called!  
 [2020-03-17 00:09:02] local.INFO: Trying to getUserView!  
 [2020-03-17 00:09:02] local.INFO: I went back to the user page!  
+[2020-03-17 00:27:45] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 00:27:45] local.INFO: Trying to UserController.index!  
+[2020-03-17 00:27:45] local.INFO: Trying to get user!  
+[2020-03-17 00:27:47] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 00:27:48] local.INFO: Trying to getUserView!  
+[2020-03-17 00:27:48] local.INFO: I went back to the user page!  
+[2020-03-17 00:27:53] local.INFO: I tried to show the community with parameters!  
+[2020-03-17 00:28:03] local.INFO: I tried to show the community with parameters!  
+[2020-03-17 00:29:36] local.INFO: I tried to show the community with parameters!  
+[2020-03-17 00:29:49] local.INFO: I tried to show the community with parameters!  
+[2020-03-17 00:31:28] local.INFO: I tried to show the community with parameters!  
+[2020-03-17 00:31:48] local.INFO: I tried to show the community with parameters!  
+[2020-03-17 00:32:36] local.INFO: I tried to show the community with parameters!  
+[2020-03-17 00:42:32] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 00:42:32] local.INFO: Trying to UserController.index!  
+[2020-03-17 00:42:32] local.INFO: Trying to get user!  
+[2020-03-17 00:42:33] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 00:42:34] local.INFO: Trying to getUserView!  
+[2020-03-17 00:42:34] local.INFO: I went back to the user page!  
+[2020-03-17 00:54:35] local.INFO: userLoginController Constructor middleware being called!  
+[2020-03-17 00:54:38] local.INFO: Trying to logout!  
+[2020-03-17 00:54:43] local.INFO: userLoginController Constructor middleware being called!  
+[2020-03-17 00:54:43] local.INFO: Getting credentials!  
+[2020-03-17 00:54:43] local.INFO: Trying to authenticate!  
+[2020-03-17 00:54:43] local.INFO: specifically:Naweed 123  
+[2020-03-17 00:54:44] local.INFO: Authentication failed!  
+[2020-03-17 00:55:08] local.INFO: userLoginController Constructor middleware being called!  
+[2020-03-17 00:55:08] local.INFO: Getting credentials!  
+[2020-03-17 00:55:08] local.INFO: Trying to authenticate!  
+[2020-03-17 00:55:08] local.INFO: specifically:Naweed 567  
+[2020-03-17 00:55:09] local.INFO: Authentication failed!  
+[2020-03-17 00:55:23] local.INFO: userLoginController Constructor middleware being called!  
+[2020-03-17 00:55:23] local.INFO: Getting credentials!  
+[2020-03-17 00:55:23] local.INFO: Trying to authenticate!  
+[2020-03-17 00:55:23] local.INFO: specifically:naweed 567  
+[2020-03-17 00:55:24] local.INFO: Authentication failed!  
+[2020-03-17 00:56:10] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 00:56:10] local.INFO: Calling Profile::store()!  
+[2020-03-17 00:56:10] local.INFO: Validating profile registration info!  
+[2020-03-17 00:56:10] local.INFO: Creating new profile!  
+[2020-03-17 00:56:11] local.INFO: Validating user registration info!  
+[2020-03-17 00:56:11] local.INFO: Creating new user!  
+[2020-03-17 00:56:11] local.INFO: Created user, trying to login!  
+[2020-03-17 00:56:11] local.INFO: Authentication passed!  
+[2020-03-17 00:56:11] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 00:56:11] local.INFO: Trying to UserController.index!  
+[2020-03-17 00:56:11] local.INFO: Trying to get user!  
+[2020-03-17 00:56:12] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 00:56:13] local.INFO: Trying to getUserView!  
+[2020-03-17 00:56:13] local.INFO: I went back to the user page!  
+[2020-03-17 01:10:27] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:10:28] local.INFO: Trying to getUserView!  
+[2020-03-17 01:10:28] local.INFO: I went back to the user page!  
+[2020-03-17 01:10:53] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:10:54] local.INFO: Trying to getUserView!  
+[2020-03-17 01:10:54] local.INFO: I went back to the user page!  
+[2020-03-17 01:13:18] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:13:19] local.INFO: Trying to getUserView!  
+[2020-03-17 01:13:19] local.INFO: I went back to the user page!  
+[2020-03-17 01:13:20] local.ERROR: Undefined variable: post (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) {"userId":7,"exception":"[object] (ErrorException(code: 0): Undefined variable: post (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) at /Users/afrahahmed/Desktop/Nozy/storage/framework/views/36385df3adbb6a744cac0a934ba0308dc59e5b31.php:12, ErrorException(code: 0): Undefined variable: post (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) at /Users/afrahahmed/Desktop/Nozy/storage/framework/views/36385df3adbb6a744cac0a934ba0308dc59e5b31.php:12, ErrorException(code: 0): Undefined variable: post at /Users/afrahahmed/Desktop/Nozy/storage/framework/views/36385df3adbb6a744cac0a934ba0308dc59e5b31.php:12)
+[stacktrace]
+#0 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('/Users/afrahahm...', Array)
+#2 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/View.php(142): Illuminate\\View\\Engines\\CompilerEngine->get('/Users/afrahahm...', Array)
+#3 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/View.php(125): Illuminate\\View\\View->getContents()
+#4 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/View.php(90): Illuminate\\View\\View->renderContents()
+#5 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Http/Response.php(42): Illuminate\\View\\View->render()
+#6 /Users/afrahahmed/Desktop/Nozy/vendor/symfony/http-foundation/Response.php(202): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#7 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(748): Symfony\\Component\\HttpFoundation\\Response->__construct(Object(Illuminate\\View\\View))
+#8 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(720): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#9 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(680): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#10 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#11 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#12 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#13 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(43): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#15 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'profile')
+#16 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#17 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(75): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#18 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#21 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#24 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#27 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#30 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#33 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#34 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#35 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#36 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#37 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#38 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#39 /Users/afrahahmed/Desktop/Nozy/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#43 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#44 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#45 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#46 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#47 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#48 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#49 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#51 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(62): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#52 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#55 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#56 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#57 /Users/afrahahmed/Desktop/Nozy/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#58 /Users/afrahahmed/Desktop/Nozy/server.php(21): require_once('/Users/afrahahm...')
+#59 {main}
+"} 
+[2020-03-17 01:14:11] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:14:12] local.INFO: Trying to getUserView!  
+[2020-03-17 01:14:12] local.INFO: I went back to the user page!  
+[2020-03-17 01:14:12] local.ERROR: Undefined variable: community (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) {"userId":7,"exception":"[object] (ErrorException(code: 0): Undefined variable: community (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) at /Users/afrahahmed/Desktop/Nozy/storage/framework/views/36385df3adbb6a744cac0a934ba0308dc59e5b31.php:14, ErrorException(code: 0): Undefined variable: community (View: /Users/afrahahmed/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php) at /Users/afrahahmed/Desktop/Nozy/storage/framework/views/36385df3adbb6a744cac0a934ba0308dc59e5b31.php:14, ErrorException(code: 0): Undefined variable: community at /Users/afrahahmed/Desktop/Nozy/storage/framework/views/36385df3adbb6a744cac0a934ba0308dc59e5b31.php:14)
+[stacktrace]
+#0 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
+#1 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('/Users/afrahahm...', Array)
+#2 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/View.php(142): Illuminate\\View\\Engines\\CompilerEngine->get('/Users/afrahahm...', Array)
+#3 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/View.php(125): Illuminate\\View\\View->getContents()
+#4 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/View.php(90): Illuminate\\View\\View->renderContents()
+#5 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Http/Response.php(42): Illuminate\\View\\View->render()
+#6 /Users/afrahahmed/Desktop/Nozy/vendor/symfony/http-foundation/Response.php(202): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#7 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(748): Symfony\\Component\\HttpFoundation\\Response->__construct(Object(Illuminate\\View\\View))
+#8 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(720): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#9 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(680): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#10 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#11 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#12 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#13 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#14 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(43): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#15 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'profile')
+#16 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#17 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(75): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#18 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#19 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#20 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#21 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#24 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#25 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#27 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#30 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#33 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#34 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#35 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#36 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#37 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#38 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#39 /Users/afrahahmed/Desktop/Nozy/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#43 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#44 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#45 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#46 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#47 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#48 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#49 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#51 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(62): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#52 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#55 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#56 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#57 /Users/afrahahmed/Desktop/Nozy/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#58 /Users/afrahahmed/Desktop/Nozy/server.php(21): require_once('/Users/afrahahm...')
+#59 {main}
+"} 
+[2020-03-17 01:15:26] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:15:27] local.INFO: Trying to getUserView!  
+[2020-03-17 01:15:27] local.INFO: I went back to the user page!  
+[2020-03-17 01:16:42] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:16:47] local.INFO: Trying to getUserView!  
+[2020-03-17 01:16:47] local.INFO: I went back to the user page!  
+[2020-03-17 01:16:52] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:16:53] local.INFO: Trying to getUserView!  
+[2020-03-17 01:16:53] local.INFO: I went back to the user page!  
+[2020-03-17 01:18:14] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:18:15] local.INFO: Trying to getUserView!  
+[2020-03-17 01:18:15] local.INFO: I went back to the user page!  
+[2020-03-17 01:19:02] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:19:03] local.INFO: Trying to getUserView!  
+[2020-03-17 01:19:03] local.INFO: I went back to the user page!  
+[2020-03-17 01:34:48] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:34:50] local.INFO: In authenticate!  
+[2020-03-17 01:34:54] local.INFO: userLoginController Constructor middleware being called!  
+[2020-03-17 01:34:54] local.INFO: Getting credentials!  
+[2020-03-17 01:34:54] local.INFO: Trying to authenticate!  
+[2020-03-17 01:34:54] local.INFO: specifically:Nicolas 123  
+[2020-03-17 01:34:55] local.INFO: Authentication failed!  
+[2020-03-17 01:35:01] local.INFO: userLoginController Constructor middleware being called!  
+[2020-03-17 01:35:01] local.INFO: Getting credentials!  
+[2020-03-17 01:35:01] local.INFO: Trying to authenticate!  
+[2020-03-17 01:35:01] local.INFO: specifically:aco aco  
+[2020-03-17 01:35:02] local.INFO: Authentication failed!  
+[2020-03-17 01:36:26] local.INFO: userLoginController Constructor middleware being called!  
+[2020-03-17 01:36:26] local.INFO: Getting credentials!  
+[2020-03-17 01:36:26] local.INFO: Trying to authenticate!  
+[2020-03-17 01:36:26] local.INFO: specifically:Nicolas 123  
+[2020-03-17 01:36:27] local.INFO: Authentication passed!  
+[2020-03-17 01:36:27] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:36:27] local.INFO: Trying to UserController.index!  
+[2020-03-17 01:36:27] local.INFO: Trying to get user!  
+[2020-03-17 01:36:28] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:36:29] local.INFO: Trying to getUserView!  
+[2020-03-17 01:36:29] local.INFO: I went back to the user page!  
+[2020-03-17 01:36:54] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:36:55] local.INFO: Trying to getUserView!  
+[2020-03-17 01:36:55] local.INFO: I went back to the user page!  
+[2020-03-17 01:37:12] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:37:13] local.INFO: Trying to getUserView!  
+[2020-03-17 01:37:13] local.INFO: I went back to the user page!  
+[2020-03-17 01:37:57] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:37:58] local.INFO: Trying to getUserView!  
+[2020-03-17 01:37:58] local.INFO: I went back to the user page!  
+[2020-03-17 01:38:21] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:38:22] local.INFO: Trying to getUserView!  
+[2020-03-17 01:38:22] local.INFO: I went back to the user page!  
+[2020-03-17 01:39:19] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:39:20] local.INFO: Trying to getUserView!  
+[2020-03-17 01:39:20] local.INFO: I went back to the user page!  
+[2020-03-17 01:39:39] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:39:40] local.ERROR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'Nozy.profile' doesn't exist (SQL: select * from `profile` where `id` = 1 limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'Nozy.profile' doesn't exist (SQL: select * from `profile` where `id` = 1 limit 1) at /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Connection.php:664, PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'Nozy.profile' doesn't exist at /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Connection.php:326)
+[stacktrace]
+#0 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Connection.php(333): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#2 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2130): Illuminate\\Database\\Connection->select('select * from `...', Array, true)
+#3 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2118): Illuminate\\Database\\Query\\Builder->runSelect()
+#4 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2604): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#5 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2119): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#6 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(521): Illuminate\\Database\\Query\\Builder->get(Array)
+#7 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(505): Illuminate\\Database\\Eloquent\\Builder->getModels(Array)
+#8 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php(77): Illuminate\\Database\\Eloquent\\Builder->get(Array)
+#9 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php(52): Illuminate\\Database\\Eloquent\\Builder->first()
+#10 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php(131): Illuminate\\Auth\\EloquentUserProvider->retrieveById(1)
+#11 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Auth/GuardHelpers.php(60): Illuminate\\Auth\\SessionGuard->user()
+#12 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(62): Illuminate\\Auth\\SessionGuard->check()
+#13 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Auth/Middleware/Authenticate.php(41): Illuminate\\Auth\\Middleware\\Authenticate->authenticate(Object(Illuminate\\Http\\Request), Array)
+#14 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure), 'profile')
+#15 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#16 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(75): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#17 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#18 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#19 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#20 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#21 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#22 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(56): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#23 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#26 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#27 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#29 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(682): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#33 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(657): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#34 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(623): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#35 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Router.php(612): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#36 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#37 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /Users/afrahahmed/Desktop/Nozy/vendor/fideloper/proxy/src/TrustProxies.php(57): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#39 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Fideloper\\Proxy\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#40 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#41 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#43 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#44 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php(21): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#45 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#46 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#48 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#49 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#50 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(62): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#51 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(163): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#52 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#53 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(104): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#54 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#55 /Users/afrahahmed/Desktop/Nozy/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#56 /Users/afrahahmed/Desktop/Nozy/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#57 /Users/afrahahmed/Desktop/Nozy/server.php(21): require_once('/Users/afrahahm...')
+#58 {main}
+"} 
+[2020-03-17 01:40:10] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:40:11] local.INFO: Trying to getUserView!  
+[2020-03-17 01:40:11] local.INFO: I went back to the user page!  
+[2020-03-17 01:41:34] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:41:37] local.INFO: Trying to getUserView!  
+[2020-03-17 01:41:37] local.INFO: I went back to the user page!  
+[2020-03-17 01:46:25] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:46:25] local.INFO: Trying to getUserView!  
+[2020-03-17 01:46:25] local.INFO: I went back to the user page!  
+[2020-03-17 01:46:31] local.INFO: userLoginController Constructor middleware being called!  
+[2020-03-17 01:46:31] local.INFO: Getting credentials!  
+[2020-03-17 01:46:31] local.INFO: Trying to authenticate!  
+[2020-03-17 01:46:31] local.INFO: specifically:Nicolas 123  
+[2020-03-17 01:46:32] local.INFO: Authentication passed!  
+[2020-03-17 01:46:32] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:46:32] local.INFO: Trying to UserController.index!  
+[2020-03-17 01:46:32] local.INFO: Trying to get user!  
+[2020-03-17 01:46:33] local.INFO: UserController Constructor middleware being called!  
+[2020-03-17 01:46:34] local.INFO: Trying to getUserView!  
+[2020-03-17 01:46:34] local.INFO: I went back to the user page!  
+[2020-03-17 01:47:46] local.INFO: I tried to show the community with parameters!  
+[2020-03-17 01:48:39] local.INFO: I tried to show the community with parameters!  

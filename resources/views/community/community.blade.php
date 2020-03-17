@@ -11,7 +11,7 @@
 				@if(Auth::guard('profile')->user()->id == $community->profile->id)
 				@include('community.edit_community_profile_form')
 				@endif
-
+				<?php $profile = $community -> profile;?>
 				@include('layouts.makePost_button')
 				@foreach($community->profile->posts as $post)
 				@include('layouts.post_box')

@@ -9,7 +9,7 @@
 				<?php if(Auth::guard('profile')->user()->id == $community->profile->id): ?>
 				<?php echo $__env->make('community.edit_community_profile_form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 				<?php endif; ?>
-
+				<?php $profile = $community -> profile;?>
 				<?php echo $__env->make('layouts.makePost_button', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 				<?php $__currentLoopData = $community->profile->posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 				<?php echo $__env->make('layouts.post_box', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
