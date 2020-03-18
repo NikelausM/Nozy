@@ -24,18 +24,22 @@ Route::get('post/{post}', ['uses' => 'PostController@show', 'as' => 'post.show']
 Route::post('post', ['uses' => 'PostController@store', 'as' => 'post.store']);
 
 // Routes accessible to logged-in users
-Route::prefix('user/{user}')->middleware('auth:profile')->group(function () {
+Route::prefix('user/')->middleware('auth:profile')->group(function () {
 
 	Route::get('logout', ['uses' => 'UserLoginController@logout', 'as' => 'user.logout']);
+	
+	Route::prefix('{user}')->middleware('auth:profile')->group(function () {
 
-	Route::get('/', ['uses' => 'UserController@show', 'as' => 'user.show']);
 
-	Route::post('/', ['uses' => 'UserController@update', 'as' => 'user.update']);
+		Route::get('/', ['uses' => 'UserController@show', 'as' => 'user.show']);
+
+		Route::post('/', ['uses' => 'UserController@update', 'as' => 'user.update']);
 
 		// Routes for specific post of community
 		Route::prefix('post/{post}')->group(function () {
 			Route::get('/', ['uses' => 'PostController@showUserPost', 'as' => 'post.showUserPost']);
 		});
+	});
 });
 
 // Routes for specific community managed by user
