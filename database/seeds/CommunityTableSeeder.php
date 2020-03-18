@@ -16,14 +16,19 @@ class CommunityTableSeeder extends Seeder
             'profile_id' => 4,
             'manager_user_id' => 1,
         ]);
-        
+
         DB::table('community')->insert([
             'profile_id' => 5,
             'manager_user_id' => 1,
         ]);
-        
+
         DB::table('community')->insert([
             'profile_id' => 6,
+            'manager_user_id' => 3,
+        ]);
+
+        DB::table('community')->insert([
+            'profile_id' => 7,
             'manager_user_id' => 3,
         ]);
     }

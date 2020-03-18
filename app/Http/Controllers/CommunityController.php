@@ -58,9 +58,29 @@ class CommunityController extends ProfileController
     public function show($id)
     {
 		Log::info('I tried to show the community!');
+
+    // Get Authenticated profile
+    $profile = Auth::guard('profile')->user();
+    $user = \App\User::where('profile_id', $profile->id)->first();
+
 		// Retrieve community
+    Log::info('community:'.$id);
 		$community = \App\Community::where('id', $id)->first();
-		return view('community.community', ['community' => $community]);
+		return redirect()->route('community.showUserCommunity', ['user' => $user, 'community' => $community]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showUserCommunity(\App\User $user, \App\Community $community)
+    {
+    Log::info('I tried to show the user community!');
+
+    // Retrieve community
+    return view('community.community', ['community' => $community]);
     }
 
     /**

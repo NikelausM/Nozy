@@ -5,7 +5,7 @@
 			<div class="caption">
 				<p><font color="black">{{ $community->profile->description }}</font></p>
 				<div>
-					<form method="GET" action={{route('community.showUserCommunity', [$user, $community])}} accept-charset="UTF-8">
+					<form method="GET" action={{route('community.show', $community)}} accept-charset="UTF-8">
 					<button type="submit" class="btn btn-primary">Go to community</button>
 					<!--{{ csrf_field() }}-->
 					</form>
