@@ -10,9 +10,9 @@ class Post extends Model
 	protected $table = "post";
 
 	protected $fillable = [
-			'title',
+			'subject',
 			'rating',
-			'description',
+			'body',
 			'posted_on_profile_id',
 			'posted_by_profile_id',
         ];
