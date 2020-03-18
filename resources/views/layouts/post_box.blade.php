@@ -1,9 +1,9 @@
 <div class="row" style="padding: 10px">
 	<div class="col-sm-6 col-md-4">
 		<div class="thumbnail shadow">
-			<h3><font color="black">{{ $post->title }}</font></h3>
+			<h3><font color="black">{{ $post->subject }}</font></h3>
 			<div class="caption">
-				<p><font color="black">{{ $post->description }}</font></p>
+				<p><font color="black">{{ $post->body }}</font></p>
 				<div>
 					<form method="GET" action={{route('post.show', $post)}} accept-charset="UTF-8">
 						<button type="submit" class="btn btn-primary">Go to post</button>

@@ -49,21 +49,6 @@ class UserController extends ProfileController
 		//}
 	}
 
-
-	// Get view of user
-	public function show($id) {
-
-		// Retrieve user
-		$user = \App\User::where('id', $id)->first();
-
-		Log::info('Trying to getUserView!');
-		//if (Auth::guard('profile')->check()) {
-			Log::info('I went back to the user page!');
-			$communities = \App\Community::where('manager_user_id', $user->id)->get();
-			return view('user.user', ['user' => $user]);
-		//}
-	}
-
     // Store a new user
     public function store(Request $request) {
 
@@ -102,6 +87,19 @@ class UserController extends ProfileController
         }
 
 	}
+
+		// Get view of user
+		public function show($id) {
+
+			// Retrieve user
+			$user = \App\User::where('id', $id)->first();
+
+			Log::info('Trying to getUserView!');
+			Log::info('I went back to the user page!');
+			return view('user.user', ['user' => $user, 'profile' => $user->profile]);
+		}
+
+		// edit
 
     // Update user info
     public function update(Request $request, $id) {

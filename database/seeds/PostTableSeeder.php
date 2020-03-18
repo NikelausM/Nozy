@@ -13,33 +13,33 @@ class PostTableSeeder extends Seeder
     {
         // Insert user data into user table (need to use Model::create() so that data and time is inserted)
         \App\Post::create(array(
-            'title' => 'Working from home',
+            'subject' => 'Working from home',
             'rating' => 0,
-            'description' => 'It\s pretty interesting working from home rather than school.',
+            'body' => 'It\s pretty interesting working from home rather than school.',
             'posted_on_profile_id' => 1,
             'posted_by_profile_id' => 1,
         ));
 
         \App\Post::create(array(
-            'title' => 'Who\'s excited for Elden Ring?',
+            'subject' => 'Who\'s excited for Elden Ring?',
             'rating' => 0,
-            'description' => 'I think it\'s going to be amazing. I just hope that they make the lore as rich as the Dark Souls games.',
+            'body' => 'I think it\'s going to be amazing. I just hope that they make the lore as rich as the Dark Souls games.',
             'posted_on_profile_id' => 4,
             'posted_by_profile_id' => 1,
         ));
 
         \App\Post::create(array(
-            'title' => 'Halo Infinite Coming Out',
+            'subject' => 'Halo Infinite Coming Out',
             'rating' => 0,
-            'description' => 'I can\'t wait for the new Halo game to come out, but what do you guys think?',
+            'body' => 'I can\'t wait for the new Halo game to come out, but what do you guys think?',
             'posted_on_profile_id' => 4,
             'posted_by_profile_id' => 1,
         ));
 
         \App\Post::create(array(
-            'title' => 'Coronavirus Update',
+            'subject' => 'Coronavirus Update',
             'rating' => 0,
-            'description' => 'I wonder what the administration is going to do about final exams.',
+            'body' => 'I wonder what the administration is going to do about final exams.',
             'posted_on_profile_id' => 5,
             'posted_by_profile_id' => 2,
         ));

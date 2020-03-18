@@ -37,7 +37,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Log::info('I tried to store the post!');
+
+      // Get Authenticated profile
+      $profile = Auth::guard('profile')->user();
+
+      # Create new user
+  		Log::info('Creating new post!');
+      \App\Post::create(array(
+          'subject' => $request->subject,
+          'body' => $request->body,
+          'posted_on_profile_id' => $request->post_profile_id,
+          'posted_by_profile_id' => $profile->id,
+      ));
+
+      return redirect()->back();
     }
 
     /**
@@ -50,10 +64,6 @@ class PostController extends Controller
     {
       Log::info('I tried to show the post!');
 
-      // Get Authenticated profile
-      $profile = Auth::guard('profile')->user();
-      $user = \App\User::where('profile_id', $profile->id)->first();
-
   		// Retrieve post
   		$post = \App\Post::where('id', $id)->first();
   		$post_profile = $post->posted_on_profile;
@@ -61,11 +71,11 @@ class PostController extends Controller
   		// Check if profile corresponds to User or Community
   		$user_posted_on = \App\User::where('profile_id',$post_profile->id)->first();
   		if(!is_null($user_posted_on)) {
-  			return redirect()->route('post.showUserUserPost',['user' => $user, 'user_visited' => $user_posted_on, 'post' => $post]);
+  			return redirect()->route('post.showUserPost',['user' => $user_posted_on, 'post' => $post]);
   		}
   		else {
   			$community_posted_on = \App\Community::where('profile_id',$post_profile->id)->first();
-  			return redirect()->route('post.showUserCommunityPost',['user' => $user, 'community' => $community_posted_on, 'post' => $post]);
+  			return redirect()->route('post.showCommunityPost',['community' => $community_posted_on, 'post' => $post]);
   		}
 
     }
@@ -76,9 +86,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showUserUserPost(\App\User $user, \App\User $user_visited, \App\Post $post)
+    public function showUserPost(\App\User $user, \App\Post $post)
     {
-      return view('post.post', ['user' => $user, 'user_visited' => $user_visited, 'post' => $post]);
+      return view('post.post', ['post' => $post]);
     }
 
     /**
@@ -87,9 +97,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function showUserCommunityPost(\App\User $user, \App\Community $community, \App\Post $post)
+     public function showCommunityPost(\App\Community $community, \App\Post $post)
      {
-       return view('post.post', ['user' => $user, '$community' => $community, 'post' => $post]);
+      return view('post.post', ['post' => $post]);
      }
 
     /**
