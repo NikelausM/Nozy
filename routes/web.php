@@ -17,6 +17,7 @@ Route::get('/', [ 'uses' => 'IndexController@getIndex', 'as' => 'index']);
 Route::prefix('search/')->middleware('auth:profile')->group(function () {
 
 	Route::get('/', ['uses' => 'SearchController@index', 'as' => 'search.index']);
+	Route::get('/search', ['uses' => 'SearchController@search', 'as' => 'search.search']);
 });
 
 // Post routes accessible to logged-in users

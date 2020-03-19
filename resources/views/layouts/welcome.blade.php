@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<head>
 		@include('partials.head')
@@ -9,7 +9,7 @@
             @include('layouts.modal')
             @yield('content')
             
-            
+
         </div>
         <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
     </body>
