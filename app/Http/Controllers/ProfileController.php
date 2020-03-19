@@ -11,7 +11,7 @@ use Auth;
 
 class ProfileController extends Controller
 {
-	
+
     /**
      * Display a listing of the resource.
      *
@@ -29,15 +29,15 @@ class ProfileController extends Controller
      */
     public function create()
     {
-		
+
     }
 
     /**
      * Create a new profile instance
-     * 
+     *
      * @param Request $request
      * @return Reponse
-     * 
+     *
      *
 	*/
     public function store(Request $request)
@@ -48,14 +48,14 @@ class ProfileController extends Controller
             'password' => 'required|min:3|',
             'description' => 'required|min:3'
         ]);
-        
+
         Log::info('Creating new profile!');
         $profile = new Profile;
         $profile->name = $request->name;
         $profile->password = $request->password;
         $profile->description = $request->description;
         $profile->save();
-        
+
         return $profile;
     }
 
@@ -67,7 +67,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-		
+
     }
 
     /**
@@ -78,7 +78,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-		
+
     }
 
     /**
@@ -89,24 +89,23 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-		//$profile = Auth::guard('profile')->user(); // Get Authenticated profile
+		{
+		// Getting current authorized profile
 		$profile = \App\Profile::where('id', $id)->first();
+
 		Log::info('Validating profile update info!');
-        $validatedData = $this->validate($request, [
-            //'name' => 'required|min:3|unique:profile,name',
-            'name' => 'required|min:3|unique:profile,id,'.$id,
-            'password' => 'required|min:3',
-            'description' => 'required|min:3',
-        ]);
-        
-		Log::info('Updating profile!');
-		Log::info('Original profile name: '. $profile->name);
-		Log::info('New profile name: '. $request->name);
-        $profile->name = $request->name;
-        $profile->password = $request->password;
-        $profile->description = $request->description;
-        $profile->save();
+    $validatedData = $this->validate($request, [
+        //'name' => 'required|min:3|unique:profile,name',
+        'name' => 'required|min:3|unique:profile,id,'.$id,
+        'password' => 'required|min:3',
+        'description' => 'required|min:3',
+    ]);
+
+		// Updating profile
+    $profile->name = $request->name;
+    $profile->password = $request->password;
+    $profile->description = $request->description;
+    $profile->save();
     }
 
     /**

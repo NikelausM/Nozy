@@ -19,17 +19,19 @@ Route::get('user/', ['uses' => 'UserController@index', 'as' => 'user.index']);
 Route::post('user/register', ['uses' => 'UserController@store', 'as' => 'user.store']);
 Route::post('user/login', ['uses' => 'UserLoginController@login', 'as' => 'user.postLogin']);
 
-Route::get('post/{post}', ['uses' => 'PostController@show', 'as' => 'post.show']); // Determine if post belongs to user or community
+// Post routes accessible to logged-in users
+Route::prefix('post/')->middleware('auth:profile')->group(function () {
 
-Route::post('post', ['uses' => 'PostController@store', 'as' => 'post.store']);
+	Route::post('/', ['uses' => 'PostController@store', 'as' => 'post.store']);
+	Route::get('{post}', ['uses' => 'PostController@show', 'as' => 'post.show']); // Determine if post belongs to user or community
+});
 
-// Routes accessible to logged-in users
+// User routes accessible to logged-in users
 Route::prefix('user/')->middleware('auth:profile')->group(function () {
 
 	Route::get('logout', ['uses' => 'UserLoginController@logout', 'as' => 'user.logout']);
-	
-	Route::prefix('{user}')->middleware('auth:profile')->group(function () {
 
+	Route::prefix('{user}')->middleware('auth:profile')->group(function () {
 
 		Route::get('/', ['uses' => 'UserController@show', 'as' => 'user.show']);
 
@@ -42,14 +44,19 @@ Route::prefix('user/')->middleware('auth:profile')->group(function () {
 	});
 });
 
-// Routes for specific community managed by user
-Route::prefix('community/{community}')->group(function () {
+// Community routes accessible to logged-in users
+Route::prefix('community/')->middleware('auth:profile')->group(function () {
 
-	Route::get('/', ['uses' => 'CommunityController@show', 'as' => 'community.show']);
+	Route::post('/', ['uses' => 'CommunityController@store', 'as' => 'community.store']);
 
-	Route::post('/', ['uses' => 'CommunityController@update', 'as' => 'community.update']);
+	Route::prefix('community/{community}')->middleware('auth:profile')->group(function () {
 
-	Route::prefix('post/{post}')->group(function () {
-		Route::get('/', ['uses' => 'PostController@showCommunityPost', 'as' => 'post.showCommunityPost']);
+		Route::get('/', ['uses' => 'CommunityController@show', 'as' => 'community.show']);
+
+		Route::post('/', ['uses' => 'CommunityController@update', 'as' => 'community.update']);
+
+		Route::prefix('post/{post}')->group(function () {
+			Route::get('/', ['uses' => 'PostController@showCommunityPost', 'as' => 'post.showCommunityPost']);
+		});
 	});
 });

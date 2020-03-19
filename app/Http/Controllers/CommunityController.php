@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Auth;
+use App\Community;
 
 class CommunityController extends ProfileController
 {
@@ -40,13 +41,16 @@ class CommunityController extends ProfileController
 		Log::info('Calling Profile::store()!');
 		$profile = parent::store($request);
 
-		# Create new user
+		# Create new community
 		Log::info('Creating new community!');
-        $community = new Community;
-        $community->profile_id = $profile->id;
-        $community->save();
+    $community = new Community;
+    $community->profile_id = $profile->id;
+    $community->manager_user_id = $request->manager_user_id;
+    $community->save();
 
-        Log::info('Created community, trying to login!');
+    Log::info('Created community, trying to login!');
+
+    return redirect()->back();
     }
 
     /**
