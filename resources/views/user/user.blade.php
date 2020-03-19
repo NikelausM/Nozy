@@ -11,16 +11,18 @@
 				@if(Auth::guard('profile')->user()->id == $user->profile->id)
 				@include('user.edit_user_profile_form')
 				@endif
-				<h2 class="font-weight-bold"><font color="black">Communities</font></h2>
-				@include('layouts.makeCommunity_button')
+				<h2 class="font-weight-bold"><font color="black">Communities Managed</font></h2>
 				@foreach($user->communities as $community)
 				@include('layouts.community_box')
 				@endforeach
+				@if(Auth::guard('profile')->user()->id == $user->profile->id)
+				@include('layouts.makeCommunity_button')
+				@endif
 				<h2 class="font-weight-bold"><font color="black">Posts</font></h2>
-				@include('layouts.makePost_button')
 				@foreach($user->profile->posts as $post)
 				@include('layouts.post_box')
 				@endforeach
+				@include('layouts.makePost_button')
 				<br></br>
 				<br></br>
 			</div>

@@ -11,10 +11,11 @@
 				@if(Auth::guard('profile')->user()->id == $community->manager_user_id)
 				@include('community.edit_community_profile_form')
 				@endif
-				@include('layouts.makePost_button')
+				<h2 class="font-weight-bold"><font color="black">Posts</font></h2>
 				@foreach($community->profile->posts as $post)
 				@include('layouts.post_box')
 				@endforeach
+				@include('layouts.makePost_button')
 			</div>
 		</div>
 	</div>
