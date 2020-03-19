@@ -13,11 +13,11 @@
 
 Route::get('/', [ 'uses' => 'IndexController@getIndex', 'as' => 'index']);
 
-Route::get('user/', ['uses' => 'UserController@index', 'as' => 'user.index']);
+// Search routes accessible to logged-in users
+Route::prefix('search/')->middleware('auth:profile')->group(function () {
 
-// Route group
-Route::post('user/register', ['uses' => 'UserController@store', 'as' => 'user.store']);
-Route::post('user/login', ['uses' => 'UserLoginController@login', 'as' => 'user.postLogin']);
+	Route::get('/', ['uses' => 'SearchController@index', 'as' => 'search.index']);
+});
 
 // Post routes accessible to logged-in users
 Route::prefix('post/')->middleware('auth:profile')->group(function () {
@@ -25,6 +25,11 @@ Route::prefix('post/')->middleware('auth:profile')->group(function () {
 	Route::post('/', ['uses' => 'PostController@store', 'as' => 'post.store']);
 	Route::get('{post}', ['uses' => 'PostController@show', 'as' => 'post.show']); // Determine if post belongs to user or community
 });
+
+// User routes accessible to anyone
+Route::get('user/', ['uses' => 'UserController@index', 'as' => 'user.index']);
+Route::post('user/register', ['uses' => 'UserController@store', 'as' => 'user.store']);
+Route::post('user/login', ['uses' => 'UserLoginController@login', 'as' => 'user.postLogin']);
 
 // User routes accessible to logged-in users
 Route::prefix('user/')->middleware('auth:profile')->group(function () {
