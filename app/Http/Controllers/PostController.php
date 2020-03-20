@@ -122,7 +122,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      // Retrieve community
+  		$post = \App\Post::where('id', $id)->first();
+      $post->subject = $request->subject;
+      $post->body = $request->body;
+      $post->save();
+
+  		# Call parent update function (basically a model updater)
+  		return redirect()->back();
     }
 
     /**

@@ -27,6 +27,7 @@ Route::prefix('post/')->middleware('auth:profile')->group(function () {
 
 	Route::prefix('{post}')->group(function () {
 		Route::get('/', ['uses' => 'PostController@show', 'as' => 'post.show']); // Determine if post belongs to user or community
+		Route::post('/', ['uses' => 'PostController@update', 'as' => 'post.update']);
 		Route::delete('/', ['uses' => 'PostController@destroy', 'as' => 'post.destroy']);
 	});
 });

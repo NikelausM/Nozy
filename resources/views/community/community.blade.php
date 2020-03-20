@@ -9,7 +9,7 @@
 				<h1 class="font-weight-bold">Welcome to {{$community->profile->name}}</h1>
 				<h2 class="font-weight-bold">Description: {{$community->profile->description}}</h2>
 				@if(Auth::guard('profile')->user()->id == $community->manager_user_id)
-				<div style="float:left"> @include('community.edit_community_profile_form')</div>
+				<div style="float:left"> @include('community.edit_community_profile_form')</div><!-- this messes up page when it expands to show edit menu-->
 				<div style="float:left;margin-left:5px">@include('community.delete_community_button')</div>
 				@endif
 				<br><br>

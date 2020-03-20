@@ -5,9 +5,12 @@
 			<div class="caption">
 				<p><font color="black">{{ $post->body }}</font></p>
 				<div>
+					@if(Auth::guard('profile')->user()->id == $post->posted_by_profile->id)
+					@include('post.edit_post_form')
+					@include('post.delete_post_button')
+					@endif
 					<form method="GET" action={{route('post.show', $post)}} accept-charset="UTF-8">
 						<button type="submit" class="btn btn-primary">Go to post</button>
-						<!--{{ csrf_field() }}-->
 					</form>
 				</div>
 			</div>

@@ -10,7 +10,8 @@
 				<p class="font-weight-bold">Rating: {{$post->rating}}</p>
 				<p class="font-weight-bold">Description: {{$post->body}}</p>
 				@if(Auth::guard('profile')->user()->id == $post->posted_by_profile->id)
-				@include('post.delete_post_button')
+				@include('post.edit_post_form')
+				@include('post.delete_post_button')<!-- I want this to be to the right of edit_post_form-->
 				@endif
 				<div class="row" style="padding: 10px"><!--row-->
 					<!--you can put another foreach loop here to show replies in the next column (shifted to the right)-->

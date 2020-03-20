@@ -7,7 +7,7 @@
 	</div>
 @endif
 <!--show/hide form on button click-->
-<div class="details" style="display:none">
+<div id={{"details_community_".$community->id}} style="display:none">
 	<form action={{route('community.update', $community)}} method="post">
 	  <div class="form-group">
 		  <label for="inputName">Name</label>
@@ -21,4 +21,16 @@
 	  </div>
 	</form>
 </div>
-<button style="margin-top: 5px;" class="btn btn-primary" id="more" href="" onclick="$('.details').slideToggle(function(){$('#more').html($('.details').is(':visible')?'Stop Community Editing Profile':'Edit Community Profile');});">Edit Community Profile</button>
+<button style="margin-top: 5px;" class="btn btn-primary" id="more_community" href="" onclick={{"show_hide_community(".$community->id.")"}} > Edit Community</button>
+<script>
+function show_hide_community(id) {
+var community_id = "details_community_";
+community_id = community_id.concat(id);
+var x = document.getElementById(community_id);
+if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
