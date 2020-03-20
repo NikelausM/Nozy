@@ -133,6 +133,22 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+      // Retrieve post and its profile
+      $post = \App\Post::where('id', $id)->first();
+      $post_profile = $post->posted_on_profile;
+
+      // Delete post
+      $post->delete();
+
+  		// Check if profile corresponds to User or Community
+  		$user_posted_on = \App\User::where('profile_id',$post_profile->id)->first();
+  		if(!is_null($user_posted_on)) {
+  			return redirect()->route('user.show',$user_posted_on);
+  		}
+  		else {
+  			$community_posted_on = \App\Community::where('profile_id',$post_profile->id)->first();
+  			return redirect()->route('community.show',$community_posted_on);
+  		}
     }
 }

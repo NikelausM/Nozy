@@ -24,7 +24,11 @@ Route::prefix('search/')->middleware('auth:profile')->group(function () {
 Route::prefix('post/')->middleware('auth:profile')->group(function () {
 
 	Route::post('/', ['uses' => 'PostController@store', 'as' => 'post.store']);
-	Route::get('{post}', ['uses' => 'PostController@show', 'as' => 'post.show']); // Determine if post belongs to user or community
+
+	Route::prefix('{post}')->group(function () {
+		Route::get('/', ['uses' => 'PostController@show', 'as' => 'post.show']); // Determine if post belongs to user or community
+		Route::delete('/', ['uses' => 'PostController@destroy', 'as' => 'post.destroy']);
+	});
 });
 
 // User routes accessible to anyone
@@ -55,11 +59,13 @@ Route::prefix('community/')->middleware('auth:profile')->group(function () {
 
 	Route::post('/', ['uses' => 'CommunityController@store', 'as' => 'community.store']);
 
-	Route::prefix('community/{community}')->middleware('auth:profile')->group(function () {
+	Route::prefix('{community}')->middleware('auth:profile')->group(function () {
 
 		Route::get('/', ['uses' => 'CommunityController@show', 'as' => 'community.show']);
 
 		Route::post('/', ['uses' => 'CommunityController@update', 'as' => 'community.update']);
+
+		Route::delete('/', ['uses' => 'CommunityController@destroy', 'as' => 'community.destroy']);
 
 		Route::prefix('post/{post}')->group(function () {
 			Route::get('/', ['uses' => 'PostController@showCommunityPost', 'as' => 'post.showCommunityPost']);
