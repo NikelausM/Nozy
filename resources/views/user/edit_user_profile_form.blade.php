@@ -7,7 +7,7 @@
 	</div>
 @endif
 <!--show/hide form on button click-->
-<div class="details" style="display:none">
+<div id={{"details_user_".$user->id}} style="display:none">
 	<form action={{route('user.update', $user)}} method="post">
 	  <div class="form-group">
 		  <label for="inputName">Name</label>
@@ -25,4 +25,16 @@
 	  </div>
 	</form>
 </div>
-<button style="margin-top: 5px;" class="btn btn-primary" id="more" href="" onclick="$('.details').slideToggle(function(){$('#more').html($('.details').is(':visible')?'Stop Editing Profile':'Edit Profile');});">Edit Profile</button>
+<button style="margin-top: 5px;" class="btn btn-primary" id="more_user" href="" onclick={{"show_hide_user(".$user->id.")"}} > Edit Profile</button>
+<script>
+function show_hide_user(id) {
+var user_id = "details_user_";
+user_id = user_id.concat(id);
+var x = document.getElementById(user_id);
+if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>

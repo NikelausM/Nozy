@@ -5,6 +5,10 @@
 			<div class="caption">
 				<p><font id='community_profile_description' color="black">{{ $community->profile->description }}</font></p>
 				<div>
+					@if(Auth::guard('profile')->user()->id == $community->manager_user_id)
+					@include('community.edit_community_profile_form')
+					@include('community.delete_community_button')
+					@endif
 					<form method="GET" action={{route('community.show', $community)}} accept-charset="UTF-8">
 					<button type="submit" class="btn btn-primary">Go to community</button>
 					</form>
