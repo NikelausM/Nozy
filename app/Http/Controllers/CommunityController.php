@@ -111,6 +111,9 @@ class CommunityController extends ProfileController
      */
     public function destroy($id)
     {
-        //
+        $community = \App\Community::find($id);
+        $community->profile->delete();
+        $user = \App\User::where('profile_id', Auth::guard('profile')->user()->id)->first();
+        return redirect()->route('user.show', $user);
     }
 }
