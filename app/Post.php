@@ -33,6 +33,11 @@ class Post extends Model
 
 	# posted by profile
 	public function posted_by_profile() {
-	return $this->belongsTo('App\Profile', 'posted_by_profile_id', 'id');
-}
+		return $this->belongsTo('App\Profile', 'posted_by_profile_id', 'id');
+	}
+
+	# posted by profile
+	public function likesdislikes() {
+		return $this->hasMany('App\LikeDislike', 'post_id', 'id');
+	}
 }

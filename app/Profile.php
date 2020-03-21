@@ -38,8 +38,15 @@ class Profile extends Authenticatable
 		return bcrypt($this->password);
 	}
 
-	# user manages community
+	# user creates posts
     public function posts() {
 		return $this->hasMany('App\Post', 'posted_on_profile_id', 'id');
 	}
+
+	# user likes posts
+		public function likesdislikes() {
+		return $this->hasMany('App\LikeDislike', 'profile_id', 'id');
+	}
+
+
 }
