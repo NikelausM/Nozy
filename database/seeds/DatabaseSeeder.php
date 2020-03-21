@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
 					CommunityTableSeeder::class,
 					PostTableSeeder::class,
           FollowingTableSeeder::class,
-          NotificationTableSeeder::class
+          NotificationTableSeeder::class,
+          LikeDislikeTableSeeder::class,
 					]);
     }
 }
