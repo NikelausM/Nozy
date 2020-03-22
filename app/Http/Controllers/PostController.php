@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Support\Facades\Log;
 use App\Post;
 use App\LikeDislike;
+use GuzzleHttp\Client;
 
 class PostController extends Controller
 {
@@ -72,6 +73,7 @@ class PostController extends Controller
   		// Check if profile corresponds to User or Community
   		$user_posted_on = \App\User::where('profile_id',$post_profile->id)->first();
   		if(!is_null($user_posted_on)) {
+
   			return redirect()->route('post.showUserPost',['user' => $user_posted_on, 'post' => $post]);
   		}
   		else {
@@ -89,7 +91,32 @@ class PostController extends Controller
      */
     public function showUserPost(\App\User $user, \App\Post $post)
     {
-      return view('post.post', ['post' => $post]);
+      $comments = PostController::showComments($post);
+
+      return view('post.post', ['post' => $post, 'comments' => $comments]);
+    }
+
+    public function showComments(\App\Post $post) {
+      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      $api_response = $client->request('GET','/api/comments/postId/'.$post->id);
+      $comments = collect(json_decode($api_response->getBody())); // get comments
+      return $comments;
+    }
+
+    public function storeComment(Request $request) {
+      $comment = json_encode(array('PostId' => (int) $request->post_id, 'UserId' => (int) $request->user_id, 'Body' => $request->body, 'ParentId' => (int) $request->parent_id));
+      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      //$api_request = $client->request('POST','/api/comments/new/',['json' => ['PostId' => $request->post_id, 'UserId' => $request->user_id, 'Body' => $request->body, 'ParentId' => $request->parent_id]]);
+      $api_response = $client->request('POST','/api/comment/new',[ 'form_params' => ['PostId' => (int) $request->post_id, 'UserId' => (int) $request->user_id, 'Body' => $request->body, 'ParentId' => (int) $request->parent_id]]);
+      Log::info('Microservice status code');
+      Log::info($api_response->getStatusCode());
+      Log::info('Microservice headers');
+      foreach ($api_response->getHeaders() as $name => $values) {
+          Log::info($name . ': ' . implode(', ', $values) . "\r\n");
+      }
+      Log::info('Microservice body');
+      Log::info($api_response->getBody());
+      return redirect()->back();
     }
 
     /**
@@ -100,7 +127,9 @@ class PostController extends Controller
      */
      public function showCommunityPost(\App\Community $community, \App\Post $post)
      {
-      return view('post.post', ['post' => $post]);
+      $comments = PostController::showComments($post);
+
+      return view('post.post', ['post' => $post, 'comments' => $comments]);
      }
 
     /**

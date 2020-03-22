@@ -14,7 +14,7 @@
 				@endif
 				<br><br>
 				<h2 class="font-weight-bold">Posts</h2>
-				@foreach($community->profile->posts as $post)
+				@foreach($community->profile->posts->sortByDesc('updated_at') as $post)
 				@include('layouts.post_box')
 				@endforeach
 				@include('layouts.makePost_button')

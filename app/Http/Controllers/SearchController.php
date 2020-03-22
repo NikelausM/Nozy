@@ -47,7 +47,7 @@ class SearchController extends Controller
 
         // Get matching Posts
         $posts = Post::where('subject', 'LIKE', '%'.$query."%")
-                      ->orWhere('body', 'LIKE', '%'.$query."%")->get();
+                      ->orWhere('body', 'LIKE', '%'.$query."%")->get()->sortByDesc('updated_at');
 
       }
 
