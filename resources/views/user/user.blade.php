@@ -19,7 +19,7 @@
 				@include('layouts.makeCommunity_button')
 				@endif
 				<h2 class="font-weight-bold"><font color="black">Posts</font></h2>
-				@foreach($user->profile->posts as $post)
+				@foreach($user->profile->posts->sortByDesc('updated_at') as $post)
 				@include('layouts.post_box')
 				@endforeach
 				@include('layouts.makePost_button')

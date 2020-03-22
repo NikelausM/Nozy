@@ -15,19 +15,12 @@
 				@include('post.edit_post_form')
 				@include('post.delete_post_button')<!-- I want this to be to the right of edit_post_form-->
 				@endif
-				<div class="row" style="padding: 10px"><!--row-->
-					<!--you can put another foreach loop here to show replies in the next column (shifted to the right)-->
-					<div class="col-sm-6 col-md-4"><!--column-->
-						<div class="thumbnail shadow">
-							<h3><font color="black">Comment description: </font></h3>
-							<div class="caption">
-								<p><font color="black">Comment rating: </font></p>
-								<div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<h2> Comments </h2>
+				<?php $parent_id = -1; // Parent id is -1 because these comments are post comments?>
+				@include('comment.make_comment_button')
+				@foreach(collect($comments) as $comment)
+				@include('comment.comment')
+				@endforeach
 			</div>
 		</div>
 	</div>

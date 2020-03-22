@@ -22,8 +22,10 @@ Route::prefix('search/')->middleware('auth:profile')->group(function () {
 
 // Post routes accessible to logged-in users
 Route::prefix('post/')->middleware('auth:profile')->group(function () {
-
+	
 	Route::post('/', ['uses' => 'PostController@store', 'as' => 'post.store']);
+
+	Route::post('comment', ['uses' => 'PostController@storeComment', 'as' => 'post.storeComment']);
 
 	Route::prefix('{post}')->group(function () {
 		Route::get('/', ['uses' => 'PostController@show', 'as' => 'post.show']); // Determine if post belongs to user or community
@@ -33,6 +35,8 @@ Route::prefix('post/')->middleware('auth:profile')->group(function () {
 		Route::post('/like', ['uses' => 'PostController@like', 'as' => 'post.like']);
 		Route::post('/dislike', ['uses' => 'PostController@dislike', 'as' => 'post.dislike']);
 	});
+
+
 });
 
 // User routes accessible to anyone
