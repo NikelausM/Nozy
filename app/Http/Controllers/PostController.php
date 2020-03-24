@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Log;
 use App\Post;
 use App\LikeDislike;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -96,29 +98,6 @@ class PostController extends Controller
       return view('post.post', ['post' => $post, 'comments' => $comments]);
     }
 
-    public function showComments(\App\Post $post) {
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
-      $api_response = $client->request('GET','/api/comments/postId/'.$post->id);
-      $comments = collect(json_decode($api_response->getBody())); // get comments
-      return $comments;
-    }
-
-    public function storeComment(Request $request) {
-      $comment = json_encode(array('PostId' => (int) $request->post_id, 'UserId' => (int) $request->user_id, 'Body' => $request->body, 'ParentId' => (int) $request->parent_id));
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
-      //$api_request = $client->request('POST','/api/comments/new/',['json' => ['PostId' => $request->post_id, 'UserId' => $request->user_id, 'Body' => $request->body, 'ParentId' => $request->parent_id]]);
-      $api_response = $client->request('POST','/api/comment/new',[ 'form_params' => ['PostId' => (int) $request->post_id, 'UserId' => (int) $request->user_id, 'Body' => $request->body, 'ParentId' => (int) $request->parent_id]]);
-      Log::info('Microservice status code');
-      Log::info($api_response->getStatusCode());
-      Log::info('Microservice headers');
-      foreach ($api_response->getHeaders() as $name => $values) {
-          Log::info($name . ': ' . implode(', ', $values) . "\r\n");
-      }
-      Log::info('Microservice body');
-      Log::info($api_response->getBody());
-      return redirect()->back();
-    }
-
     /**
      * Display the specified community post resource.
      *
@@ -130,6 +109,25 @@ class PostController extends Controller
       $comments = PostController::showComments($post);
 
       return view('post.post', ['post' => $post, 'comments' => $comments]);
+     }
+
+     // Show comments of post
+     public function showComments(\App\Post $post) {
+       try {
+         $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+         $api_response = $client->request('GET','/api/comments/postId/'.$post->id);
+         $comments = collect(json_decode($api_response->getBody())); // get comments
+       }
+       catch (\GuzzleHttp\Exception\RequestException $e) {
+         $comments = collect(json_decode(json_encode(array(array("message" => "no comments available at the moment.\r\nplease try again later...",
+                                   "status" => "error"), 404))));
+         Session::flash("show_comments_error", $comments[0]->message);
+       }
+       if (array_key_exists("message", $comments[0]) && !array_key_exists("body", $comments[0])) {
+         Session::flash("no_comments_message", $comments[0]->message);
+       }
+       Session::put('unique_id', 0); // reset unique id
+       return $comments;
      }
 
     /**
@@ -248,7 +246,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-
       // Retrieve post and its profile
       $post = \App\Post::where('id', $id)->first();
       $post_profile = $post->posted_on_profile;

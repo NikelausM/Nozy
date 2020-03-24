@@ -50,9 +50,32 @@ input[type=submit]:hover {
 </head>
 <body>
 <?php $user_posting_comment = \App\User::where('profile_id', Auth::guard('profile')->user()->id)->first();?>
-  <h2>Make a post?</h2>
+  <h2>Post a comment?</h2>
   <div class="container">
-    <form action={{route('post.storeComment')}} method="post"><!-- fill this in later nick-->
+    <?php // Give the form a unique id ?>
+    @if(Session::has('unique_id'))
+    {{Session::put('unique_id', Session::get('unique_id') + 1)}}
+    @else
+    {{Session::put('unique_id', 1)}}
+    @endif
+    @if(Illuminate\Support\Facades\Session::has("store_comment_error_".Session::get('unique_id')))
+    {{$store_comment_error_id = Session::get("store_comment_error_".Session::get('unique_id'))}}
+    <div class="alert alert-danger"><font color = "red"><?php echo nl2br($store_comment_error_id);?></font></div>
+    {{Session::forget($store_comment_error_id)}}
+    @if(count($errors->storeCommentErrors)>0)
+    <div class="alert alert-danger">
+    		@foreach($errors->storeCommentErrors->all() as $error)
+    			<p><font color = "red">{{$error}}</font></p>
+    		@endforeach
+    	</div>
+    @endif
+    @endif
+    <form action={{route('comment.store')}} method="post"><!-- fill this in later nick-->
+      <div class="row-1">
+        <div class="col-75" style="display: none;">
+          <input type="number" id="unique_id" name="unique_id" value={{Session::get('unique_id')}}>
+        </div>
+      </div>
       <div class="row-1">
         <div class="col-75" style="display: none;">
           <input type="number" id="post_id" name="post_id" value={{$post->id}}>

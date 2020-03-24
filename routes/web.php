@@ -20,14 +20,21 @@ Route::prefix('search/')->middleware('auth:profile')->group(function () {
 	Route::get('/search', ['uses' => 'SearchController@search', 'as' => 'search.search']);
 });
 
+// Comment routes accessible to logged in users
+Route::prefix('comment/')->middleware('auth:profile')->group(function () {
+	Route::post('/', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
+	Route::prefix('{comment}')->group(function () {
+		Route::post('/', ['uses' => 'CommentController@update', 'as' => 'comment.update']);
+		Route::delete('/', ['uses' => 'CommentController@destroy', 'as' => 'comment.destroy']);
+	});
+});
+
 // Post routes accessible to logged-in users
 Route::prefix('post/')->middleware('auth:profile')->group(function () {
-	
+
 	Route::post('/', ['uses' => 'PostController@store', 'as' => 'post.store']);
 
-	Route::post('comment', ['uses' => 'PostController@storeComment', 'as' => 'post.storeComment']);
-
-	Route::prefix('{post}')->group(function () {
+	Route::prefix('/{post}')->group(function () {
 		Route::get('/', ['uses' => 'PostController@show', 'as' => 'post.show']); // Determine if post belongs to user or community
 		Route::post('/', ['uses' => 'PostController@update', 'as' => 'post.update']);
 		Route::delete('/', ['uses' => 'PostController@destroy', 'as' => 'post.destroy']);
@@ -35,8 +42,6 @@ Route::prefix('post/')->middleware('auth:profile')->group(function () {
 		Route::post('/like', ['uses' => 'PostController@like', 'as' => 'post.like']);
 		Route::post('/dislike', ['uses' => 'PostController@dislike', 'as' => 'post.dislike']);
 	});
-
-
 });
 
 // User routes accessible to anyone
