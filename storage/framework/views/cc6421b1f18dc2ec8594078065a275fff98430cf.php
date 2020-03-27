@@ -7,8 +7,8 @@
 	</div>
 <?php endif; ?>
 <!--show/hide form on button click-->
-<div class="details" style="display:none">
-	<form action=<?php echo e(route('user.update', $user->id)); ?> method="post">
+<div id=<?php echo e("details_user_".$user->id); ?> style="display:none">
+	<form action=<?php echo e(route('user.update', $user)); ?> method="post">
 	  <div class="form-group">
 		  <label for="inputName">Name</label>
 				<input type="name" class="form-control" name="name" id="name" placeholder="<?php echo e($user->profile->name); ?>" value="<?php echo e($user->profile->name); ?>">
@@ -26,5 +26,17 @@
 	  </div>
 	</form>
 </div>
-<button style="margin-top: 5px;" class="btn btn-primary" id="more" href="" onclick="$('.details').slideToggle(function(){$('#more').html($('.details').is(':visible')?'Stop Editing Profile':'Edit Profile');});">Edit Profile</button>
+<button style="margin-top: 5px;" class="btn btn-primary" id="more_user" href="" onclick=<?php echo e("show_hide_user(".$user->id.")"); ?> > Edit Profile</button>
+<script>
+function show_hide_user(id) {
+var user_id = "details_user_";
+user_id = user_id.concat(id);
+var x = document.getElementById(user_id);
+if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 <?php /**PATH /home/nwd/Desktop/Nozy/resources/views/user/edit_user_profile_form.blade.php ENDPATH**/ ?>

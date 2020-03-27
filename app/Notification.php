@@ -29,12 +29,4 @@ class Notification extends Model
     public function profile() {
 		return $this->belongsTo('App\Profile', 'profile_id', 'id');
 		}
-
-    # notification belongs to post
-    public function post() {
-      return $this->belongsTo("App\Post", "post_id", 'id');
-    }
-
-
-
 }

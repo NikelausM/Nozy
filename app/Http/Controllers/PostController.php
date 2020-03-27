@@ -45,14 +45,17 @@ class PostController extends Controller
 
       # Create new user
   		Log::info('Creating new post!');
-      \App\Post::create(array(
+      $post = \App\Post::create(array(
           'subject' => $request->subject,
           'body' => $request->body,
           'posted_on_profile_id' => $request->post_profile_id,
           'posted_by_profile_id' => $profile->id,
       ));
+      Log::info('************************************************************');
+      Log::info($post);
+      Log::info('************************************************************');
 
-      return redirect()->back();
+      return redirect()->route('notifications.post', [$profile, $request->post_profile_id, $post->id]);
     }
 
     /**
@@ -219,7 +222,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-
       // Retrieve post and its profile
       $post = \App\Post::where('id', $id)->first();
       $post_profile = $post->posted_on_profile;

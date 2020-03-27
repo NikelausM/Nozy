@@ -8,8 +8,6 @@
             @include('layouts.nav_loggedin') <!--References layout/nav.blade/php which is the navigation header-->
             @include('layouts.modal_loggedin')
             @yield('content')
-
-
         </div>
         <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
     </body>

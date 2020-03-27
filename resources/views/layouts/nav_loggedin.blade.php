@@ -15,7 +15,7 @@
             <a class="nav-link" href="{{ url('user/') }}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('user/') }}">Notifications</a>
+            <a class="nav-link" href="{{ route('notifications.index') }}">Notifications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('user/logout') }}">Logout</a>

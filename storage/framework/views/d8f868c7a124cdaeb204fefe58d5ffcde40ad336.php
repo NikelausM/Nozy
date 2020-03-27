@@ -9,13 +9,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('user/')); ?>">Nozy Home</a>
+            <a class="nav-link" href="<?php echo e(route('search.index')); ?>">Nozy Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(url('user/')); ?>">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo e(url('user/')); ?>">Notifications</a>
+            <a class="nav-link" href="<?php echo e(route('notifications.index')); ?>">Notifications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(url('user/logout')); ?>">Logout</a>

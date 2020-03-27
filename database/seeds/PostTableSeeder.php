@@ -43,5 +43,13 @@ class PostTableSeeder extends Seeder
             'posted_on_profile_id' => 5,
             'posted_by_profile_id' => 2,
         ));
+
+        \App\Post::create(array(
+            'subject' => 'testing',
+            'rating' => 0,
+            'body' => 'I wonder.',
+            'posted_on_profile_id' => 4,
+            'posted_by_profile_id' => 2,
+        ));
     }
 }

@@ -1,4 +1,3 @@
-<!-- to be created -->
 <head>
 <style>
 * {
@@ -50,24 +49,29 @@ input[type=submit]:hover {
 </head>
 <body>
 
-<h2>Make a post?</h2>
-<div class="container">
-  <form action=""><!-- fill this in later nick-->
-  <div class="row-1">
-    <div class="col-75">
-      <input type="text" id="subject" name="firstname" placeholder="Subject">
-    </div>
+  <h2>Make a post?</h2>
+  <div class="container">
+    <form action=<?php echo e(route('post.store')); ?> method="post">
+      <div class="row-1">
+        <div class="col-75" style="display: none;">
+          <input type="number" id="post_profile_id" name="post_profile_id" value=<?php echo e($profile->id); ?>>
+        </div>
+        <div class="col-75">
+          <input type="text" id="subject" name="subject" placeholder="Subject">
+        </div>
+      </div>
+      <div class="row-1">
+        <div class="col-75">
+          <textarea id="body" name="body" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+      </div>
+      <div class="row-1">
+        <input type="submit" value="Post">
+        <?php echo e(csrf_field()); ?>
+
+      </div>
+    </form>
   </div>
-  <div class="row-1">
-    <div class="col-75">
-      <textarea id="subject" name="Body" placeholder="Write something.." style="height:200px"></textarea>
-    </div>
-  </div>
-  <div class="row-1">
-    <input type="submit" value="Post">
-  </div>
-  </form>
-</div>
 
 </body>
 <?php /**PATH /home/nwd/Desktop/Nozy/resources/views/layouts/makePost_button.blade.php ENDPATH**/ ?>
