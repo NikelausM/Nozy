@@ -135,7 +135,6 @@ class CommentController extends Controller
           Session::put('unique_id', 0); // reset unique id
           return redirect()->back()->withErrors($validator,'updateCommentErrors');
         }
-        Log::info('Trying to update post');
         $comment = array('CommentId' =>$request->comment_id, 'PostId' => $request->post_id, 'UserId' => $request->user_id, 'Body' => $request->body, 'ParentId' => $request->parent_id);
         Log::info($comment);
         $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
@@ -168,7 +167,7 @@ class CommentController extends Controller
     {
       try {
         Log::info('Trying to destroy comment');
-        $comment = array('CommentId' => $request->comment_id, 'PostId' => $request->post_id, 'UserId' => $request->user_id);
+        $comment = array('CommentId' => $id);
         $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
         $api_response = $client->request('POST','/api/comment/delete',[ 'form_params' => $comment]);
         Log::info('Microservice status code');
@@ -179,11 +178,18 @@ class CommentController extends Controller
         }
         Log::info('Microservice body');
         Log::info($api_response->getBody());
+        $api_reponse_body = json_decode($api_response->getBody());
       }
+      // Catch request related errors
       catch (\GuzzleHttp\Exception\RequestException $e) {
         Session::flash("destroy_comment_error_".$request->unique_id, "unable to delete comment at the moment.\r\nplease try again later...");
       }
+      // Catch other PHP errors
       catch (\Exception $e) {
+        Session::flash("destroy_comment_error_".$request->unique_id, "unable to delete comment at the moment.\r\nplease try again later...");
+      }
+      // Catch api specific error
+      if (array_key_exists("error", $api_reponse_body) && $api_reponse_body->error) {
         Session::flash("destroy_comment_error_".$request->unique_id, "unable to delete comment at the moment.\r\nplease try again later...");
       }
       Session::put('unique_id', 0); // reset unique id

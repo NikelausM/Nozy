@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use \App\Following;
+use \App\Profile;
 
 class FollowingTableSeeder extends Seeder
 {
@@ -12,16 +14,16 @@ class FollowingTableSeeder extends Seeder
     public function run()
     {
         // Insert user data into user table
-        DB::table('following')->insert([
+        Following::create(array(
+          'followingable_id'=> 2,
+          'followingable_type'=> get_class(new Profile()),
           'follower_id'=> 1,
-          'followee_id'=> 2,
-          'type'=> 'profile',
-        ]);
+        ));
 
-        DB::table('following')->insert([
+        Following::create(array(
+          'followingable_id'=> 3,
+          'followingable_type'=> get_class(new Profile()),
           'follower_id'=> 1,
-          'followee_id'=> 3,
-          'type'=> 'profile',
-        ]);
+        ));
     }
 }
