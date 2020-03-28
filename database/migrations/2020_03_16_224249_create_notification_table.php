@@ -15,18 +15,15 @@ class CreateNotificationTable extends Migration
     {
         Schema::create('notification', function (Blueprint $table) {
           $table->increments('id');
-            $table->unsignedInteger('notifee_id');
-            $table->unsignedInteger('post_id');
-            $table->text('notification_type');
-            $table->unsignedInteger('profile_id');
-            $table->timestamps();
+          $table->unsignedInteger('following_id');
+          $table->unsignedInteger('follower_id');
+          $table->timestamps();
         });
 
         //Add foreign keys
         Schema::table('notification', function (Blueprint $table) {
-          $table->foreign('notifee_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
-          $table->foreign('post_id')->references('id')->on('post')->onUpdate('cascade')->onDelete('cascade');
-          $table->foreign('profile_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+          $table->foreign('following_id')->references('id')->on('following')->onUpdate('cascade')->onDelete('cascade');
+          $table->foreign('follower_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

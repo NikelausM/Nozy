@@ -20,6 +20,17 @@ Route::prefix('search/')->middleware('auth:profile')->group(function () {
 	Route::get('/search', ['uses' => 'SearchController@search', 'as' => 'search.search']);
 });
 
+// Notification routes accessible to logged-in users (added by naweed)
+Route::prefix('notifications/')->middleware('auth:profile')->group(function(){
+	Route::get('/', ['uses' => 'NotificationController@index', 'as' => 'notifications.index']);
+	Route::post('/post', ['uses' => 'NotificationController@storePost', 'as' => 'notifications.storePost']);
+	Route::post('/comment', ['uses' => 'NotificationController@storeComment', 'as' => 'notifications.storeComment']);
+	Route::post('/rate', ['uses' => 'NotificationController@storeRate', 'as' => 'notifications.storeRate']);
+	Route::post('/following', ['uses' => 'NotificationController@storeFollowing', 'as' => 'notifications.storeFollowing']);
+	Route::delete('/delete', ['uses' => 'NotificationController@deleteNotification', 'as' => 'notifications.delete']);
+});
+
+
 // Comment routes accessible to logged in users
 Route::prefix('comment/')->middleware('auth:profile')->group(function () {
 	Route::post('/', ['uses' => 'CommentController@store', 'as' => 'comment.store']);

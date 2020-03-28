@@ -48,12 +48,19 @@ class PostController extends Controller
 
       # Create new user
   		Log::info('Creating new post!');
-      \App\Post::create(array(
+      $post = Post::create(array(
           'subject' => $request->subject,
           'body' => $request->body,
           'posted_on_profile_id' => $request->post_profile_id,
           'posted_by_profile_id' => $profile->id,
       ));
+
+      Log::info('************************************************************');
+      Log::info($post);
+      Log::info('************************************************************');
+
+      $notificationController = new NotificationController();
+      $notificationController->storePost($post);
 
       return redirect()->back();
     }

@@ -48,5 +48,9 @@ class Profile extends Authenticatable
 		return $this->hasMany('App\LikeDislike', 'profile_id', 'id');
 	}
 
+	// This profile can be followed
+	public function followings() {
+		return $this->morphMany('App\Following', 'followingable');
+	}
 
 }

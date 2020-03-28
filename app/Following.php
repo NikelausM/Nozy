@@ -9,22 +9,23 @@ class Following extends Model
 	protected $table = "following";
 
 	protected $fillable = [
+			'followingable_id',
+			'followingable_type',
 			'follower_id',
-			'followee_id',
-			'type',
         ];
 
     //protected $primaryKey = 'name';
     //public $incrementing = false;
     //public $keyType = 'string';
-    public $timestamps = false;
+    public $timestamps = true;
 
-    # user get follower
-    public function follower() {
-			return $this->belongsTo('App\Profile', 'follower_id', 'id');
+    // Polymorphism: Many types of classes can be followed
+    public function followingable() {
+			return $this->morphTo();
 		}
 
-		public function followee() {
-			return $this->belongsTo('App\Profile', 'followee_id', 'id');
+		// Many profiles can follow a follawable class
+		public function followers() {
+			return $this->hasMany('App\Profile', 'follower_id', 'id');
 		}
 }

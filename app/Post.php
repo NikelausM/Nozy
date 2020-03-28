@@ -40,4 +40,9 @@ class Post extends Model
 	public function likesdislikes() {
 		return $this->hasMany('App\LikeDislike', 'post_id', 'id');
 	}
+
+	// This profile can be followed
+	public function followings() {
+		return $this->morphMany('App\Following', 'followingable');
+	}
 }

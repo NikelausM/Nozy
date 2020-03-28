@@ -15,17 +15,6 @@
 		<div class="col-75" style="display: none;">
 			<input class="form-control" type="number" id="comment_id" name="comment_id" value={{$comment->id}}>
 		</div>
-	</div>
-	<div class="row-1">
-		<div class="col-75" style="display: none;">
-			<input class="form-control" type="number" id="post_id" name="post_id" value={{$comment->post_id}}>
-		</div>
-	</div>
-	<div class="row-1">
-		<div class="col-75" style="display: none;">
-			<input class="form-control" type="number" id="user_id" name="user_id" value={{$comment->user_id}}>
-		</div>
-	</div>
 	<div class="col-75" style="display: none;">
 		<input type="number" id="unique_id" name="unique_id" value={{Session::get('unique_id')}}>
 	</div>

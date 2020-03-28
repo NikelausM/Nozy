@@ -9,10 +9,8 @@ class Notification extends Model
 	protected $table = "notification";
 
 	protected $fillable = [
-			'notifee_id',
-			'post_id',
-      'notification_type',
-      'profile_id',
+			'following_id',
+			'follower_id',
         ];
 
     //protected $primaryKey = 'name';
@@ -20,21 +18,13 @@ class Notification extends Model
     //public $keyType = 'string';
     public $timestamps = true;
 
-		# notification belongs to notifee
-		public function notifee() {
-		return $this->belongsTo('App\Profile', 'notifee_id', 'id');
+		# Polymorphism: Many types  of classes can create notifications
+		public function following() {
+			return $this->belongsTo('App\Following', 'following_id', 'id');
 		}
 
-    # notification belongs to profile
-    public function profile() {
-		return $this->belongsTo('App\Profile', 'profile_id', 'id');
+    // Individual notifications belong to individual profiles
+    public function follower() {
+			return $this->belongsTo('App\Profile', 'follower_id', 'id');
 		}
-
-    # notification belongs to post
-    public function post() {
-      return $this->belongsTo("App\Post", "post_id", 'id');
-    }
-
-
-
 }
