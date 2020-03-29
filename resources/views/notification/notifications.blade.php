@@ -4,6 +4,8 @@
 	  <span aria-hidden="true">&times;</span>
 	</button>
 </div>
+<div style="overflow: scroll;max-height: 500px;">
 @foreach(Auth::guard('profile')->user()->notifications as $notification)
 	<p style="text-align: center">{{$notification->message}}</p>
 @endforeach
+</div>
