@@ -4,7 +4,7 @@
 @else
 {{Session::put('unique_id', 1)}}
 @endif
-@if(Illuminate\Support\Facades\Session::has("update_comment_error_".Session::get('unique_id')))
+@if(Session::has("update_comment_error_".Session::get('unique_id')))
 <?php $update_comment_error_id = Session::get("update_comment_error_".Session::get('unique_id')) ?>
 <div class="alert alert-danger"><font color = "red"><?php echo nl2br($update_comment_error_id);?></font></div>
 {{Session::forget($update_comment_error_id)}}

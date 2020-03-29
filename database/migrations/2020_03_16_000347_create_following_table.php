@@ -24,8 +24,9 @@ class CreateFollowingTable extends Migration
         //Add foreign keys
         Schema::table('following', function (Blueprint $table) {
           $table->foreign('follower_id')->references('id')->on('profile')->onUpdate('cascade')->onDelete('cascade');
+          //Add unique following constraint
+          $table->unique(array('followingable_id', 'followingable_type', 'follower_id'), 'unique_following');
         });
-
     }
 
     /**

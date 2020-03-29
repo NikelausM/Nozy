@@ -20,6 +20,13 @@ Route::prefix('search/')->middleware('auth:profile')->group(function () {
 	Route::get('/search', ['uses' => 'SearchController@search', 'as' => 'search.search']);
 });
 
+// Following routes accessible to logged-in users (added by nicolas)
+Route::prefix('following/')->middleware('auth:profile')->group(function(){
+	Route::get('/', ['uses' => 'NotificationController@index', 'as' => 'following.index']);
+	Route::post('/', ['uses' => 'FollowingController@store', 'as' => 'following.store']);
+	Route::delete('/delete', ['uses' => 'FollowingController@destroy', 'as' => 'following.destroy']);
+});
+
 // Notification routes accessible to logged-in users (added by naweed)
 Route::prefix('notifications/')->middleware('auth:profile')->group(function(){
 	Route::get('/', ['uses' => 'NotificationController@index', 'as' => 'notifications.index']);
@@ -27,7 +34,7 @@ Route::prefix('notifications/')->middleware('auth:profile')->group(function(){
 	Route::post('/comment', ['uses' => 'NotificationController@storeComment', 'as' => 'notifications.storeComment']);
 	Route::post('/rate', ['uses' => 'NotificationController@storeRate', 'as' => 'notifications.storeRate']);
 	Route::post('/following', ['uses' => 'NotificationController@storeFollowing', 'as' => 'notifications.storeFollowing']);
-	Route::delete('/delete', ['uses' => 'NotificationController@deleteNotification', 'as' => 'notifications.delete']);
+	Route::delete('/delete', ['uses' => 'NotificationController@deleteNotification', 'as' => 'notifications.destroy']);
 });
 
 
