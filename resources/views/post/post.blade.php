@@ -6,7 +6,8 @@
 		<br></br>
 		<div class="row h-75 align-items-center">
 			<div style="top: 20%;" class="col-12">
-				@include('layouts.follow_post_button')
+				@include('following.follow_post_button')
+				@include('following.unfollow_post_button')
 				@include('post.like_post_button')
 				@include('post.dislike_post_button')
 				<h1 class="font-weight-bold">Post: {{$post->subject}}</h1>

@@ -17,6 +17,7 @@ class CreateNotificationTable extends Migration
           $table->increments('id');
           $table->unsignedInteger('following_id');
           $table->unsignedInteger('follower_id');
+          $table->text('message')->nullable();
           $table->timestamps();
         });
 

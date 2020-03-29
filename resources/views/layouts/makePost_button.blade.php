@@ -49,7 +49,6 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-
   <h2>Make a post?</h2>
   <div class="container">
     <form action={{route('post.store')}} method="post"><!-- fill this in later nick-->

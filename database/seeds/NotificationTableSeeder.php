@@ -15,6 +15,7 @@ class NotificationTableSeeder extends Seeder
         \App\Notification::create(array(
           'following_id' => 1,
           'follower_id' => 1,
+          'message' => "Naweed has a new post on their profile!",
         ));
     }
 }

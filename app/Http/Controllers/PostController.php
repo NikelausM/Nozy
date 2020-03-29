@@ -177,6 +177,7 @@ class PostController extends Controller
       $dislike = \App\LikeDislike::where([['type','dislike'],['post_id',$post->id],['profile_id',$profile->id]])->first();
 
       // Check if profile hasn't already liked post
+      $notificationController = new NotificationController();
       if (is_null($like)) {
         // If they disliked it before then increase rating and delete dislike
         if (!is_null($dislike)) {
@@ -186,16 +187,18 @@ class PostController extends Controller
         // Increase rating and create like
         $post->rating++;
         $post->save();
-        $new_like = new LikeDislike;
-        $new_like->type = 'like';
-        $new_like->post_id = $post->id;
-        $new_like->profile_id = $profile->id;
-        $new_like->save();
+        $like = new LikeDislike;
+        $like->type = 'like';
+        $like->post_id = $post->id;
+        $like->profile_id = $profile->id;
+        $like->save();
+        $notificationController->storeRating($like);
       }
       else {
         // If they already liked the post then just delete their like
         $post->rating--;
         $post->save();
+        $notificationController->storeRating($like);
         $like->delete();
       }
 
@@ -216,6 +219,7 @@ class PostController extends Controller
       $dislike = \App\LikeDislike::where([['type','dislike'],['post_id',$post->id],['profile_id',$profile->id]])->first();
 
       // Check if profile hasn't already disliked post
+      $notificationController = new NotificationController();
       if (is_null($dislike)) {
         // If they liked it before then decrease rating and delete like
         if (!is_null($like)) {
@@ -225,18 +229,23 @@ class PostController extends Controller
         // Decrease rating and create dislike
         $post->rating--;
         $post->save();
-        $new_dislike = new LikeDislike;
-        $new_dislike->type = 'dislike';
-        $new_dislike->post_id = $post->id;
-        $new_dislike->profile_id = $profile->id;
-        $new_dislike->save();
+        $dislike = new LikeDislike;
+        $dislike->type = 'dislike';
+        $dislike->post_id = $post->id;
+        $dislike->profile_id = $profile->id;
+        $dislike->save();
+        $notificationController->storeRating($dislike);
       }
       else {
         // If they already disliked the post then just delete their dislike
         $post->rating++;
         $post->save();
+        $notificationController->storeRating($dislike);
         $dislike->delete();
       }
+
+
+
 
   		return redirect()->back();
     }

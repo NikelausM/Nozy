@@ -15,13 +15,13 @@ class LikeDislike extends Model
 			'profile_id', // profile that liked/disliked post
         ];
 
-  # posted on profile
-  public function posts() {
-		return $this->hasMany('App\Post', 'post_id', 'id');
+  # post liked
+  public function post() {
+		return $this->belongsTo('App\Post', 'post_id', 'id');
 	}
 
-	# posted by profile
-	public function profiles() {
-		return $this->hasMany('App\Profile', 'profile_id', 'id');
+	# liked by profile
+	public function profile() {
+		return $this->belongsTo('App\Profile', 'profile_id', 'id');
 	}
 }
