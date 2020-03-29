@@ -6,7 +6,8 @@
 		<br><br>
 		<div class="row h-75 align-items-center">
 			<div style="top: 20%;" class="col-12">
-				@include('layouts.follow_profile_button')
+				@include('following.follow_profile_button')
+				@include('following.unfollow_profile_button')
 				<h1 class="font-weight-bold">Welcome to {{$community->profile->name}}</h1>
 				<h2 class="font-weight-bold">Description: {{$community->profile->description}}</h2>
 				@if(Auth::guard('profile')->user()->id == $community->manager_user_id)

@@ -37,59 +37,63 @@ class NotificationController extends Controller
   // message will be like the page 'pagename' has a new post
   // createPostNotification would have to call this function
   // should make post_id nullable, in which case post_id here would be null
-  public function storePost(Post $post)
-  {
-    Log::info('I am trying to create post notification for every follower');
+  public function storePost(Post $post) {
+    $this->storePostedOnProfile($post);
+    $this->storePostedByProfile($post);
+  }
 
+  // Create notification for each class following post made on profile
+  public function storePostedOnProfile(Post $post)
+  {
+    Log::info('posted on: '.$post->posted_on_profile);
     // Create notifications for each follower
-    foreach($post->posted_on_profile->followings as $following);
+    foreach($post->posted_on_profile->followings as $following)
     {
       Log::info('following: '.$following);
       // Create notification
       $notification = new Notification();
-      $notification->following_id = $following->id;
+      $notification->following_id = $following->followingable_id;
       $notification->follower_id = $following->follower_id;
+      $notification->message = $post->posted_on_profile->name." has a new post on their profile!";
+      $notification->save();
+    }
+  }
+
+  // Create notification for each class following post made by profile
+  public function storePostedByProfile(Post $post)
+  {
+    Log::info('posted by: '.$post->posted_by_profile);
+    // Create notifications for each follower
+    foreach($post->posted_by_profile->followings as $following)
+    {
+      Log::info('following: '.$following);
+      // Create notification
+      $notification = new Notification();
+      $notification->following_id = $following->followingable_id;
+      $notification->follower_id = $following->follower_id;
+      $notification->message = $post->posted_by_profile->name." made a new post on the profile of ".$post->posted_on_profile->name."!";
       $notification->save();
     }
   }
 
   // assuming you only can like or dislike posts (and not comments)
-  public function createRatingNotification(LikeDislike $likedislike)
+  public function storeRating(LikeDislike $likedislike)
   {
-    Log::info('I am trying to create a like notification for every ');
-  }
+    Log::info('Trying to create notification for post like or dislike');
 
-  // post ID here should also be NULL
-  public function createFollowNotification($follower_profile, $profileBeingFollowed_ID)
-  {
-    Log::info('I am trying to create a follow notification, and add the follower');
-
-    // Check if profile corresponds to User or Community
-    $user_posted_on = \App\User::where('profile_id',$profileBeingFollowed_ID)->first();
-
-    if(!is_null($user_posted_on)) {
-    \App\Notification::create(array(
-      'notifee_id' => $profileBeingFollowed_ID,
-			'post_id' => 0,
-      'notification_type' => $follower_profile->name . " has followed your user page",
-      'profile_id' => $follower_profile->id,
-    ));
-    } else {
-      $community_posted_on = \App\Community::where('profile_id',$post_profile->id)->first();
-      \App\Notification::create(array(
-        'notifee_id' => $community_posted_on->user()->id,
-  			'post_id' => 0,
-        'notification_type' => $follower_profile->name . " has followed your community: " . $community_posted_on->profile()->name,
-        'profile_id' => $follower_profile->id,
-      ));
+    // Create notifications for each follower
+    foreach($likedislike->post->followings as $following)
+    {
+      Log::info('following: '.$following);
+      // Create notification
+      $notification = new Notification();
+      $notification->following_id = $following->followingable_id;
+      $notification->follower_id = $following->follower_id;
+      $notification->message = "The post '".$likedislike->post->subject."' was rated by ".$likedislike->profile->name."!";
+      $notification->save();
     }
   }
-
-  public function createCommentNotification($poster_ID, $postOwner_ID, $post_ID, $commentOwner_ID)
-  {
-    Log::info('I am trying to create a comment notification');
-  }
-
+  
   /**
    * Remove the specified resource from storage.
    *

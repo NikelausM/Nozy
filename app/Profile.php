@@ -38,9 +38,14 @@ class Profile extends Authenticatable
 		return bcrypt($this->password);
 	}
 
-	# user creates posts
+	// Many posts are created on a profile
     public function posts() {
 		return $this->hasMany('App\Post', 'posted_on_profile_id', 'id');
+	}
+
+	// Many posts are created by a profile
+    public function postsCreated() {
+		return $this->hasMany('App\Post', 'posted_by_profile_id', 'id');
 	}
 
 	# user likes posts

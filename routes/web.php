@@ -15,7 +15,6 @@ Route::get('/', [ 'uses' => 'IndexController@getIndex', 'as' => 'index']);
 
 // Search routes accessible to logged-in users
 Route::prefix('search/')->middleware('auth:profile')->group(function () {
-
 	Route::get('/', ['uses' => 'SearchController@index', 'as' => 'search.index']);
 	Route::get('/search', ['uses' => 'SearchController@search', 'as' => 'search.search']);
 });
@@ -24,7 +23,12 @@ Route::prefix('search/')->middleware('auth:profile')->group(function () {
 Route::prefix('following/')->middleware('auth:profile')->group(function(){
 	Route::get('/', ['uses' => 'NotificationController@index', 'as' => 'following.index']);
 	Route::post('/', ['uses' => 'FollowingController@store', 'as' => 'following.store']);
-	Route::delete('/delete', ['uses' => 'FollowingController@destroy', 'as' => 'following.destroy']);
+	Route::prefix('/profile/{profile}/')->group(function(){
+		Route::delete('/deleteFollowingProfile', ['uses' => 'FollowingController@destroyFollowingProfile', 'as' => 'following.destroyFollowingProfile']);
+	});
+	Route::prefix('/post/{post}/')->group(function(){
+		Route::delete('/deleteFollowingPost', ['uses' => 'FollowingController@destroyFollowingPost', 'as' => 'following.destroyFollowingPost']);
+	});
 });
 
 // Notification routes accessible to logged-in users (added by naweed)

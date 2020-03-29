@@ -61,8 +61,33 @@ class FollowingController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function deleteNotification($id)
+  public function destroyFollowingProfile(Profile $profile)
   {
-    Log::info('I am trying to delete a notification');
+    $following = $profile->followings()->where('follower_id', Auth::guard('profile')->user()->id)->first();
+    if (is_null($following)) {
+      Session::flash("unfollowing_profile_error", "Not following this...");
+    }
+    else {
+      $following->delete();
+    }
+    return redirect()->back();
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function destroyFollowingPost(Post $post)
+  {
+    $following = $post->followings()->where('follower_id', Auth::guard('profile')->user()->id)->first();
+    if (is_null($following)) {
+      Session::flash("unfollowing_post_error", "Not following this...");
+    }
+    else {
+      $following->delete();
+    }
+    return redirect()->back();
   }
 }

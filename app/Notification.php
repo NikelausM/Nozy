@@ -11,6 +11,7 @@ class Notification extends Model
 	protected $fillable = [
 			'following_id',
 			'follower_id',
+			'message',
         ];
 
     //protected $primaryKey = 'name';
