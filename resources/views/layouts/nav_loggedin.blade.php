@@ -9,13 +9,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('search.index') }}">Nozy Home</a>
+            <a class="nav-link" href="{{ route('search.index') }}">Search Nozy</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('user/') }}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('user/') }}">Notifications</a>
+            <a class="nav-link" href="#notificationsModal" data-toggle="modal">Notifications</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('user/logout') }}">Logout</a>

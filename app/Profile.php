@@ -58,4 +58,14 @@ class Profile extends Authenticatable
 		return $this->morphMany('App\Following', 'followingable');
 	}
 
+	// Profile can be a follower
+	public function follower() {
+		return $this->hasOne('App\Following', 'follower_id', 'id');
+	}
+
+	// Profile has many Notifications
+	public function notifications() {
+		return $this->hasMany('App\Notification', 'follower_id', 'id');
+	}
+
 }

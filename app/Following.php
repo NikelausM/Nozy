@@ -24,8 +24,9 @@ class Following extends Model
 			return $this->morphTo();
 		}
 
-		// Many profiles can follow a follawable class
-		public function followers() {
-			return $this->hasMany('App\Profile', 'follower_id', 'id');
+		// One profile follows a following instance
+		public function follower() {
+			return $this->hasOne('App\Profile', 'follower_id', 'id');
 		}
+
 }
