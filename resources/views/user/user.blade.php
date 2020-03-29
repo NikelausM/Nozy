@@ -6,6 +6,7 @@
 		<br></br>
 		<div class="row h-75 align-items-center">
 			<div style="top: 20%;" class="col-12">
+				@include('layouts.follow_profile_button')
 				<h1 class="font-weight-bold"><font color="black">{{$user->profile->name}}</font></h1>
 				<h1 class="font-weight-bold"><font color="black">{{$user->profile->description}}</font></h1>
 				@if(Auth::guard('profile')->user()->id == $user->profile->id)

@@ -55,10 +55,6 @@ class PostController extends Controller
           'posted_by_profile_id' => $profile->id,
       ));
 
-      Log::info('************************************************************');
-      Log::info($post);
-      Log::info('************************************************************');
-
       $notificationController = new NotificationController();
       $notificationController->storePost($post);
 
