@@ -67,6 +67,9 @@ class CommentController extends Controller
         }
         Log::info('Microservice body');
         Log::info($api_response->getBody());
+
+        $notificationController = new NotificationController();
+        $notificationController->storeComment(Post::find($request->post_id));
       }
       catch (\GuzzleHttp\Exception\RequestException $e) {
         Session::flash("store_comment_error_".$request->unique_id, "unable to post comment at the moment.\r\nplease try again later...");

@@ -66,25 +66,25 @@ class UserController extends ProfileController
 
 		# Create new user
 		Log::info('Creating new user!');
-        $user = new User;
-        $user->email = $request->email;
-        $user->age = $request->age;
-        $user->profile_id = $profile->id;
-        $user->save();
+		$user = new User;
+		$user->email = $request->email;
+		$user->age = $request->age;
+		$user->profile_id = $profile->id;
+		$user->save();
 
-        Log::info('Created user, trying to login!');
+		Log::info('Created user, trying to login!');
 
-        $credentials = array('name' => $request->name, 'password' => $request->password);
+		$credentials = array('name' => $request->name, 'password' => $request->password);
 
-        if (Auth::guard('profile')->attempt($credentials)) {
+		if (Auth::guard('profile')->attempt($credentials)) {
 			Log::info('Authentication passed!');
 			// Authentication passed
 			return redirect('user/');
-        } else {
-			Log::info('Authentication failed!');
-            Session::flash ('message', 'Invalid Credentials , Please try again.');
-            return redirect('/');
-        }
+		} else {
+		Log::info('Authentication failed!');
+		    Session::flash ('message', 'Invalid Credentials , Please try again.');
+		    return redirect('/');
+		}
 
 	}
 

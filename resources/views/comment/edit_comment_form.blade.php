@@ -1,13 +1,10 @@
 <?php // Give the form a unique id ?>
-@if(Session::has('unique_id'))
-{{Session::put('unique_id', Session::get('unique_id') + 1)}}
-@else
-{{Session::put('unique_id', 1)}}
-@endif
+<?php Session::put('unique_id', Session::get('unique_id') + 1) ?>
 @if(Session::has("update_comment_error_".Session::get('unique_id')))
 <?php $update_comment_error_id = Session::get("update_comment_error_".Session::get('unique_id')) ?>
 <div class="alert alert-danger"><font color = "red"><?php echo nl2br($update_comment_error_id);?></font></div>
-{{Session::forget($update_comment_error_id)}}
+<?php Session::forget($update_comment_error_id) ?>
+
 @if(count($errors->updateCommentErrors)>0)
 <div class="alert alert-danger">
 		@foreach($errors->updateCommentErrors->all() as $error)

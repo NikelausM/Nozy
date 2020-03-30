@@ -13,7 +13,7 @@
 		  <label for="inputName">Subject</label>
 				<input type="name" class="form-control" name="subject" id="subject" placeholder="{{$post->subject}}" value="{{$post->subject}}">
 		  <label for="inputEmail">Body</label>
-				<input type="description" class="form-control" name="body" id="describodyption" placeholder="{{$post->body}}", value="{{$post->body}}">
+				<input type="description" class="form-control" name="body" id="body" placeholder="{{$post->body}}", value="{{$post->body}}">
 		  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Save post</button>
 		  {{csrf_field()}}
 	  </div>

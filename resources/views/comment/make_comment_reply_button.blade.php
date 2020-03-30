@@ -51,7 +51,7 @@ input[type=submit]:hover {
 <body>
 <div class="row" style="padding: 10px">
 <?php $user_posting_comment = \App\User::where('profile_id', Auth::guard('profile')->user()->id)->first();?>
-  <h2>Post a comment?</h2>
+  <h4>Reply with comment?</h4>
   <div class="container">
     <?php // Give the form a unique id ?>
     <?php Session::put('unique_id', Session::get('unique_id') + 1)?>

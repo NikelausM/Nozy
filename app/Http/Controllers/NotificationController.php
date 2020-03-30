@@ -49,10 +49,9 @@ class NotificationController extends Controller
     // Create notifications for each follower
     foreach($post->posted_on_profile->followings as $following)
     {
-      Log::info('following: '.$following);
       // Create notification
       $notification = new Notification();
-      $notification->following_id = $following->followingable_id;
+      $notification->following_id = $following->id;
       $notification->follower_id = $following->follower_id;
       $notification->message = $post->posted_on_profile->name." has a new post on their profile!";
       $notification->save();
@@ -62,21 +61,19 @@ class NotificationController extends Controller
   // Create notification for each class following post made by profile
   public function storePostedByProfile(Post $post)
   {
-    Log::info('posted by: '.$post->posted_by_profile);
     // Create notifications for each follower
     foreach($post->posted_by_profile->followings as $following)
     {
-      Log::info('following: '.$following);
       // Create notification
       $notification = new Notification();
-      $notification->following_id = $following->followingable_id;
+      $notification->following_id = $following->id;
       $notification->follower_id = $following->follower_id;
       $notification->message = $post->posted_by_profile->name." made a new post on the profile of ".$post->posted_on_profile->name."!";
       $notification->save();
     }
   }
 
-  // assuming you only can like or dislike posts (and not comments)
+  // Store notification for rating of post
   public function storeRating(LikeDislike $likedislike)
   {
     Log::info('Trying to create notification for post like or dislike');
@@ -84,16 +81,36 @@ class NotificationController extends Controller
     // Create notifications for each follower
     foreach($likedislike->post->followings as $following)
     {
-      Log::info('following: '.$following);
       // Create notification
       $notification = new Notification();
-      $notification->following_id = $following->followingable_id;
+      $notification->following_id = $following->id;
       $notification->follower_id = $following->follower_id;
       $notification->message = "The post '".$likedislike->post->subject."' was rated by ".$likedislike->profile->name."!";
       $notification->save();
     }
   }
-  
+
+  // Store notification for comment in post (of post or comment in post)
+  public function storeComment(Post $post)
+  {
+    Log::info('Trying to create notification for comment on post page');
+
+    // Retrieve commenter profiles
+    $profile = Auth::guard('profile')->user();
+
+    // Create notifications for each follower
+    foreach($post->followings as $following)
+    {
+      Log::info('following: '.$following);
+      // Create notification
+      $notification = new Notification();
+      $notification->following_id = $following->id;
+      $notification->follower_id = $following->follower_id;
+      $notification->message = $profile->name." commented on the post '".$post->subject."'!";
+      $notification->save();
+    }
+  }
+
   /**
    * Remove the specified resource from storage.
    *
