@@ -11,16 +11,16 @@
 	<form action={{route('user.update', $user)}} method="post">
 	  <div class="form-group">
 		  <label for="inputName">Name</label>
-				<input type="name" class="form-control" name="name" id="name" placeholder="{{$user->profile->name}}" value="{{$user->profile->name}}">
+				<input type="name" class="form-control" name="name" id="name" placeholder="{{$user->profile->name}}" value="{{$user->profile->name}}" required>
 		  <label for="inputPassword">Password</label>
-				<input type="password" class="form-control" name="password" id="password" placeholder="{{$user->profile->password}}", value="{{$user->profile->password}}">
+				<input class="form-control" type="password" name="password" id="password" placeholder="{{$user->profile->password}}", value="{{$user->profile->password}}" required>
 		  <label for="inputEmail">Description</label>
-				<input type="description" class="form-control" name="description" id="description" placeholder="{{$user->profile->description}}", value="{{$user->profile->description}}">
+				<input type="description" class="form-control" name="description" id="description" placeholder="{{$user->profile->description}}", value="{{$user->profile->description}}" required>
 		  <label for="inputEmail">Email</label>
-				<input type="email" class="form-control" name="email" id="email" placeholder="{{$user->email}}", value="{{$user->email}}">
+				<input type="email" class="form-control" name="email" id="email" placeholder="{{$user->email}}", value="{{$user->email}}" required>
 		  <label for="inputAge">Age</label>
-				<input type="age" class="form-control" name="age" id="age" placeholder="{{$user->age}}", value="{{$user->age}}">
-		  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Save profile info</button>
+				<input type="age" class="form-control" name="age" id="age" placeholder="{{$user->age}}", value="{{$user->age}}" required>
+		  <button style="margin-top: 5px;" class="btn btn-primary" type="submit" required>Save profile info</button>
 		  {{csrf_field()}}
 	  </div>
 	</form>

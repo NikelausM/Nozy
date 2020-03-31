@@ -2,7 +2,7 @@
 @if(Session::has("unfollowing_profile_error"))
 <?php $unfollowing_profile_error = Session::get("unfollowing_profile_error") ?>
 <div class="alert alert-danger"><font color = "red"><?php echo nl2br($unfollowing_profile_error);?></font></div>
-{{Session::forget($unfollowing_profile_error)}}
+<?php Session::forget($unfollowing_profile_error) ?>
 @endif
 <div class="container form-group">
 	<form action={{route('following.destroyFollowingProfile', $profile)}} method="post">

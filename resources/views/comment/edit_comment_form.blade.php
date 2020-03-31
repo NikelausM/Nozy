@@ -39,12 +39,12 @@
       </div>
       <div class="row-1">
         <div class="col-75">
-          <input class="form-control" type="text" id="body" name="body" placeholder="Enter comment...">
+          <input class="form-control" type="text" id="body" name="body" placeholder="Enter comment..." required>
         </div>
       </div>
       <div class="row-1">
         <div class="col-75" style="display: none;">
-          <input class="form-control" type="number" id="parent_id" name="parent_id" value={{$comment->parent_id}}>
+          <input class="form-control" type="number" id="parent_id" name="parent_id" value={{$comment->parent_id}} required>
         </div>
 	    </div>
 		  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Save comment</button>

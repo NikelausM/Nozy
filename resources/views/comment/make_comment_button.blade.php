@@ -86,12 +86,12 @@ input[type=submit]:hover {
       </div>
       <div class="row-1">
         <div class="col-75">
-          <input type="text" id="body" name="body" placeholder="Enter comment...">
+          <input type="text" id="body" name="body" placeholder="Enter comment..." required>
         </div>
       </div>
       <div class="row-1">
         <div class="col-75" style="display: none;">
-          <input type="number" id="parent_id" name="parent_id" value={{$parent_id}}>
+          <input type="number" id="parent_id" name="parent_id" value={{$parent_id}} required>
         </div>
       </div>
       <div class="row-1">

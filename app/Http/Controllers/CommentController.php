@@ -53,7 +53,6 @@ class CommentController extends Controller
         // If required filed aren'tflled
         if ($validator->fails()) {
           Session::flash("store_comment_error_".$request->unique_id, "unable to post comment at the moment.\r\nplease try again...");
-          Session::put('unique_id', 0); // reset unique id
           return redirect()->back()->withErrors($validator,'storeCommentErrors');
         }
         $comment = array('PostId' => $request->post_id, 'UserId' => $request->user_id, 'Body' => $request->body, 'ParentId' => $request->parent_id);
@@ -74,7 +73,6 @@ class CommentController extends Controller
       catch (\GuzzleHttp\Exception\RequestException $e) {
         Session::flash("store_comment_error_".$request->unique_id, "unable to post comment at the moment.\r\nplease try again later...");
       }
-      Session::put('unique_id', 0); // reset unique id
       return redirect()->back();
     }
 
@@ -135,7 +133,6 @@ class CommentController extends Controller
         // If required filed aren'tflled
         if ($validator->fails()) {
           Session::flash("update_comment_error_".$request->unique_id, "unable to update comment at the moment.\r\nplease try again...");
-          Session::put('unique_id', 0); // reset unique id
           return redirect()->back()->withErrors($validator,'updateCommentErrors');
         }
         $comment = array('CommentId' =>$request->comment_id, 'PostId' => $request->post_id, 'UserId' => $request->user_id, 'Body' => $request->body, 'ParentId' => $request->parent_id);
@@ -156,7 +153,6 @@ class CommentController extends Controller
       catch (\GuzzleHttp\Exception\RequestException $e) {
         Session::flash("update_comment_error_".$request->unique_id, "unable to update comment at the moment.\r\nplease try again later...");
       }
-      Session::put('unique_id', 0); // reset unique id
       return redirect()->back();
     }
 
@@ -195,7 +191,6 @@ class CommentController extends Controller
       if (array_key_exists("error", $api_reponse_body) && $api_reponse_body->error) {
         Session::flash("destroy_comment_error_".$request->unique_id, "unable to delete comment at the moment.\r\nplease try again later...");
       }
-      Session::put('unique_id', 0); // reset unique id
       return redirect()->back();
     }
 }

@@ -16,17 +16,16 @@
 	  <div class="row">
 		<div class="col">
 			<label for="inputName">Name</label>
-			<input type="name" class="form-control" name="name" id="name" placeholder="Enter Name">
+			<input type="name" class="form-control" name="name" id="name" placeholder="Enter Name" required>
 		</div>
 	  </div>
-	  <div class="row"> 
+	  <div class="row">
 		<div class="col">
 			<label for="inputPassword">Password</label>
-			<input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+			<input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
 		</div>
 	  </div>
 	  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Log In</button>
 	  {{csrf_field()}}
   </div>
 </form>
-

@@ -16,31 +16,31 @@
 	  <div class="row">
 		<div class="col">
 			<label for="name">Name</label>
-			<input class="form-control" name="name" id="name" placeholder="Enter Name">
+			<input class="form-control" name="name" id="name" placeholder="Enter Name" required>
 		</div>
 	  </div>
 	  <div class="row">
 		<div class="col">
 			<label for="inputPassword">Password</label>
-			<input class="form-control" name="password" id="password" placeholder="Enter password">
+			<input class="form-control" type="password" name="password" id="password" placeholder="Enter password" required>
 		</div>
 	  </div>
 	  <div class="row">
 		<div class="col">
 			<label for="description">Personal Description</label>
-			<input class="form-control" name="description" id="description" placeholder="Enter Personal Description">
+			<input class="form-control" name="description" id="description" placeholder="Enter Personal Description" required>
 		</div>
 	  </div>
 	  <div class="row">
 		<div class="col">
 			<label for="inputEmail">Email address</label>
-			<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+			<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
 		</div>
 	  </div>
 	  <div class="row">
 		<div class="col">
 			<label for="age">Age</label>
-			<input class="form-control" name="age" id="age" placeholder="Enter Age">
+			<input class="form-control" name="age" id="age" placeholder="Enter Age" required>
 		</div>
 	  </div>
 	  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Register</button>

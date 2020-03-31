@@ -2,7 +2,7 @@
 @if(Session::has("following_error"))
 <?php $following_error = Session::get("following_error") ?>
 <div class="alert alert-danger"><font color = "red"><?php echo nl2br($following_error);?></font></div>
-{{Session::forget($following_error)}}
+<?php Session::forget($following_error) ?>
 @endif
 <?php //Follow followingable class ?>
 <div class="container form-group">

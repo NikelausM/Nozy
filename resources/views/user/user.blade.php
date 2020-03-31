@@ -15,16 +15,16 @@
 				@endif
 				<h2 class="font-weight-bold"><font color="black">Communities Managed</font></h2>
 				@foreach($user->communities as $community)
-				@include('layouts.community_box')
+				@include('community.community_box')
 				@endforeach
 				@if(Auth::guard('profile')->user()->id == $user->profile->id)
-				@include('layouts.makeCommunity_button')
+				@include('community.makeCommunity_button')
 				@endif
 				<h2 class="font-weight-bold"><font color="black">Posts</font></h2>
 				@foreach($user->profile->posts->sortByDesc('updated_at') as $post)
-				@include('layouts.post_box')
+				@include('post.post_box')
 				@endforeach
-				@include('layouts.makePost_button')
+				@include('post.makePost_button')
 				<br></br>
 				<br></br>
 			</div>
