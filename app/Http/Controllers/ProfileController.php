@@ -8,9 +8,14 @@ use Illuminate\Support\Facades\DB;
 use App\Profile;
 use Session;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    protected $storeValidator;
+    protected $storeErrors = "storeProfileErrors";
+    protected $updateValidator;
+    protected $updateErrors = "updateProfileErrors";
 
     /**
      * Display a listing of the resource.
@@ -42,21 +47,32 @@ class ProfileController extends Controller
 	*/
     public function store(Request $request)
     {
-		Log::info('Validating profile registration info!');
-		$this->validate($request, [
+      Log::info('Request all: '.json_encode($request->all()));
+		Log::info('Trying to store profile');
+		$validator = Validator::make($request->all(), [
             'name' => 'required|min:3|unique:profile',
             'password' => 'required|min:3|',
             'description' => 'required|min:3'
-        ]);
+    ]);
 
-        Log::info('Creating new profile!');
-        $profile = new Profile;
-        $profile->name = $request->name;
-        $profile->password = $request->password;
-        $profile->description = $request->description;
-        $profile->save();
+    // If required filed aren'tflled
+    Log::info("Checking if profile store failed");
+    if ($validator->fails()) {
+      Log::info("Failed to store profile");
+      Session::flash("store_profile_error_".$request->unique_id, "unable to create profile at the moment\r\nplease try again...");
+      Log::info("store_profile_error_id: ".$request->unique_id);
+      $this->storeValidator = $validator;
+      return $this;
+    }
 
-        return $profile;
+    Log::info('Creating new profile!');
+    $profile = new Profile;
+    $profile->name = $request->name;
+    $profile->password = $request->password;
+    $profile->description = $request->description;
+    $profile->save();
+
+    return $profile;
     }
 
     /**
@@ -94,12 +110,22 @@ class ProfileController extends Controller
 		$profile = \App\Profile::where('id', $id)->first();
 
 		Log::info('Validating profile update info!');
-    $validatedData = $this->validate($request, [
+		$validator = Validator::make($request->all(), [
         //'name' => 'required|min:3|unique:profile,name',
         'name' => 'required|min:3|unique:profile,id,'.$id,
         'password' => 'required|min:3',
         'description' => 'required|min:3',
     ]);
+
+    // If required filed aren'tflled
+    Log::info("Checking if profile update failed");
+    if ($validator->fails()) {
+      Log::info("Failed to update profile");
+      Session::flash("update_profile_error_".$request->unique_id, "unable to update profile at the moment\r\nplease try again...");
+      Log::info("update_profile_error_: ".$request->unique_id);
+      $this->updateValidator = $validator;
+      return $this;
+    }
 
 		// Updating profile
     $profile->name = $request->name;

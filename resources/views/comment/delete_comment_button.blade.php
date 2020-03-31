@@ -19,6 +19,6 @@
 			<input type="number" id="unique_id" name="unique_id" value={{Session::get('unique_id')}}>
 		</div>
 	</div>
-	<button style="margin-top: 5px;" class="btn btn-primary" type="submit">destroy comment</button>
+	<button style="margin-top: 5px;" class="btn btn-primary" type="submit">Delete comment</button>
 	{{csrf_field()}}
 </form>

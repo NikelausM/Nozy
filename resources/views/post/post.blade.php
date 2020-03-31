@@ -18,10 +18,10 @@
 				@include('post.delete_post_button')<!-- I want this to be to the right of edit_post_form-->
 				@endif
 				<h2> Comments </h2>
-				@if(Illuminate\Support\Facades\Session::has("show_comments_error"))
-				<div class="alert alert-danger"><?php echo nl2br(Illuminate\Support\Facades\Session::get("show_comments_error"));?></div>
-				@elseif(Illuminate\Support\Facades\Session::has("no_comments_message"))
-				<div class="alert alert-info"><?php echo nl2br(Illuminate\Support\Facades\Session::get("no_comments_message"));?></div>
+				@if(Session::has("show_comments_error"))
+				<div class="alert alert-danger"><?php echo nl2br(Session::get("show_comments_error"));?></div>
+				@elseif(Session::has("no_comments_message"))
+				<div class="alert alert-info"><?php echo nl2br(Session::get("no_comments_message"));?></div>
 				@else
 				@foreach($comments as $comment)
 				@include('comment.comment_box')

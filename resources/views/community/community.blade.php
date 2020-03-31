@@ -11,15 +11,15 @@
 				<h1 class="font-weight-bold">Welcome to {{$community->profile->name}}</h1>
 				<h2 class="font-weight-bold">Description: {{$community->profile->description}}</h2>
 				@if(Auth::guard('profile')->user()->id == $community->manager_user_id)
-				<div style="float:left"> @include('community.edit_community_profile_form')</div><!-- this messes up page when it expands to show edit menu-->
-				<div style="float:left;margin-left:5px">@include('community.delete_community_button')</div>
+				@include('community.edit_community_profile_form')
+				@include('community.delete_community_button')
 				@endif
 				<br><br>
 				<h2 class="font-weight-bold">Posts</h2>
 				@foreach($community->profile->posts->sortByDesc('updated_at') as $post)
-				@include('layouts.post_box')
+				@include('post.post_box')
 				@endforeach
-				@include('layouts.makePost_button')
+				@include('post.makePost_button')
 			</div>
 		</div>
 	</div>

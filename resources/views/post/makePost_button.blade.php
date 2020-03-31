@@ -57,12 +57,12 @@ input[type=submit]:hover {
           <input type="number" id="post_profile_id" name="post_profile_id" value={{$profile->id}}>
         </div>
         <div class="col-75">
-          <input type="text" id="subject" name="subject" placeholder="Subject">
+          <input type="text" id="subject" name="subject" placeholder="Subject" required>
         </div>
       </div>
       <div class="row-1">
         <div class="col-75">
-          <textarea id="body" name="body" placeholder="Write something.." style="height:200px"></textarea>
+          <textarea id="body" name="body" placeholder="Write something.." style="height:200px" required></textarea>
         </div>
       </div>
       <div class="row-1">

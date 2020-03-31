@@ -59,9 +59,9 @@ class UserController extends ProfileController
 		# Validate form
 		Log::info('Validating user registration info!');
 		$this->validate($request, [
-			'email' => 'email|required',
+			'email' => 'required|email',
 			'password' => 'required|min:3',
-			'age' => 'required',
+			'age' => 'required|numeric',
 		]);
 
 		# Create new user
@@ -80,7 +80,8 @@ class UserController extends ProfileController
 			Log::info('Authentication passed!');
 			// Authentication passed
 			return redirect('user/');
-		} else {
+		}
+		else {
 		Log::info('Authentication failed!');
 		    Session::flash ('message', 'Invalid Credentials , Please try again.');
 		    return redirect('/');
@@ -114,14 +115,14 @@ class UserController extends ProfileController
 		# Validate user update
 		Log::info('Validating user update info!');
 		$validatedData = $this->validate($request, [
-            'email' => 'required',
-            'age' => 'required',
-        ]);
+            'email' => 'required|email',
+            'age' => 'required|numeric',
+    ]);
 
-        // Update other attributes
-        $user->email = $request->email;
-        $user->age = $request->age;
-        $user->save();
+    // Update other attributes
+    $user->email = $request->email;
+    $user->age = $request->age;
+    $user->save();
 
 
 		return redirect()->route('user.show', ['user' => $user]);
