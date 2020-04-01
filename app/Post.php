@@ -45,4 +45,5 @@ class Post extends Model
 	public function followings() {
 		return $this->morphMany('App\Following', 'followingable');
 	}
+
 }

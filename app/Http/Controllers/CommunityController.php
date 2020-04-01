@@ -109,7 +109,7 @@ class CommunityController extends ProfileController
         //
     }
 
-    private function storeUpdate(Request $request, $id) {
+    private function updateSuper(Request $request, $id) {
       Log::info('Calling Profile::update()!');
       $profile = new ProfileController();
       $request->unique_id--;
@@ -134,8 +134,8 @@ class CommunityController extends ProfileController
   		//Log::info('Calling Profile::update()!');
   		//parent::update($request, $community->profile->id);
 
-      # Call parent store function (basically a model constructor)
-      $profile = $this->storeUpdate($request, $community->profile->id);
+      # Call parent update function (basically a model constructor)
+      $profile = $this->updateSuper($request, $community->profile->id);
       if ($profile instanceOf ProfileController) {
         Log::info("updateValidator: ".$profile->updateErrors);
         return redirect()->back()->withErrors($profile->updateValidator, $profile->updateErrors);
@@ -149,6 +149,13 @@ class CommunityController extends ProfileController
 		return redirect()->back();
 	}
 */
+
+    private function deleteSuper($id) {
+      Log::info('Calling Profile::destroy()!');
+      $profile = new ProfileController();
+      $profile->destroy($id);
+      return $profile;
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -158,6 +165,10 @@ class CommunityController extends ProfileController
     public function destroy($id)
     {
         $community = \App\Community::find($id);
+
+        # Call parent delete function (basically a model constructor)
+        $profile = $this->deleteSuper($community->profile->id);
+
         $community->profile->delete();
         $user = \App\User::where('profile_id', Auth::guard('profile')->user()->id)->first();
         return redirect()->route('user.show', $user);

@@ -84,10 +84,21 @@ class CommentController extends Controller
      */
     public function show($id)
     {
+      Log::info("Tring to show comment");
       try {
         $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
         $api_response = $client->request('GET','/api/comment/id/'.$id);
         $comment = json_decode($api_response->getBody());
+
+        Log::info('Microservice status code');
+        Log::info($api_response->getStatusCode());
+        Log::info('Microservice headers');
+        foreach ($api_response->getHeaders() as $name => $values) {
+            Log::info($name . ': ' . implode(', ', $values) . "\r\n");
+        }
+        Log::info('Microservice body');
+        Log::info($api_response->getBody());
+        $api_reponse_body = json_decode($api_response->getBody());
       }
       catch (\GuzzleHttp\Exception\RequestException $e) {
         $comment = collect(json_decode(json_encode(array(array("message" => "no comment available at the moment.\r\nplease try again later...",
@@ -192,5 +203,41 @@ class CommentController extends Controller
         Session::flash("destroy_comment_error_".$request->unique_id, "unable to delete comment at the moment.\r\nplease try again later...");
       }
       return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage with only id.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyWithOnlyId($id)
+    {
+      try {
+        Log::info('Trying to destroy comment with only id');
+        $comment = array('CommentId' => $id);
+        $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+        $api_response = $client->request('POST','/api/comment/delete',[ 'form_params' => $comment]);
+        Log::info('Microservice status code');
+        Log::info($api_response->getStatusCode());
+        Log::info('Microservice headers');
+        foreach ($api_response->getHeaders() as $name => $values) {
+            Log::info($name . ': ' . implode(', ', $values) . "\r\n");
+        }
+        Log::info('Microservice body');
+        Log::info($api_response->getBody());
+
+        // Prioritize deletion
+        $commentController = new CommentController();
+        $api_response = $commentController->show($id);
+      }
+      // Catch request related errors
+      catch (\GuzzleHttp\Exception\RequestException $e) {
+        Log::info("\GuzzleHttp\Exception\RequestException error found when deleting comment with only id");
+      }
+      // Catch other PHP errors
+      catch (\Exception $e) {
+        Log::info("PHP error found when deleting comment with only id".$e->getMessage());
+      }
     }
 }
