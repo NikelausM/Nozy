@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
-<link rel="stylesheet" href="{{ URL::asset('css/G15.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/g15.css') }}">
 
 <?php Session::put('unique_id', 1); // Reset unique id used by tags?>
 <!-- Styles -->
