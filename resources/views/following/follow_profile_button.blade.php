@@ -5,6 +5,7 @@
 <?php Session::forget($following_error) ?>
 @endif
 <?php //Follow followingable class ?>
+<p style="float:right">Get notifications about new posts</p>
 <div class="container form-group">
   <form action={{route('following.store')}} method = "post">
     <div class="row-1">
