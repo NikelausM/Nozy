@@ -6,6 +6,15 @@
 </div>
 <div style="overflow: scroll;max-height: 500px;">
 @foreach(Auth::guard('profile')->user()->notifications as $notification)
-	<p style="text-align: center">{{$notification->message}}</p>
+<div class="container">
+	<div class="row">
+		<div class="col justify-content-md-center">
+			<p>{{$notification->message}}</p>
+		</div>
+		<div class="col justify-content-md-center">
+			@include('notification.delete_notification_button')
+		</div>
+	</div>
+</div>
 @endforeach
 </div>

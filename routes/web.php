@@ -39,7 +39,9 @@ Route::prefix('notifications/')->middleware('auth:profile')->group(function(){
 	Route::post('/comment', ['uses' => 'NotificationController@storeComment', 'as' => 'notifications.storeComment']);
 	Route::post('/rate', ['uses' => 'NotificationController@storeRate', 'as' => 'notifications.storeRate']);
 	Route::post('/following', ['uses' => 'NotificationController@storeFollowing', 'as' => 'notifications.storeFollowing']);
-	Route::delete('/delete', ['uses' => 'NotificationController@deleteNotification', 'as' => 'notifications.destroy']);
+	Route::prefix('{notification}/')->group(function(){
+		Route::delete('/delete', ['uses' => 'NotificationController@destroy', 'as' => 'notifications.destroy']);
+	});
 });
 
 

@@ -136,9 +136,10 @@ class NotificationController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function deleteNotification($id)
+  public function destroy($id)
   {
     Log::info('I am trying to delete a notification');
-    Notification::find($id)->first()->delete();
+    Notification::find($id)->delete();
+    return redirect()->back();
   }
 }

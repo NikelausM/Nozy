@@ -23,7 +23,7 @@ class PostTableSeeder extends Seeder
         \App\Post::create(array(
             'subject' => 'Who\'s excited for Elden Ring?',
             'rating' => 1,
-            'body' => 'I think it\'s going to be amazing. I just hope that they make the lore as rich as the Dark Souls games.',
+            'body' => "I think it's going to be amazing. I just hope that they make the lore as rich as the Dark Souls games.",
             'posted_on_profile_id' => 4,
             'posted_by_profile_id' => 1,
         ));
