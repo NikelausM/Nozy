@@ -10,13 +10,18 @@
 				@include('following.unfollow_profile_button')
 				<h1 class="font-weight-bold">Welcome to {{$community->profile->name}}</h1>
 				<h2 class="font-weight-bold">Description: {{$community->profile->description}}</h2>
-				@if(Auth::guard('profile')->user()->id == $community->manager_user_id)
+				@if(Auth::guard('profile')->user()->id == $community->user->profile->id)
 				@include('community.edit_community_profile_form')
 				@include('community.delete_community_button')
 				@endif
-				<br><br>
 				<h2 class="font-weight-bold">Posts</h2>
-				@foreach($community->profile->posts->sortByDesc('updated_at') as $post)
+				<?php $posts = $community->profile->posts ?>
+				@if($posts->isEmpty())
+				<div class="alert alert-info" role="alert">
+					No posts exist right now
+				</div>
+				@endif
+				@foreach($posts->sortByDesc('updated_at') as $post)
 				@include('post.post_box')
 				@endforeach
 				@include('post.makePost_button')

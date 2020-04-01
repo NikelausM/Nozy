@@ -10,7 +10,6 @@
 				<div class="form-group">
  					<input type="text" name="search" id="search" class="form-control" placeholder="Search communities, users, posts..." />
 				</div>
-				<h1><span id="testid"></span></h1>
         <h2 class="font-weight-bold">Communities</h2>
 				<div id='community_thumbnails'></div>
 				<h2 class="font-weight-bold">Users</h2>
@@ -37,11 +36,9 @@ $(document).ready(function(){
    dataType:'json',
    success:function(data)
    {
-		 $('#testid').html('success');
 		 $('#community_thumbnails').html(data.community_thumbnails);
 		 $('#user_thumbnails').html(data.user_thumbnails);
 		 $('#post_thumbnails').html(data.post_thumbnails);
-		 //window.location.reload();
    }
   })
  }

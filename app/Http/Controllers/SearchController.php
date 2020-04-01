@@ -64,19 +64,25 @@ class SearchController extends Controller
       //$community_thumbnails .= '<p>new community</p>';
       $community_thumbnails .= "
       <div class='row' style='padding: 10px'>
-      <div class='col-sm-6 col-md-4'>
-      <div class='thumbnail shadow'>
-      <h3><font color='black'>".$community->profile->name."</font></h3>
-      <div class='caption'>
-      <p><font color='black'>".$community->profile->description."</font></p>
-      <div>
-      <form method='GET' action=".route('community.show',$community->id)." accept-charset='UTF-8'>
-      <button type='submit' class='btn btn-primary'>Go to community</button>
-      </form>
+        <div class='col-sm-6 col-md-4'>
+          <div class='thumbnail shadow'>
+            <h3><font color='black'>".$community->profile->name."</font></h3>
+            <div class='caption'>
+              <p><font color='black'>".$community->profile->description."</font></p>
+              <div>
+                <form method='GET' action=".route('community.show',$community->id)." accept-charset='UTF-8'>
+                <button type='submit' class='btn btn-primary'>Go to community</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
-      </div>
+      ";
+    }
+    if ($communities->isEmpty()) {
+      $community_thumbnails.="<div class='alert alert-info' role='alert'>
+        No matching communities...
       </div>
       ";
     }
@@ -84,19 +90,25 @@ class SearchController extends Controller
     foreach($users as $user) {
       $user_thumbnails .= "
       <div class='row' style='padding: 10px'>
-      <div class='col-sm-6 col-md-4'>
-      <div class='thumbnail shadow'>
-      <h3><font color='black'>".$user->profile->name."</font></h3>
-      <div class='caption'>
-      <p><font color='black'>".$user->profile->description."</font></p>
-      <div>
-      <form method='GET' action=".route('user.show',$user->id)." accept-charset='UTF-8'>
-      <button type='submit' class='btn btn-primary'>Go to user</button>
-      </form>
+        <div class='col-sm-6 col-md-4'>
+          <div class='thumbnail shadow'>
+            <h3><font color='black'>".$user->profile->name."</font></h3>
+            <div class='caption'>
+              <p><font color='black'>".$user->profile->description."</font></p>
+              <div>
+                <form method='GET' action=".route('user.show',$user->id)." accept-charset='UTF-8'>
+                <button type='submit' class='btn btn-primary'>Go to user</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
-      </div>
+      ";
+    }
+    if ($users->isEmpty()) {
+      $user_thumbnails.="<div class='alert alert-info' role='alert'>
+        No matching users...
       </div>
       ";
     }
@@ -104,19 +116,25 @@ class SearchController extends Controller
     foreach($posts as $post) {
       $post_thumbnails .= "
       <div class='row' style='padding: 10px'>
-      <div class='col-sm-6 col-md-4'>
-      <div class='thumbnail shadow'>
-      <h3><font color='black'>".$post->subject."</font></h3>
-      <div class='caption'>
-      <p><font color='black'>".$post->body."</font></p>
-      <div>
-      <form method='GET' action=".route('post.show',$post->id)." accept-charset='UTF-8'>
-      <button type='submit' class='btn btn-primary'>Go to post</button>
-      </form>
+        <div class='col-sm-6 col-md-4'>
+          <div class='thumbnail shadow'>
+            <h3><font color='black'>".$post->subject."</font></h3>
+            <div class='caption'>
+              <p><font color='black'>".$post->body."</font></p>
+              <div>
+                <form method='GET' action=".route('post.show',$post->id)." accept-charset='UTF-8'>
+                <button type='submit' class='btn btn-primary'>Go to post</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
-      </div>
+      ";
+    }
+    if ($posts->isEmpty()) {
+      $post_thumbnails.="<div class='alert alert-info' role='alert'>
+        No matching posts...
       </div>
       ";
     }

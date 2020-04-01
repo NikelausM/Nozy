@@ -14,6 +14,11 @@
 				@include('user.edit_user_profile_form')
 				@endif
 				<h2 class="font-weight-bold"><font color="black">Communities Managed</font></h2>
+				@if($user->communities->isEmpty())
+				<div class="alert alert-info" role="alert">
+					No communities currently managed by profile
+				</div>
+				@endif
 				@foreach($user->communities as $community)
 				@include('community.community_box')
 				@endforeach
@@ -21,7 +26,13 @@
 				@include('community.makeCommunity_button')
 				@endif
 				<h2 class="font-weight-bold"><font color="black">Posts</font></h2>
-				@foreach($user->profile->posts->sortByDesc('updated_at') as $post)
+				<?php $posts = $user->profile->posts ?>
+				@if($posts->isEmpty())
+				<div class="alert alert-info" role="alert">
+					No posts exist right now...
+				</div>
+				@endif
+				@foreach($posts->sortByDesc('updated_at') as $post)
 				@include('post.post_box')
 				@endforeach
 				@include('post.makePost_button')

@@ -1,7 +1,7 @@
 <?php $user_posting_comment = \App\User::where('id', $comment->user_id)->first(); ?>
 <div class="row" style="padding: 25px">
 		<div class="thumbnail shadow">
-			<h3><font color="black">{{$user_posting_comment->profile->name}}</font></h3>
+			<h3><font color="black">Comment by {{$user_posting_comment->profile->name}}</font></h3>
 			<div class="caption">
 				<p><font color="black">{{$comment->body}}</font></p>
 				<div>

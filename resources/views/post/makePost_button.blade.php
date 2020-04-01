@@ -51,7 +51,7 @@ input[type=submit]:hover {
 <body>
   <h2>Make a post?</h2>
   <div class="container">
-    <form action={{route('post.store')}} method="post"><!-- fill this in later nick-->
+    <form action={{route('post.store')}} method="post">
       <div class="row-1">
         <div class="col-75" style="display: none;">
           <input type="number" id="post_profile_id" name="post_profile_id" value={{$profile->id}}>

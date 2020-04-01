@@ -11,6 +11,7 @@
 |
 */
 
+// Home page accessible to anyone
 Route::get('/', [ 'uses' => 'IndexController@getIndex', 'as' => 'index']);
 
 // Search routes accessible to logged-in users

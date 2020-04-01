@@ -7,7 +7,6 @@
 				<div>
 					<form method="GET" action={{route('user.show', $user)}} accept-charset="UTF-8">
 					<button type="submit" class="btn btn-primary">Go to user</button>
-					<!--{{ csrf_field() }}-->
 					</form>
 				</div>
 			</div>
