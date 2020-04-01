@@ -10,49 +10,71 @@ use Session;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
+/**
+* Provides data fields and methods to manipulate a PHP data-type representing a Profile in a PHP application.
+* @author Nozy team
+*
+*/
 class ProfileController extends Controller
 {
-    protected $storeValidator;
-    protected $storeErrors = "storeProfileErrors";
-    protected $updateValidator;
-    protected $updateErrors = "updateProfileErrors";
+/**
+ * The validator for storing a Profile
+ * @var \Illuminate\Support\Facades\Validator
+ */
+  protected $storeValidator;
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+  /**
+   * The error message variable name for storing a Profile
+   * @var string
+   */
+  protected $storeErrors = "storeProfileErrors";
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+  /**
+   * The validator for updating a profile
+   * @var \Illuminate\Support\Facades\Validator
+   */
+  protected $updateValidator;
 
-    }
+  /**
+   * The error message variable name for updating a Profile
+   * @var string
+   */
+  protected $updateErrors = "updateProfileErrors";
 
-    /**
-     * Create a new profile instance
-     *
-     * @param Request $request
-     * @return Reponse
-     *
-     *
-	*/
-    public function store(Request $request)
-    {
-      Log::info('Request all: '.json_encode($request->all()));
-		Log::info('Trying to store profile');
-		$validator = Validator::make($request->all(), [
-            'name' => 'required|min:3|unique:profile',
-            'password' => 'required|min:3|',
-            'description' => 'required|min:3'
+  /**
+  * Display a listing of the resource.
+  *
+  * @return \Illuminate\Http\Response
+  */
+  public function index()
+  {
+    //
+  }
+
+  /**
+  * Show the form for creating a new resource.
+  *
+  * @return \Illuminate\Http\Response
+  */
+  public function create()
+  {
+
+  }
+
+  /**
+  * Store a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+  public function store(Request $request)
+  {
+    Log::info('Request all: '.json_encode($request->all()));
+    Log::info('Trying to store profile');
+    $validator = Validator::make($request->all(), [
+      'name' => 'required|min:3|unique:profile',
+      'password' => 'required|min:3|',
+      'description' => 'required|min:3'
     ]);
 
     // If required filed aren'tflled
@@ -73,48 +95,48 @@ class ProfileController extends Controller
     $profile->save();
 
     return $profile;
-    }
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function show($id)
+  {
 
-    }
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+  /**
+  * Show the form for editing the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function edit($id)
+  {
 
-    }
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $name
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-		{
-		// Getting current authorized profile
-		$profile = \App\Profile::where('id', $id)->first();
+  /**
+  * Update the specified resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @param  string  $name
+  * @return \Illuminate\Http\Response
+  */
+  public function update(Request $request, $id)
+  {
+    // Getting current authorized profile
+    $profile = \App\Profile::where('id', $id)->first();
 
-		Log::info('Validating profile update info!');
-		$validator = Validator::make($request->all(), [
-        //'name' => 'required|min:3|unique:profile,name',
-        'name' => 'required|min:3|unique:profile,id,'.$id,
-        'password' => 'required|min:3',
-        'description' => 'required|min:3',
+    Log::info('Validating profile update info!');
+    $validator = Validator::make($request->all(), [
+      //'name' => 'required|min:3|unique:profile,name',
+      'name' => 'required|min:3|unique:profile,id,'.$id,
+      'password' => 'required|min:3',
+      'description' => 'required|min:3',
     ]);
 
     // If required filed aren'tflled
@@ -127,26 +149,26 @@ class ProfileController extends Controller
       return $this;
     }
 
-		// Updating profile
+    // Updating profile
     $profile->name = $request->name;
     $profile->password = $request->password;
     $profile->description = $request->description;
     $profile->save();
-    }
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $profile = Profile::find($id);
-        $profileController = new PostController();
-        foreach($profile->posts as $post) {
-          $profileController->destroyPostComments($post);
-        }
-        $profile->delete();
+  /**
+  * Remove the specified resource from storage.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function destroy($id)
+  {
+    $profile = Profile::find($id);
+    $profileController = new PostController();
+    foreach($profile->posts as $post) {
+      $profileController->destroyPostComments($post);
     }
+    $profile->delete();
+  }
 }

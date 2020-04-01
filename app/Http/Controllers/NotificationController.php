@@ -13,15 +13,11 @@ use App\LikeDislike;
 use App\Following;
 use App\Notification;
 
-/*
-Notifications possible are:
-  - Posting on a user profile (user gets notified)
-  - Posting on a community profile (community owner (a user) gets notified)
-  - Profile is posted on (all followers of profile are notified)
-  - Post is rated (post owner gets notified)
-  - Commenting on a post (post owner gets notified)
+/**
+* Provides data fields and methods to manipulate a PHP data-type representing a Notification in a PHP application.
+* @author Nozy team
+*
 */
-
 class NotificationController extends Controller
 {
   /**
@@ -34,15 +30,23 @@ class NotificationController extends Controller
     return view('notifications.notifications', ['notifications' => $notifications]);
   }
 
-  // message will be like the page 'pagename' has a new post
-  // createPostNotification would have to call this function
-  // should make post_id nullable, in which case post_id here would be null
+  /**
+  * Store a newly created notification resource in storage.
+  *
+  * @param \App\Post $post
+  * @return \Illuminate\Http\Response
+  */
   public function storePost(Post $post) {
     $this->storePostedOnProfile($post);
     $this->storePostedByProfile($post);
   }
 
-  // Create notification for each class following post made on profile
+  /**
+  * Store a newly created notification resource for posts on followed profiles in storage.
+  *
+  * @param \App\Post $post
+  * @return \Illuminate\Http\Response
+  */
   public function storePostedOnProfile(Post $post)
   {
     Log::info('posted on: '.$post->posted_on_profile);
@@ -58,7 +62,12 @@ class NotificationController extends Controller
     }
   }
 
-  // Create notification for each class following post made by profile
+  /**
+  * Store a newly created notification resource for posts of followed profiles in storage.
+  *
+  * @param \App\Post $post
+  * @return \Illuminate\Http\Response
+  */
   public function storePostedByProfile(Post $post)
   {
     // Create notifications for each follower
@@ -73,7 +82,12 @@ class NotificationController extends Controller
     }
   }
 
-  // Store notification for rating of post
+  /**
+  * Store a newly created notification resource for likes in storage.
+  *
+  * @param \App\Likedislike likedislike
+  * @return \Illuminate\Http\Response
+  */
   public function storeRating(LikeDislike $likedislike)
   {
     Log::info('Trying to create notification for post like or dislike');
@@ -90,7 +104,12 @@ class NotificationController extends Controller
     }
   }
 
-  // Store notification for comment in post (of post or comment in post)
+  /**
+  * Store a newly created notification resource for comments in storage.
+  *
+  * @param \App\Post $post
+  * @return \Illuminate\Http\Response
+  */
   public function storeComment(Post $post)
   {
     Log::info('Trying to create notification for comment on post page');
@@ -120,5 +139,6 @@ class NotificationController extends Controller
   public function deleteNotification($id)
   {
     Log::info('I am trying to delete a notification');
+    Notification::find($id)->first()->delete();
   }
 }

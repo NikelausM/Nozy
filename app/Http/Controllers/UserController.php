@@ -2,55 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
-use Session;
-use Illuminate\Support\Facades\Log;
-
-use Illuminate\Support\Facades\Redirect;
 
 use App\User;
-
+use Auth;
+use Session;
+/**
+* Provides data fields and methods to manipulate a PHP data-type representing a User in a PHP application.
+* @author Nozy team
+*
+*/
 class UserController extends ProfileController
 {
 	/*
-	 * only authenticated user with account guard
-	 * can access this controller.
-	 */
+	* only authenticated user with profile guard
+	* can access this controller.
+	*/
 	public function __construct()
 	{
 		Log::info('UserController Constructor middleware being called!');
 		//$this->middleware('auth:profile')->except(['register']);
 	}
 
-	/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-     /*
-    public function index()
-    {
-		$user = \App\User::all();
-        return view('viewUsers', ['allUsers' => $user]);
-    }
-    * */
-
-    // Get user of current authenticated profile
-    public function index() {
+	// Get user of current authenticated profile
+	public function index() {
 		Log::info('Trying to UserController.index!');
 		//if (Auth::guard('profile')->check()) {
-			Log::info('Trying to get user!');
-			$profile = Auth::guard('profile')->user(); // Get Authenticated profile
-			$user = \App\User::where('profile_id', $profile->id)->first();
-			return redirect()->route('user.show', $user);
+		Log::info('Trying to get user!');
+		$profile = Auth::guard('profile')->user(); // Get Authenticated profile
+		$user = \App\User::where('profile_id', $profile->id)->first();
+		return redirect()->route('user.show', $user);
 		//}
 	}
 
-    // Store a new user
-    public function store(Request $request) {
+	/**
+	* Store a newly created resource in storage.
+	*
+	* @param  \Illuminate\Http\Request  $request
+	* @return \Illuminate\Http\Response
+	*/
+	public function store(Request $request) {
 
 		# Call parent store function (basically a model constructor)
 		Log::info('Calling Profile::store()!');
@@ -82,28 +77,33 @@ class UserController extends ProfileController
 			return redirect('user/');
 		}
 		else {
-		Log::info('Authentication failed!');
-		    Session::flash ('message', 'Invalid Credentials , Please try again.');
-		    return redirect('/');
+			Log::info('Authentication failed!');
+			Session::flash ('message', 'Invalid Credentials , Please try again.');
+			return redirect('/');
 		}
 
 	}
 
-		// Get view of user
-		public function show($id) {
+	/**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+	public function show($id) {
 
-			// Retrieve user
-			$user = \App\User::where('id', $id)->first();
+		// Retrieve user
+		$user = \App\User::where('id', $id)->first();
 
-			Log::info('Trying to getUserView!');
-			Log::info('I went back to the user page!');
-			return view('user.user', ['user' => $user, 'profile' => $user->profile]);
-		}
+		Log::info('Trying to getUserView!');
+		Log::info('I went back to the user page!');
+		return view('user.user', ['user' => $user, 'profile' => $user->profile]);
+	}
 
-		// edit
+	// edit
 
-    // Update user info
-    public function update(Request $request, $id) {
+	// Update user info
+	public function update(Request $request, $id) {
 
 		// Retrieve user
 		$user = \App\User::where('id', $id)->first();
@@ -115,16 +115,15 @@ class UserController extends ProfileController
 		# Validate user update
 		Log::info('Validating user update info!');
 		$validatedData = $this->validate($request, [
-            'email' => 'required|email',
-            'age' => 'required|numeric',
-    ]);
+			'email' => 'required|email',
+			'age' => 'required|numeric',
+		]);
 
-    // Update other attributes
-    $user->email = $request->email;
-    $user->age = $request->age;
-    $user->save();
-
-
+		// Update other attributes
+		$user->email = $request->email;
+		$user->age = $request->age;
+		$user->save();
+		
 		return redirect()->route('user.show', ['user' => $user]);
 	}
 

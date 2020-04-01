@@ -18,27 +18,38 @@ use App\LikeDislike;
 use App\Following;
 use App\Notification;
 
+/**
+* Provides data fields and methods to manipulate a PHP data-type representing a Following relattionship between a follower and an entity being followed in a PHP application.
+* @author Nozy team
+*
+*/
 class FollowingController extends Controller
 {
   /**
-   *
-   * @return \Illuminate\Http\Response
-   */
+  *
+  * @return \Illuminate\Http\Response
+  */
   public function index(Request $request)
   {
 
   }
 
+  /**
+  * Store a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
   public function store(Request $request)
   {
     Log::info('I am trying to create following relationship');
 
     // Check that all required fields are filled
     $validator = Validator::make($request->all(), [
-        'followingable_id' => 'required|numeric',
-        'followingable_type' => 'required',
-        'follower_id' => 'required|numeric',
-      ]);
+      'followingable_id' => 'required|numeric',
+      'followingable_type' => 'required',
+      'follower_id' => 'required|numeric',
+    ]);
 
     // Create following relationship between followingable class and follower class
     try {
@@ -56,11 +67,11 @@ class FollowingController extends Controller
   }
 
   /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
+  * Remove the specified resource from storage.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
   public function destroyFollowingProfile(Profile $profile)
   {
     $following = $profile->followings()->where('follower_id', Auth::guard('profile')->user()->id)->first();
@@ -74,11 +85,11 @@ class FollowingController extends Controller
   }
 
   /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
+  * Remove the specified resource from storage.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
   public function destroyFollowingPost(Post $post)
   {
     $following = $post->followings()->where('follower_id', Auth::guard('profile')->user()->id)->first();
