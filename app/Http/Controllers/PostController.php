@@ -291,11 +291,16 @@ class PostController extends Controller
         $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
         $api_response = $client->request('GET','/api/comments/postId/'.$post->id);
         $comments = collect(json_decode($api_response->getBody())); // get comments
-        $commentController = new CommentController();
-        Log::info("Comments received: ".$comments);
-        foreach($comments as $comment) {
-          Log::info("comment id: ".((int) $comment->id));
-          $commentController->destroyWithOnlyId((int) $comment->id);
+        if (array_key_exists("message", $comments[0]) && !array_key_exists("body", $comments[0])) {
+          Session::flash("no_comments_message", $comments[0]->message);
+        }
+        else {
+          $commentController = new CommentController();
+          Log::info("Comments received: ".$comments);
+          foreach($comments as $comment) {
+            Log::info("comment id: ".$comment->id);
+            $commentController->destroyWithOnlyId((int) $comment->id);
+          }
         }
       }
       catch (\GuzzleHttp\Exception\RequestException $e) {
