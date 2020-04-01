@@ -142,6 +142,11 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $profile = Profile::find($id);
+        $profileController = new PostController();
+        foreach($profile->posts as $post) {
+          $profileController->destroyPostComments($post);
+        }
+        $profile->delete();
     }
 }

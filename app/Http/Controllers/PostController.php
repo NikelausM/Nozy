@@ -258,9 +258,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+      Log::info("Trying to delete post");
       // Retrieve post and its profile
       $post = \App\Post::where('id', $id)->first();
       $post_profile = $post->posted_on_profile;
+
+      // Delete associated $comments
+      $this->destroyPostComments($post);
 
       // Delete post
       $post->delete();
@@ -274,5 +278,31 @@ class PostController extends Controller
   			$community_posted_on = \App\Community::where('profile_id',$post_profile->id)->first();
   			return redirect()->route('community.show',$community_posted_on);
   		}
+    }
+
+    /**
+     * Remove the comments of the specified post from storage.
+     *
+     * @param  Post $post
+     */
+    public function destroyPostComments(Post $post) {
+      Log::info("Trying to destroy post comments");
+      try {
+        $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+        $api_response = $client->request('GET','/api/comments/postId/'.$post->id);
+        $comments = collect(json_decode($api_response->getBody())); // get comments
+        $commentController = new CommentController();
+        Log::info("Comments received: ".$comments);
+        foreach($comments as $comment) {
+          Log::info("comment id: ".((int) $comment->id));
+          $commentController->destroyWithOnlyId((int) $comment->id);
+        }
+      }
+      catch (\GuzzleHttp\Exception\RequestException $e) {
+        Log::info("Unable to destroy post comments");
+        $comments = collect(json_decode(json_encode(array(array("message" => "no comments available at the moment.\r\nplease try again later...",
+                                  "status" => "error"), 404))));
+        Session::flash("destroy_post_comments_error", $comments[0]->message);
+      }
     }
 }
