@@ -9,7 +9,7 @@
 				@include('following.follow_profile_button')
 				@include('following.unfollow_profile_button')
 				<h1 class="font-weight-bold"><font color="black">{{$user->profile->name}}</font></h1>
-				<h1 class="font-weight-bold"><font color="black">Description: {{$user->profile->description}}</font></h1>
+				<h2 class="font-weight-bold"><font color="black">Description: {{$user->profile->description}}</font></h2>
 				@if(Auth::guard('profile')->user()->id == $user->profile->id)
 				@include('user.edit_user_profile_form')
 				@endif
