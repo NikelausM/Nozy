@@ -1,6 +1,7 @@
 @extends('layouts.welcome_loggedin')
 
 @section('content')
+
 <div class="masthead">
 	<div class="container h-100">
 		<br><br>

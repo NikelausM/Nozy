@@ -1,6 +1,13 @@
 @extends('layouts.welcome_loggedin')
 
 @section('content')
+<script type="text/javascript">
+		<?php
+		Log::info('start unique_id: '.Session::get('unique_id'));
+		Session::put('unique_id', 1);
+		Log::info('end unique_id: '.Session::get('unique_id'));
+		?>
+</script>
 <div class="masthead">
 	<div class="container h-100">
 		<br></br>

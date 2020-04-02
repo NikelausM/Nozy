@@ -82,6 +82,7 @@ class UserController extends ProfileController
 		if ($validator->fails()) {
 			Log::info('Failed to create user');
 			Session::flash("store_user_error_".$request->unique_id, "unable to create user at the moment\r\nplease try again...");
+			$profile->delete();
 			return redirect()->back()->with('code',true)->withErrors($validator,'storeUserErrors');
 		}
 
@@ -126,24 +127,48 @@ class UserController extends ProfileController
 		return view('user.user', ['user' => $user, 'profile' => $user->profile]);
 	}
 
-	// edit
+	/**
+  * Call the super class update function of a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+  private function updateSuper(Request $request, $id) {
+    Log::info('Calling Profile::update()!');
+    $profile = new ProfileController();
+    $request->unique_id--;
+    $profile = $profile->update($request, $id);
+    $request->unique_id++;
+    return $profile;
+  }
 
 	// Update user info
 	public function update(Request $request, $id) {
-
+  	Log::info("start update_user_error_: ".json_encode($request->all()));
 		// Retrieve user
 		$user = \App\User::where('id', $id)->first();
 
-		# Call parent update function (basically a model updater)
-		Log::info('Calling Profile::update()!');
-		parent::update($request, $user->profile->id);
+		# Call parent update function (basically a model constructor)
+		$profile = $this->updateSuper($request, $user->profile->id);
+		if ($profile instanceOf ProfileController) {
+			Log::info("updateValidator: ".$profile->updateErrors);
+			return redirect()->back()->withErrors($profile->updateValidator, $profile->updateErrors);
+		}
 
 		# Validate user update
 		Log::info('Validating user update info!');
-		$validatedData = $this->validate($request, [
+    $validator = Validator::make($request->all(), [
 			'email' => 'required|email',
 			'age' => 'required|numeric',
 		]);
+
+		// If required fields aren't flled
+		if ($validator->fails()) {
+			Log::info('Failed to update user');
+			Session::flash("update_user_error_".$request->unique_id, "unable to update user at the moment\r\nplease try again...");
+      Log::info("end update_user_error_: ".$request->unique_id);
+			return redirect()->back()->withErrors($validator,'updateUserErrors');
+		}
 
 		// Update other attributes
 		$user->email = $request->email;

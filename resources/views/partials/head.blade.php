@@ -15,5 +15,3 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ URL::asset('css/g15.css') }}" type="text/css">
-
-<?php Session::put('unique_id', 1); // Reset unique id used by tags?>

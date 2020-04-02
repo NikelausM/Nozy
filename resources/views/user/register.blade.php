@@ -55,7 +55,7 @@
 	  <div class="row">
 			<div class="col">
 				<label for="age">Age</label>
-				<input class="form-control" name="age" id="age" placeholder="Enter Age" required>
+				<input type="number" class="form-control" name="age" id="age" placeholder="Enter Age" required>
 			</div>
 	  </div>
 	  <button style="margin-top: 5px;" class="btn btn-primary" type="submit">Register</button>

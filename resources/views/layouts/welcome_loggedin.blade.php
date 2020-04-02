@@ -5,9 +5,17 @@
 	</head>
     <body>
         <div id="app">
-            @include('layouts.nav_loggedin') <!--References layout/nav.blade/php which is the navigation header-->
-            @include('layouts.modal_loggedin')
-            @yield('content')
+
+					<script type="text/javascript">
+							<?php
+							Log::info('start unique_id: '.Session::get('unique_id'));
+							Session::put('unique_id', 1);
+							Log::info('end unique_id: '.Session::get('unique_id'));
+							?>
+					</script>
+          @include('layouts.nav_loggedin') <!--References layout/nav.blade/php which is the navigation header-->
+          @include('layouts.modal_loggedin')
+          @yield('content')
 
 
         </div>
