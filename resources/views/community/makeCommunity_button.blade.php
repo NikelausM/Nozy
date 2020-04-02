@@ -34,7 +34,7 @@
     <div class="row-1">
       <div class="col-75">
         <label for="inputPassword">Password</label>
-        <input class="form-control" name="password" id="password" placeholder="Enter password" required>
+        <input class="form-control" type="password" name="password" id="password" placeholder="Enter password" required>
       </div>
     </div>
     <div class="row-1">

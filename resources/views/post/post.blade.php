@@ -17,6 +17,11 @@
 				@include('post.edit_post_form')
 				@include('post.delete_post_button')<!-- I want this to be to the right of edit_post_form-->
 				@endif
+				<div class="row">
+				<div class="col-4">
+				<p>Visit the profile of the poster </p>
+				</div>
+				<div class="col-8">
 				<?php $user = \App\User::where('profile_id',$post->posted_on_profile->id)->first(); ?>
 				@if(!is_null($user))
 				@include('user.show_user_button')
@@ -24,6 +29,8 @@
 				<?php $community = \App\Community::where('profile_id',$post->posted_on_profile->id)->first(); ?>
 				@include('community.show_community_button')
 				@endif
+				</div>
+				</div>
 				<h2> Comments </h2>
 				@include('post.show_post_comments')
 				<?php $parent_id = 0; // Parent id is 0 because these comments are post comments?>
