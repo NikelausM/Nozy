@@ -133,8 +133,7 @@ class ProfileController extends Controller
 
     Log::info('Validating profile update info!');
     $validator = Validator::make($request->all(), [
-      //'name' => 'required|min:3|unique:profile,name',
-      'name' => 'required|min:3|unique:profile,id,'.$id,
+      'name' => 'required|min:3||unique:profile,name,'.$id,
       'password' => 'required|min:3',
       'description' => 'required|min:3',
     ]);
