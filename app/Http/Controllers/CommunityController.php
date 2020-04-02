@@ -76,7 +76,7 @@ class CommunityController extends ProfileController
 
     // If required fields aren't flled
     if ($validator->fails()) {
-      Log::info('Failed to create profile');
+      Log::info('Failed to create community');
       Session::flash("store_community_error_".$request->unique_id, "unable to create community at the moment\r\nplease try again...");
       return redirect()->back()->withErrors($validator,'storeCommunityErrors');
     }

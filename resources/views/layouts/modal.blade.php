@@ -15,3 +15,12 @@
     </div>
   </div>
 </div>
+
+
+@if(session('code')) )
+<script>
+  $(function() {
+    $('#registerModal').modal('show');
+  });
+</script>
+@endif

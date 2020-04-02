@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\User;
 use Auth;
@@ -25,7 +26,7 @@ class UserController extends ProfileController
 	public function __construct()
 	{
 		Log::info('UserController Constructor middleware being called!');
-		//$this->middleware('auth:profile')->except(['register']);
+		$this->middleware('auth:profile')->except(['store','storeSuper']);
 	}
 
 	// Get user of current authenticated profile
@@ -40,6 +41,21 @@ class UserController extends ProfileController
 	}
 
 	/**
+  * Call the super class store function of a newly created resource in storage.
+  *
+  * @param  \Illuminate\Http\Request  $request
+  * @return \Illuminate\Http\Response
+  */
+  private function storeSuper(Request $request) {
+    Log::info('Calling Profile::store()!');
+    $profile = new ProfileController();
+    $request->unique_id--;
+    $profile = $profile->store($request);
+    $request->unique_id++;
+    return $profile;
+  }
+
+	/**
 	* Store a newly created resource in storage.
 	*
 	* @param  \Illuminate\Http\Request  $request
@@ -48,16 +64,26 @@ class UserController extends ProfileController
 	public function store(Request $request) {
 
 		# Call parent store function (basically a model constructor)
-		Log::info('Calling Profile::store()!');
-		$profile = parent::store($request);
+		$profile = $this->storeSuper($request);
+    if ($profile instanceOf ProfileController) {
+      Log::info("storeValidator: ".$profile->storeErrors);
+      return redirect()->back()->with('code',true)->withErrors($profile->storeValidator, $profile->storeErrors);
+    }
 
 		# Validate form
 		Log::info('Validating user registration info!');
-		$this->validate($request, [
+    $validator = Validator::make($request->all(), [
 			'email' => 'required|email',
 			'password' => 'required|min:3',
 			'age' => 'required|numeric',
 		]);
+
+		// If required fields aren't flled
+		if ($validator->fails()) {
+			Log::info('Failed to create user');
+			Session::flash("store_user_error_".$request->unique_id, "unable to create user at the moment\r\nplease try again...");
+			return redirect()->back()->with('code',true)->withErrors($validator,'storeUserErrors');
+		}
 
 		# Create new user
 		Log::info('Creating new user!');
@@ -123,7 +149,7 @@ class UserController extends ProfileController
 		$user->email = $request->email;
 		$user->age = $request->age;
 		$user->save();
-		
+
 		return redirect()->route('user.show', ['user' => $user]);
 	}
 
