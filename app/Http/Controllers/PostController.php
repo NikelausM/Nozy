@@ -129,7 +129,7 @@ class PostController extends Controller
   */
   public function showComments(\App\Post $post) {
     try {
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      $client = new \GuzzleHttp\Client(['base_uri' => CommentController::$comment_url]);
       $api_response = $client->request('GET','/api/comments/postId/'.$post->id);
       $comments = collect(json_decode($api_response->getBody())); // get comments
     }
@@ -308,7 +308,7 @@ class PostController extends Controller
   public function destroyPostComments(Post $post) {
     Log::info("Trying to destroy post comments");
     try {
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      $client = new \GuzzleHttp\Client(['base_uri' => CommentController::$comment_url]);
       $api_response = $client->request('GET','/api/comments/postId/'.$post->id);
       $comments = collect(json_decode($api_response->getBody())); // get comments
       if (array_key_exists("message", $comments[0]) && !array_key_exists("body", $comments[0])) {

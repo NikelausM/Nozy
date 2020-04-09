@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
+
 /**
 * Provides data fields and methods to manipulate a PHP data-type representing a Comment resource in a PHP application.
 * @author Nozy team
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Validator;
 */
 class CommentController extends Controller
 {
+
+  public static $comment_url = 'ec2-54-193-73-65.us-west-1.compute.amazonaws.com';
+
   /**
   * Display a listing of the resource.
   *
@@ -61,7 +65,7 @@ class CommentController extends Controller
         return redirect()->back()->withErrors($validator,'storeCommentErrors');
       }
       $comment = array('PostId' => $request->post_id, 'UserId' => $request->user_id, 'Body' => $request->body, 'ParentId' => $request->parent_id);
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      $client = new \GuzzleHttp\Client(['base_uri' => $comment_url);
       $api_response = $client->request('POST','/api/comment/new',[ 'form_params' => $comment]);
       Log::info('Microservice status code');
       Log::info($api_response->getStatusCode());
@@ -91,7 +95,7 @@ class CommentController extends Controller
   {
     Log::info("Tring to show comment");
     try {
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      $client = new \GuzzleHttp\Client(['base_uri' => $comment_url]);
       $api_response = $client->request('GET','/api/comment/id/'.$id);
       $comment = json_decode($api_response->getBody());
 
@@ -153,7 +157,7 @@ class CommentController extends Controller
       }
       $comment = array('CommentId' =>$request->comment_id, 'PostId' => $request->post_id, 'UserId' => $request->user_id, 'Body' => $request->body, 'ParentId' => $request->parent_id);
       Log::info($comment);
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      $client = new \GuzzleHttp\Client(['base_uri' => $comment_url]);
       $api_response = $client->request('POST','/api/comment/update',[ 'form_params' => $comment]);
 
       // Log response
@@ -184,7 +188,7 @@ class CommentController extends Controller
     try {
       Log::info('Trying to destroy comment');
       $comment = array('CommentId' => $id);
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      $client = new \GuzzleHttp\Client(['base_uri' => $comment_url]);
       $api_response = $client->request('POST','/api/comment/delete',[ 'form_params' => $comment]);
       Log::info('Microservice status code');
       Log::info($api_response->getStatusCode());
@@ -222,7 +226,7 @@ class CommentController extends Controller
     try {
       Log::info('Trying to destroy comment with only id');
       $comment = array('CommentId' => $id);
-      $client = new \GuzzleHttp\Client(['base_uri' => 'http://ec2-3-101-22-8.us-west-1.compute.amazonaws.com/']);
+      $client = new \GuzzleHttp\Client(['base_uri' => $comment_url]);
       $api_response = $client->request('POST','/api/comment/delete',[ 'form_params' => $comment]);
       Log::info('Microservice status code');
       Log::info($api_response->getStatusCode());
