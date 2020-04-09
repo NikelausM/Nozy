@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Validator;
 class CommentController extends Controller
 {
 
-  public static $comment_url = 'ec2-54-193-73-65.us-west-1.compute.amazonaws.com';
+  public static $comment_url = 'http://ec2-54-193-73-65.us-west-1.compute.amazonaws.com';
 
   /**
   * Display a listing of the resource.
