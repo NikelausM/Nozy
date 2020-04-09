@@ -65,7 +65,7 @@ class CommentController extends Controller
         return redirect()->back()->withErrors($validator,'storeCommentErrors');
       }
       $comment = array('PostId' => $request->post_id, 'UserId' => $request->user_id, 'Body' => $request->body, 'ParentId' => $request->parent_id);
-      $client = new \GuzzleHttp\Client(['base_uri' => $comment_url);
+      $client = new \GuzzleHttp\Client(['base_uri' => $comment_url]);
       $api_response = $client->request('POST','/api/comment/new',[ 'form_params' => $comment]);
       Log::info('Microservice status code');
       Log::info($api_response->getStatusCode());
