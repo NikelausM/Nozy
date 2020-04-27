@@ -18,32 +18,32 @@ The comments are served by a [Python Flask Microservice](https://github.com/hari
 
 ## Examples of Use Cases
 
-- Opening Website
+### Opening Website
 <p align="center"><img src="./public/images/Welcome_Page.PNG"></p>
 
-- Opening profile page
+### Opening profile page
 <p align="center"><img src="./public/images/Profile_Page_Part_1.PNG"></p>
 <p align="center"><img src="./public/images/Profile_Page_Part_2.PNG"></p>
 <p align="center"><img src="./public/images/Profile_Page_Part_3.PNG"></p>
 
-- Opening your notifications
+### Opening your notifications
 <p align="center"><img src="./public/images/Notifications_Pop_Up.PNG"></p>
 
-- Opening a community profile
+### Opening a community profile
 <p align="center"><img src="./public/images/Community_Profile.PNG"></p>
 
-- Opening a post if the Comments Microservice is running
+### Opening a post if the Comments Microservice is running
 <p align="center"><img src="./public/images/Microservice_Up.PNG"></p>
 
-- Opening a post if the Comments Microservice is down
+### Opening a post if the Comments Microservice is down
 <p align="center"><img src="./public/images/Microservice_Down.PNG"></p>
 
-- Nested comments if the Comments Microservice is running
+### Nested comments if the Comments Microservice is running
 <p align="center"><img src="./public/images/Nested_Comments_Microservice_Running.PNG"></p>
 
-- Nested comments if the Comments Microservice is down
+### Nested comments if the Comments Microservice is down
 <p align="center"><img src="./public/images/Nested_Comments_But_Microservice_Down.PNG"></p>
 
-- Searching users, communities, and posts
+### Searching users, communities, and posts
 <p align="center"><img src="./public/images/Search_Page_Part_1.PNG"></p>
 <p align="center"><img src="./public/images/Search_Page_Part_2.PNG"></p>
