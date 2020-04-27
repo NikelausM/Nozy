@@ -12,7 +12,7 @@ The main content pages of the application are served with a PHP Laravel MVC appl
 <p align="center"><img src="./public/images/Main_Content_Pages_MVC.PNG" height="250" width="435"></p>
 
 ## Comments Microservice Software Architecture
-The comments are served by a Python Flask Microservice
+The comments are served by a Python Flask Microservice.
 <p align="center"><img src="./public/images/Microservice_Software_Architecture.PNG" height="250" width="435"></p>
 
 
