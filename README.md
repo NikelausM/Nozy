@@ -1,4 +1,4 @@
-<p align="center"><img src="./public/images/cartoon-nose-mustache.png" style="width:100px;length:100px;"></p>
+<p align="center"><img src="./public/images/cartoon-nose-mustache.png" height="100" width="100"></p>
 
 ## About Nozy
 
