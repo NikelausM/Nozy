@@ -39,10 +39,10 @@ The comments are served by a Python Flask Microservice
 <p align="center"><img src="./public/images/Microservice_Down.PNG"></p>
 
 - Nested comments if the Comments Microservice is running
-<p align="center"><img src="./public/images/Nested_Comments.PNG"></p>
+<p align="center"><img src="./public/images/Nested_Comments_Microservice_Running.PNG"></p>
 
 - Nested comments if the Comments Microservice is down
-<p align="center"><img src="./public/images/Nested_Comments_Microservice_Down.PNG"></p>
+<p align="center"><img src="./public/images/Nested_Comments_But_Microservice_Down.PNG"></p>
 
 - Searching users, communities, and posts
 <p align="center"><img src="./public/images/Search_Page_Part_1.PNG"></p>
