@@ -8,7 +8,7 @@ Nozy is a discussion board web app that allows users to connect with each other 
 <p align="center"><img src="./public/images/General_Software_Architecture.PNG" height="250" width="435"></p>
 
 ## Main Content Pages MVC Software Architecture
-The main content pages of the application are served with a PHP Laravel MVC application.
+The main content pages of the application are served with a PHP [Laravel](https://laravel.com/) MVC application.
 <p align="center"><img src="./public/images/Main_Content_Pages_MVC.PNG" height="250" width="435"></p>
 
 ## Comments Microservice Software Architecture
