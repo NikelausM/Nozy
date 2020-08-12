@@ -1,6 +1,6 @@
-# Nozy
-
 <p align="center"><img src="./public/images/cartoon-nose-mustache.png" height="100" width="100"></p>
+
+# Nozy
 
 * [Introduction](#introduction)
 * [Features](#features)
